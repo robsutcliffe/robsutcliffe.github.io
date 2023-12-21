@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: "Rob's Blog",
   author: 'Rob Sutcliffe',
-  headerTitle: 'Rob\'s Blog',
+  headerTitle: "Rob's Blog",
   description: 'Thoughts about UI Engineering and Data Visualisation',
   language: 'en-uk',
   theme: 'system', // system, dark or light
@@ -42,7 +42,7 @@ const siteMetadata = {
     // Please add your .env file and modify it according to your selection
     provider: '',
   },
-  comments: "",
+  comments: '',
   /*comments: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
