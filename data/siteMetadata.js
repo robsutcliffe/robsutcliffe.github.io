@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: "Rob's Blog",
   author: 'Rob Sutcliffe',
-  headerTitle: 'Firefields Blog',
+  headerTitle: 'Rob\'s Blog',
   description: 'Thoughts about UI Engineering and Data Visualisation',
   language: 'en-uk',
   theme: 'system', // system, dark or light
