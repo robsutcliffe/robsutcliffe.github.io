@@ -1,0 +1,113 @@
+---
+title: Introduction To Tidy Data Principles
+date: '2024-02-25'
+tags: ['data']
+draft: false
+summary: Exploring the benefits and practical applications of parallel computational tasks on client machines, focusing on The Principle of Known Reliability and The GPU Crossover Threshold for optimal task distribution.
+images: ['/static/images/posts/cpu_gpu_benchmark.png', '/static/images/posts/cpu_gpu_benchmark_2.png']
+---
+
+## What is Tidy Data
+As developers, we abide by certain principles, heuristics and rules to ensure that we code consistently, but often, it's simply to stop opinionated arguments.
+
+The way we structure our data objects is the same. There are some clear rules about how to structure our data to be `tidy data`; however, the tidy data design principles are less known and potentially more critical if you work with analytics or large data sets.
+
+"Tidy datasets are all alike, but every messy dataset is messy in its own way." – Hadley Wickham
+you can read Hadley Wickham's full research paper into [tidy data here](https://vita.had.co.nz/papers/tidy-data.pdf)
+
+Or you can read a summary of the most crucial tidy data principles below:
+
+#### Each Variable Forms a Column
+A `variable` is a pretty well-understood term in computer science. If we had a data set with a location column, it might look like this.
+
+| ❌| Temperature | Location |
+| - | - | - |
+| | 21 | New York, USA |
+| | 19 | London, UK |
+
+However, in this example, we have concatenated two separate variables for Location, and we should treat them as such like this:
+
+| ✅ | Temperature | City | Country |
+| - | - | - | - |
+| | 21 | New York | USA |
+| | 19 | London | UK |
+
+#### Each Observation Forms a Row
+
+An `observation` is a term used in data analytics, meaning a single reading. Suppose we took a reading of the temperature in the morning and in the evening. There are two separate observations, but we could store the data in a single row like this:
+
+| ❌| Date | Morning Temp | Evening Temp |
+| - | - | - | - |
+| | 01/02/2024 | 21 | 25 |
+| | 02/02/2024 | 22 | 24 |
+
+Tidy Data principles require us to split each observation (temperature reading) into a separate row.
+
+| ✅ | Date | Time of Day | Temperature |
+| - | - | - | - |
+| | 01/02/2024 | Morning | 21 |
+| | 01/02/2024 | Evening | 25 |
+| | 02/02/2024 | Morning | 22 |
+| | 02/02/2024 | Evening | 24 |
+
+#### Column Headers Are Variable Names, Not Values
+
+The headings should always be the variable names and never be values themselves. In the example below, we have put three observations in a single row and used variables in the heading names.
+
+| ❌| Product | 2021 | 2022 | 2023 |
+| - | - | - | - | - |
+| | A | 100 | 150 | 200 |
+| | B | 80 | 120 | 160 |
+
+These should split into individual observations, and the variable `year` should be added as a new column.
+
+| ✅ | Product | Year | Sales |
+| - | - | - | - |
+| | A | 2021 | 100 |
+| | A | 2022 | 150 |
+| | A | 2023 | 200 |
+| | B | 2021 | 80 |
+| | B | 2022 | 120 |
+| | B | 2023 | 160 |
+
+#### Each Type of Observational Unit Forms a Table
+
+A `dataframe` or table is a collection of observations.
+In the following example, observations for books and authors are in a single table.
+
+| ❌| Title | Publication Year | Author | Birth Year | Nationality |
+| - | - | - | - | - | - |
+| | Moby Dick | 1851 | Herman Melville | 1819 | American |
+| | Pride and Prejudice | 1813 | Jane Austen | 1775 | British |
+
+Books and authors are two different observation types, so we should store them in separate tables.
+*We may want to merge the data to perform some analysis and visualisation, but this will be the final step in working with this data.*
+
+| ✅ | Title | Publication Year | Author ID |
+| - | - | - | - |
+| | Moby Dick | 1851 | 1 |
+| | Pride and Prejudice | 1813 | 2 |
+
+| ✅ | Author ID | Birth Year | Nationality |
+| - | - | - | - |
+| | 1 | 1819 | American |
+| | 2 | 1775 | British |
+
+## Advantages of Out New Tidy Data
+
+Tidy Data gives us advantages when working with the data:
+- **Clarity**: Each row now represents a complete picture of a single observation, and each column is a single variable with the name at the top. Each table represents a single collection of observations.
+- **Compatibility**: Most programming languages, tools, or even co-workers will expect data formatted like this. Making it more accessible to import, export, visualise, and maintain.
+- **Aggregation**: Computing aggregation statistics, for example, mean, median, or sum, becomes more accessible when the values are all in a single column, and observations are in a row.
+- **Data Manipulation**: Pivoting, melting, filtering, and sorting by variables are more straightforward when each variable is in an individual column
+- **Data Merging**: It's more straightforward to perform joins when things
+- **Scalability**: Adding, updating, or deleting observations and variables is far more accessible in this format
+
+## Formatting our Data
+Anytime we import raw data, we should make the first step to tidy it to follow the above rules. Especially if we then store this data for future use, database structures should also follow the tidy data principles. To do this, check the following links depending on which language you use to handle your data.
+
+- [Tidyverse](https://www.tidyverse.org/) for R
+- [Tidy.js](https://pbeshai.github.io/tidy/) for Javascript
+- [Pandas](https://pandas.pydata.org/) for Python
+
+If you'd like to read Hadley Wickham's full research paper [Tidy Data, you can here](https://vita.had.co.nz/papers/tidy-data.pdf)
