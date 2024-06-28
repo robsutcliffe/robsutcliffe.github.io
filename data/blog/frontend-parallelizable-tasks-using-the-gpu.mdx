@@ -4,7 +4,7 @@ date: '2024-01-26'
 tags: ['performance']
 draft: false
 summary: Exploring the benefits and practical applications of parallel computational tasks on client machines, focusing on The Principle of Known Reliability and The GPU Crossover Threshold for optimal task distribution.
-images: ['/static/images/posts/cpu_gpu_benchmark.png', '/static/images/posts/cpu_gpu_benchmark_2.png']
+images: ['/static/images/posts/cpu_gpu_benchmark.webp', '/static/images/posts/cpu_gpu_benchmark_2.webp']
 ---
 
 #### **TL;DR**
@@ -38,7 +38,7 @@ But can we use it to distribute front-end tasks, and how does it compare? Why wo
 
 Using [The Matrix Multiplication Example](https://gpu.rocks/#/) from the GPU.JS website, [I ran several concurrent computations on my CPU and GPU. I then tracked the execution times.](https://observablehq.com/@robsutcliffe/frontend-parallelization-with-gpu-js)
 
-![](/static/images/posts/cpu_gpu_benchmark.png)
+![](/static/images/posts/cpu_gpu_benchmark.webp)
 
 My first observation was that the CPU performs better at executing tens of thousands of computations before it becomes optimal to use the GPU. Several other people have made a similar observation.
 
@@ -46,7 +46,7 @@ Once we get above half a million computations, my CPU can't handle it. My GPU co
 
 The most exciting observation was that the point where running computations on the GPU on my machine was around 80,000 computations. And that I can consistently identify this point after running at most 8 benchmark tests.
 
-![](/static/images/posts/cpu_gpu_benchmark_2.png)
+![](/static/images/posts/cpu_gpu_benchmark_2.webp)
 
 It only takes around 3 seconds for me to identify exactly where the sweet spot is, and this was not affected too much by other processes on the CPU or GPU. I call this point `The GPU Crossover Threshold`
 
