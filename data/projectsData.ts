@@ -23,6 +23,12 @@ const projectsData = [
     imgSrc: '/static/images/projects/fastfeed.png',
     href: 'https://ffeed.vercel.app/',
   },
+  {
+    title: 'AI Treemap Generator',
+    description: `Use various AI models to categories open ended survey responses and check with a the user at various stages if the categories are useful and accurate.`,
+    imgSrc: '/static/images/projects/survey.png',
+    href: 'https://youtu.be/aAZPw7p2GbI',
+  },
 ]
 
 export default projectsData
