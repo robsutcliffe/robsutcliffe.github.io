@@ -1,0 +1,79 @@
+---
+title: Optimising UI for the new INP Web Vital
+date: '2024-06-15'
+tags: ['performance']
+draft: false
+summary: The INP Web Vital is a new metric that measures the performance of a website. It is a crucial metric for web developers, as it helps them understand how well their website is performing and how to improve it.
+images: ['/static/images/posts/inp.png', '/static/images/posts/inp-long-task.png']
+---
+
+![INP long tasks](/static/images/posts/inp.png)
+
+
+## What Is INP (Interaction to Next Paint)?
+Most of the time spent in a car is after the vehicle has started moving, so should we care more about how responsive the car feels once it’s moving than we do about how it starts up? Google thinks we should:
+
+That’s why INP (Interaction to Next Paint) has now replaced FID as a core web vital.
+
+INP is the time between a user interaction and the next UI paint. In an ideal world, when a user clicks a button on a website, the website should respond within 200ms. Anything more than 500ms is considered a problem. To achieve this, we want to ensure that no large tasks ever block the main thread for too long so tasks with a higher priority can use the thread. Like responding to a user request.
+
+INP reports the worst offender, so fix the longest wait first
+
+## How Do We Identify Long Blocking Tasks?
+Google considers a task to be blocking if it runs on the main thread for more than 50ms.
+
+The new performance insights tab in the Chrome DevTools is perfect for identifying long tasks. It is a simplified version of the performance tab, which gives more than enough information to the average developer.
+
+1. Open the DevTools.
+2. Click on the new performance insights tab.
+3. Click Measure page load, and then interact with your site.
+4. After a few interactions, click stop.
+
+![INP long tasks](/static/images/posts/inp-long-task.png)
+
+*Avoid recording too many interactions at once; this makes it easier to work with the results.*
+
+## Break Up Blocking Tasks
+If we break a 100ms task into two 50ms functions, we can add the second function to the end of the stack, allowing higher-priority tasks to be executed first.
+We can use `requestAnimationFrame()` to call the second function to force it to wait until the next frame; this way, it will never block a repaint.
+
+So this blocking task
+```js
+function longTask() {
+  const start = Date.now();
+  while (Date.now() - start < 100) {
+    // do some work
+  }
+}
+```
+
+would become these two 50ms functions
+```js
+function taskPart1() {
+  const start = Date.now();
+  const task1Result = 5;
+  while (Date.now() - start < 50) {
+    // do some work
+  }
+  requestAnimationFrame(() => taskPart2(task1Result));
+}
+
+function taskPart2(task1Result) {
+  const start = Date.now();
+  while (Date.now() - start < 50) {
+    // do some more work
+  }
+}
+```
+
+In the second example it will never block a repaint as other tasks can execute on the main thread between the execution of `taskPart1` and `taskPart2`.
+
+## Other Ways To Optimise For INP
+Several other performance optimizations can be made to improve INP. Ideally, you have already been doing this to achieve a good FID score.
+
+- Debounce and throttle high-frequency event listeners like `scroll` or `resize` to prevent the main thread from being overwhelmed. Ensure all event listeners are optimized or reduced.
+- Prefer CSS animations like transform or opacity that are calculated on the GPU rather than causes any layout calculation on the main thread.
+- Simplify CSS selectors to reduce the time spent updating the AST and on subsequent layout calculations. For example, use simpler selectors and avoid deeply nested rules.
+- Lazy load non-essential resources to avoid blocking the main thread on the first load.
+
+*Remember to always measyre first and then optimise.*
