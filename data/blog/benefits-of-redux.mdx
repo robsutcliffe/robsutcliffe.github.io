@@ -1,0 +1,107 @@
+---
+title: The Benefits of Redux?
+date: '2024-09-12'
+tags: ['state management']
+draft: false
+summary: Redux continues to be a popular choice for large-scale applications, offering predictable state updates, powerful debugging tools, and scalability that supports collaboration in larger teams.
+images: ['/static/images/posts/redux-time-travel-debugging.webp']
+---
+
+## The Benefits of Redux?
+
+Redux is more complicated to set up than most state management tools. However, setup is a tiny part of the time we spend developing, and we almost always prefer a more complex setup over a more complicated maintenance. With all the new state management tools and the option to simply use [useContext](https://react.dev/reference/react/useContext), we often ask, Is Redux still the best choice for state management?
+Here are several things to consider when asking this question:
+
+## Immutable Data
+
+Immutability is a core concept in functional programming. We never change a state object; we throw it out and save a whole new object. It's a way to ensure that our state is predictable and easy to reason about.
+
+This leaves us with two questions:
+1. Does this trigger extra re-renders?
+2. Does this take up extra memory?
+
+The answer to both of these questions is no. Redux uses structure sharing, meaning it reuses unchanged parts of the object. This prevents unnecessary memory usage and avoids extra re-renders when the value remains the same.
+
+**Bonus tip:** Use a library like [immer](https://github.com/immerjs/immer) to help us when updating the state because we can turn code that looks like this:
+```js
+  return {
+    ...state,
+    user: {
+      ...state.user,
+      address: {
+        ...state.user.address,
+        city: action.payload.city
+      }
+    }
+  }
+```
+Into this:
+```js
+return produce(state, draftState => {
+  draftState.user.address.city = action.payload.city
+})
+```
+Essentially letting us create a completely new state object without mutating the old one. But with much cleaner code.
+While many state managers have ways to enforce immutability, Redux enforces immutability by default. Having an opinionated approach is useful here as we know from anywhere in our code that we're not mutating our state, and neither is any other developer.
+## Reducers and Pure Functions
+
+In functional programming, we require our functions to be pure and meet the following criteria:
+1. In must be **deterministic**, meaning that given the same input, it will always produce the same output.
+2. It must have **no side effects**, it can not interact with anything outside the function.
+
+One type of pure function is a reducer. A reducer reduces multiple inputs into a single output. It's a pure function because it always produces the same output given the same input. It can be used to update state.
+
+```js
+function counterReducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+```
+The above code has the following benefits in a React application:
+- It can be tested as a unit.
+- We can reason about it and predict the output more easily.
+- We can debug it more quickly, especially with our next point.
+
+## Time-Travel Debugging
+
+Redux has the most evolved community and ecosystem, and with that come the best dev tools. One of the features of the dev tools that we only have because of Redux's enforced immutability is time-travel debugging. We can skip back and forth through our application's state and see how it changes over time.
+
+![INP long tasks](/static/images/posts/redux-time-travel-debugging.webp)
+
+## Middleware
+
+I/O tasks are inherently not pure functions. They interact with something outside the function. This is an issue when we use functional programming in web development. Take this function for example:
+
+```js
+async function fetchData(state, userId) {
+  const data = await fetch(`https://api.example.com/user/${userId}`);
+  produce(state, draftState => {
+    draftState.user = data.user
+  })
+}
+```
+
+We could make this function deterministic, but it will always interact with an API, so it will always have side effects. We can reduce exposure to the impure function by using middleware.
+
+```js
+function fetchData(state, userId) {
+  return async dispatch => {
+    const data = await fetch(`https://api.example.com/user/${userId}`);
+    dispatch({ type: 'FETCH_USER_SUCCESS', payload: data.user })
+  }
+}
+```
+
+While async functions aren't strictly impure, they often involve I/O tasks, introducing unpredictability. Middleware in Redux helps manage these side effects, ensuring that asynchronous logic doesn't directly affect the rest of your application's state.
+
+## Scaling
+
+A lot of the above benefits can be added to other state management tools. But redux enforces them. Redux also encourages keeping all this state in a single centralised global state. Giving confidence to scaling teams and improving the developer experience. A developer has a finite amount of working memory, and we should write code in a way that doesn't overload the developer's memory.
+
+Anything that improves the developer experience of a large and growing team also helps a team of one on a relatively small project. This is because you can't remember all the code in between development sessions. It would help if you treated yourself as a different developer, and for that reason, redux is still the best choice for state management.
