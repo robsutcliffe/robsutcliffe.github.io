@@ -1,0 +1,51 @@
+---
+title: WET (Write Everything Twice) Programming
+date: '2025-05-30'
+tags: ['design principles']
+draft: false
+summary: The most talked about design principle is the DRY principle, But when should we break this rule?
+images: []
+---
+
+## The overuse of the DRY principle
+The DRY (Don't Repeat Yourself) principle is catchy and easy to remember. It's simple to teach, easy to understand, and often becomes a popular topic of discussion. For these reasons many workplaces have adopted a dogmatic approach to this single design principle. Decisions are often made to avoid duplication even when they increase complexity overall and they can make significantly larger violations to other design principles.
+
+## Incidental duplication
+It's tempting to extract any code that looks similar and convince ourselves it's always the right choice. This can be a trap as the code can be superficially similar. This is called incidental duplication, two pieces of code look identical but they represent slightly different things or serve slightly different purposes, that can evolve over time and become drastically different.
+Often we end up with code that looks similar. But actually represents different concepts, behaviour or knowledge. e.g.
+- Behaviour: A notification function for password reset and for reminders.
+- Concept: Price formatting for sales display and for accounting.
+- Knowledge: Email validation rules for user registration and for customer support.
+At first, these examples might look identical, but as the codebase evolves, they can become very different.
+
+As a frontend developer I often see reusable components being used for parts of a UI that are only incidentally similar and as the codebase evolves the component can add multiple configuration parameters rather than simply creating a new component for each different use case.
+
+## Deep vs shallow components
+In these cases, adding more configuration options makes a component 'shallower.' Configuration code often becomes harder to read and maintain because developers must understand several different contexts at once. In contrast, repeating a few similar lines of HTML across multiple components is often easy to maintain, and the benefits of eliminating this repetition are usually minimal.
+
+In John Ousterhout's book A Philosophy of Software Design, he criticizes thin or shallow components, some of the disadvantages are:
+- The applications architecture becomes much more complex as more layers of abstraction are added.
+- Violations to the principle of least exposure are made by adding props to a component that aren't relevant for all use cases.
+- Slow debugging as developers need to trace props that are drilled through multiple layers.
+- The components become less flexible as they become more and more dependent on the context they are used in.
+- And we have an issue about encapsulation of complexity, the abstractions are leaky and it's harder for developer to pick up the project.
+
+And we often create these shallow components simply so we don't repeat a few lines of relatively easy to maintain code. So how do we avoid this?
+
+## Avoiding premature abstraction
+Obviously we need to change any developer culture that favours a dogmatic approach to the DRY principle, or any other single principle and instead encourage people to learn the value and reason behind each principle so they can make their own judgement calls.
+
+However even once this is done we all have days where we want to optimize prematurely, it feels productive and is far less difficult in the short term than thinking about what to do and when to do it.
+
+## WET (Write Everything Twice) programming
+Some teams simply need the dogmatic rules, some managers don't trust the team to think for themselves. And sometimes we just need a crutch to get us started. So here is a new heuristic to use:
+
+Write everything twice. You've working on a codebase and you're writing a component that is similar to an existing one. In this situation, just write the new component, even if it's very similar. However once you are creating a component and the codebase has two very similar components, it's time to refactor and create a reusable component.
+
+## Summary
+When you’re deciding whether to DRY or WET your code, ask yourself:
+- Are these pieces of code truly identical, or just similar for now?
+- Will their purposes likely diverge in the future?
+- Is abstraction making things clearer, or just more complex?
+
+You need a very strong reason to not write it twice.
