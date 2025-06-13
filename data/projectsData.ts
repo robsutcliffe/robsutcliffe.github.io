@@ -21,7 +21,7 @@ const projectsData = [
     title: 'News Feed Scrapping and Summarising',
     description: `Full stack next.js application with a daily cron job to scrape, summarise and tag web development blog posts. Uses fuzzy search directly in mysql for fast searching.`,
     imgSrc: '/static/images/projects/fastfeed.webp',
-    href: 'https://ffeed.vercel.app/',
+    href: 'https://github.com/robsutcliffe/in_tech_today',
   },
   {
     title: 'AI Treemap Generator',
