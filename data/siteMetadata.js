@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: "Rob's Blog",
+  title: 'Firefields',
   author: 'Rob Sutcliffe',
-  headerTitle: "Rob's Blog",
+  headerTitle: 'Firefields',
   description: 'Thoughts about UI Engineering and Data Visualisation',
   language: 'en-uk',
   theme: 'system', // system, dark or light

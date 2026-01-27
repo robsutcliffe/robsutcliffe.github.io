@@ -1,4 +1,4 @@
-import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer2/source-files'
 import { writeFileSync } from 'fs'
 import readingTime from 'reading-time'
 import GithubSlugger from 'github-slugger'
@@ -47,10 +47,11 @@ const computedFields: ComputedFields = {
  */
 function createTagCount(allBlogs) {
   const tagCount: Record<string, number> = {}
+  const slugger = new GithubSlugger()
   allBlogs.forEach((file) => {
     if (file.tags && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
-        const formattedTag = GithubSlugger.slug(tag)
+        const formattedTag = slugger.slug(tag)
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1
         } else {
@@ -62,14 +63,14 @@ function createTagCount(allBlogs) {
   writeFileSync('./app/tag-data.json', JSON.stringify(tagCount))
 }
 
-function createSearchIndex(allBlogs) {
+function createSearchIndex(allContents) {
   if (
     siteMetadata?.search?.provider === 'kbar' &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
     writeFileSync(
       `public/${siteMetadata.search.kbarConfig.searchDocumentsPath}`,
-      JSON.stringify(allCoreContent(sortPosts(allBlogs)))
+      JSON.stringify(allCoreContent(sortPosts(allContents)))
     )
     console.log('Local search index generated...')
   }
@@ -128,9 +129,79 @@ export const Authors = defineDocumentType(() => ({
   computedFields,
 }))
 
+export const CaseStudy = defineDocumentType(() => ({
+  name: 'CaseStudy',
+  filePathPattern: 'case-studies/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    tags: { type: 'list', of: { type: 'string' }, default: [] },
+    lastmod: { type: 'date' },
+    draft: { type: 'boolean' },
+    summary: { type: 'string' },
+    images: { type: 'json' },
+    authors: { type: 'list', of: { type: 'string' } },
+    layout: { type: 'string' },
+    bibliography: { type: 'string' },
+    canonicalUrl: { type: 'string' },
+  },
+  computedFields: {
+    ...computedFields,
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.lastmod || doc.date,
+        description: doc.summary,
+        image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
+        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+      }),
+    },
+  },
+}))
+
+export const Service = defineDocumentType(() => ({
+  name: 'Service',
+  filePathPattern: 'services/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    tags: { type: 'list', of: { type: 'string' }, default: [] },
+    lastmod: { type: 'date' },
+    draft: { type: 'boolean' },
+    summary: { type: 'string' },
+    images: { type: 'json' },
+    authors: { type: 'list', of: { type: 'string' } },
+    layout: { type: 'string' },
+    bibliography: { type: 'string' },
+    canonicalUrl: { type: 'string' },
+  },
+  computedFields: {
+    ...computedFields,
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.lastmod || doc.date,
+        description: doc.summary,
+        image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
+        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+      }),
+    },
+  },
+}))
+
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors],
+  documentTypes: [Blog, Authors, CaseStudy, Service],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
@@ -150,8 +221,8 @@ export default makeSource({
     ],
   },
   onSuccess: async (importData) => {
-    const { allBlogs } = await importData()
+    const { allBlogs, allCaseStudies, allServices } = await importData()
     createTagCount(allBlogs)
-    createSearchIndex(allBlogs)
+    createSearchIndex([...allBlogs, ...allCaseStudies, ...allServices])
   },
 })

@@ -28,7 +28,7 @@ const generateRss = (config, posts, page = 'feed.xml') => `
       <language>${config.language}</language>
       <managingEditor>${config.email} (${config.author})</managingEditor>
       <webMaster>${config.email} (${config.author})</webMaster>
-      <lastBuildDate>${new Date(posts[0].date).toUTCString()}</lastBuildDate>
+      <lastBuildDate>${posts[0] ? new Date(posts[0].date).toUTCString() : ''}</lastBuildDate>
       <atom:link href="${config.siteUrl}/${page}" rel="self" type="application/rss+xml"/>
       ${posts.map((post) => generateRssItem(config, post)).join('')}
     </channel>
@@ -37,6 +37,7 @@ const generateRss = (config, posts, page = 'feed.xml') => `
 
 async function generateRSS(config, allBlogs, page = 'feed.xml') {
   const publishPosts = allBlogs.filter((post) => post.draft !== true)
+  const slugger = new GithubSlugger()
   // RSS for blog post
   if (publishPosts.length > 0) {
     const rss = generateRss(config, sortPosts(publishPosts))
@@ -46,7 +47,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
   if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagData)) {
       const filteredPosts = allBlogs.filter((post) =>
-        post.tags.map((t) => GithubSlugger.slug(t)).includes(tag)
+        post.tags.map((t) => slugger.slug(t)).includes(tag)
       )
       const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
       const rssPath = path.join('public', 'tags', tag)

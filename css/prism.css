@@ -7,36 +7,71 @@
 
 /* Code title styles */
 .remark-code-title {
-  @apply rounded-t bg-gray-700 px-5 py-3 font-mono text-sm font-bold text-gray-200 dark:bg-gray-800;
+  border-top-left-radius: theme('borderRadius.DEFAULT');
+  border-top-right-radius: theme('borderRadius.DEFAULT');
+  background-color: theme('colors.gray.700');
+  padding-left: theme('spacing.5');
+  padding-right: theme('spacing.5');
+  padding-top: theme('spacing.3');
+  padding-bottom: theme('spacing.3');
+  font-family: theme('fontFamily.mono');
+  font-size: theme('fontSize.sm');
+  font-weight: theme('fontWeight.bold');
+  color: theme('colors.gray.200');
+}
+
+:is(.dark .remark-code-title) {
+  background-color: theme('colors.gray.800');
 }
 
 .remark-code-title + div > pre {
-  @apply mt-0 rounded-t-none;
+  margin-top: theme('spacing.0');
+  border-top-left-radius: theme('borderRadius.none');
+  border-top-right-radius: theme('borderRadius.none');
 }
 
 /* Code block styles */
 .code-highlight {
-  @apply float-left min-w-full;
+  float: left;
+  min-width: 100%;
 }
 
 .code-line {
-  @apply -mx-4 block border-l-4 border-transparent pl-4 pr-4;
+  margin-left: calc(theme('spacing.4') * -1);
+  margin-right: calc(theme('spacing.4') * -1);
+  display: block;
+  border-left-width: 4px;
+  border-color: transparent;
+  padding-left: theme('spacing.4');
+  padding-right: theme('spacing.4');
 }
 
 .code-line.inserted {
-  @apply bg-green-500 bg-opacity-20;
+  background-color: theme('colors.green.500');
+  --tw-bg-opacity: 0.2;
 }
 
 .code-line.deleted {
-  @apply bg-red-500 bg-opacity-20;
+  background-color: theme('colors.red.500');
+  --tw-bg-opacity: 0.2;
 }
 
 .highlight-line {
-  @apply -mx-4 border-l-4 border-primary-500 bg-gray-700 bg-opacity-50;
+  margin-left: calc(theme('spacing.4') * -1);
+  margin-right: calc(theme('spacing.4') * -1);
+  border-left-width: 4px;
+  border-color: theme('colors.primary.500');
+  background-color: theme('colors.gray.700');
+  --tw-bg-opacity: 0.5;
 }
 
 .line-number::before {
-  @apply -ml-2 mr-4 inline-block w-4 text-right text-gray-400;
+  margin-left: calc(theme('spacing.2') * -1);
+  margin-right: theme('spacing.4');
+  display: inline-block;
+  width: theme('spacing.4');
+  text-align: right;
+  color: theme('colors.gray.400');
   content: attr(line);
 }
 

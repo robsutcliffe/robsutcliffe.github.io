@@ -43,7 +43,7 @@ export const SearchProvider = ({ children }) => {
             id: post.path,
             name: post.title,
             keywords: post?.summary || '',
-            section: 'Blog',
+            section: 'Insights',
             subtitle: post.tags.join(', '),
             perform: () => router.push(post.path),
           }))

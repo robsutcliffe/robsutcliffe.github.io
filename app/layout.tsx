@@ -1,20 +1,32 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import { Space_Grotesk } from 'next/font/google'
+import { Poppins, DM_Serif_Display } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { SearchProvider, SearchConfig } from 'pliny/search'
-import Header from '@/components/Header'
-import SectionContainer from '@/components/SectionContainer'
+import { SearchConfig } from 'pliny/search'
+import { SearchProvider } from '@/components/SearchProvider'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import MenuBar from '@/components/MenuBar'
+import Link from 'next/link'
 
-const space_grotesk = Space_Grotesk({
+import Border from '@/components/Border'
+import TextLogo from '@/components/TextLogoSimple'
+
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-space-grotesk',
+  variable: '--font-poppins',
+})
+
+const dm_serif_display = DM_Serif_Display({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dm-serif-display',
 })
 
 export const metadata: Metadata = {
@@ -61,7 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${space_grotesk.variable} scroll-smooth`}
+      className={`${poppins.variable} ${dm_serif_display.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
@@ -74,18 +86,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+      <body className="bg-slate-100 text-black antialiased">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-sans">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </SearchProvider>
-              <Footer />
-            </div>
-          </SectionContainer>
+          <div className="flex h-screen flex-col justify-between font-sans">
+            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <Border />
+              <Link
+                href="/"
+                className="bg-primary invisible absolute top-12 left-33 z-10 h-24 px-6 py-4 xl:visible"
+              >
+                <TextLogo color="#fff" />
+              </Link>
+              <MenuBar />
+              {/*<Header />*/}
+              <main className="mb-auto">{children}</main>
+            </SearchProvider>
+            <Footer />
+          </div>
         </ThemeProviders>
       </body>
     </html>

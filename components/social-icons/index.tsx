@@ -1,4 +1,8 @@
+'use client'
+import React, { useState } from 'react'
 import { Mail, Github, Facebook, Youtube, Linkedin, Twitter, Mastodon } from './icons'
+import { motion } from 'framer-motion'
+import AnimatedBackground from '@/components/AnimatedBackground'
 
 const components = {
   mail: Mail,
@@ -16,24 +20,53 @@ type SocialIconProps = {
   size?: number
 }
 
-const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
+const text = {
+  twitter: '@firefilds',
+  github: '@robsutcliffe',
+  linkedin: '@rob-sutcliffe',
+  mail: 'rob@firefields.com',
+  facebook: 'facebook.com',
+  youtube: 'youtube.com',
+  mastodon: 'mastodon.social',
+}
+
+const SocialIcon = ({ kind, href, size = 4 }: SocialIconProps) => {
+  const [isHovered, setIsHovered] = useState(false)
+
   if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
     return null
 
   const SocialSvg = components[kind]
 
+  const content = text[kind] || kind
+
   return (
-    <a
-      className="text-sm text-gray-500 transition hover:text-gray-600"
+    <motion.a
+      className="focus-ring relative flex h-18 min-w-18 cursor-pointer items-center justify-center overflow-hidden border-r-1 border-gray-100/50 px-6 text-sm text-white transition-colors hover:bg-blue-500 focus:bg-blue-500"
       target="_blank"
       rel="noopener noreferrer"
       href={href}
+      initial="initial"
+      whileHover="hover"
+      animate="initial"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
+      <AnimatedBackground isHovered={isHovered} opacity="0.3" stroke="#061E2A" />
       <span className="sr-only">{kind}</span>
-      <SocialSvg
-        className={`fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-${size} w-${size}`}
-      />
-    </a>
+      <div className="relative z-10 flex items-center">
+        <SocialSvg className={`fill-current text-white h-${size} w-${size}`} />
+        <motion.span
+          variants={{
+            initial: { width: 0, opacity: 0, marginLeft: 0 },
+            hover: { width: 'auto', opacity: 1, marginLeft: 12 },
+          }}
+          className="overflow-hidden whitespace-nowrap"
+        >
+          {content}
+        </motion.span>
+      </div>
+    </motion.a>
   )
 }
 
