@@ -27,10 +27,10 @@ export async function generateMetadata(props: {
 export const generateStaticParams = async () => {
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
-  const paths = tagKeys.map((tag) => ({
+
+  return tagKeys.map((tag) => ({
     tag: encodeURI(tag),
   }))
-  return paths
 }
 
 export default async function TagPage(props: { params: Promise<{ tag: string }> }) {

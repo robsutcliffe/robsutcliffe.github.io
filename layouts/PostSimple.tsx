@@ -18,7 +18,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, next, prev, authorDetails, children }: LayoutProps) {
-  const { path, slug, date, title } = content
+  const { slug, title } = content
 
   return (
     <>

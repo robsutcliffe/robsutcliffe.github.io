@@ -69,6 +69,9 @@ module.exports = () => {
     images: {
       unoptimized: true,
     },
+    experimental: {
+      turbopack: {},
+    },
     // async headers() {
     //   return [
     //     {

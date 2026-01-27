@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useAnimation } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import MenuTop from '@/components/MenuTop'
 import Link from 'next/link'
@@ -19,8 +19,6 @@ export default function Menu() {
   const { results } = useMatches()
   const pathname = usePathname()
   const [leftValue, setLeftValue] = useState('144px')
-  const textControl = useAnimation()
-  const borderControls = useAnimation()
 
   const { searchQuery } = useKBar((state) => ({
     searchQuery: state.searchQuery,
@@ -123,16 +121,6 @@ export default function Menu() {
             </div>
           )
         )}
-        {/*<div className="flex flex-row justify-between">*/}
-        {/*  <div className="flex flex-col px-16 py-6">*/}
-        {/*    <div className="text-ff-blue text-lg font-bold tracking-tight">Follow Us.</div>*/}
-        {/*    <div className="flex flex-row"></div>*/}
-        {/*  </div>*/}
-        {/*  <div className="flex flex-col px-16 py-6">*/}
-        {/*    <div className="text-ff-blue text-lg font-bold tracking-tight">Join Newsletter.</div>*/}
-        {/*    <div className="flex flex-row"></div>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
       </div>
     </motion.div>
   )

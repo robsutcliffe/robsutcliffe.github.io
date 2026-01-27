@@ -1,29 +1,12 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
-import Comments from '@/components/Comments'
-import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import Image from '@/components/Image'
-import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { formatDate } from 'pliny/utils/formatDate'
-import Breadcrumb from '@/components/Breadcrumb'
-import { slug as slugger } from 'github-slugger'
 import Calendly from '@/components/Calendly'
-
-const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
-const discussUrl = (path) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
-
-const postDateTemplate: Intl.DateTimeFormatOptions = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}
 
 interface LayoutProps {
   content: CoreContent<Blog>
@@ -34,9 +17,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug: postSlug, date, title, tags } = content
-  const basePath = path.split('/')[0]
-  const tag = tags && tags.length > 0 ? slugger(tags[0]) : 'insights'
+  const { date, title } = content
 
   return (
     <>

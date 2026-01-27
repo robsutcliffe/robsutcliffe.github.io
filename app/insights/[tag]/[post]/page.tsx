@@ -2,7 +2,6 @@ import 'css/prism.css'
 import 'katex/dist/katex.css'
 
 import { slug as slugger } from 'github-slugger'
-import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'

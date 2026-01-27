@@ -1,7 +1,6 @@
 'use client'
 
 import Logo from './Logo'
-import Menu from './Menu'
 import SearchBar from '@/components/SearchBar'
 import Div100vh from 'react-div-100vh'
 

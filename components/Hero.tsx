@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import TextLogo from '@/components/TextLogoSimple'
 import AnimatedBackground from '@/components/AnimatedBackground'
-import Link from 'next/link'
 import Button from '@/components/Button'
 
 export default function Hero() {

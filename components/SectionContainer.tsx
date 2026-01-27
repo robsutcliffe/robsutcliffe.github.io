@@ -1,6 +1,4 @@
 import { ReactNode } from 'react'
-import Breadcrumb from '@/components/Breadcrumb'
-import MenuBar from '@/components/MenuBar'
 
 interface Props {
   children: ReactNode

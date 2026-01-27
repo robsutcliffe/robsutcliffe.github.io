@@ -1,6 +1,3 @@
-import Link from '@/components/Link'
-import siteMetadata from '@/data/siteMetadata'
-import NewsletterForm from 'pliny/ui/NewsletterForm'
 import Hero from '@/components/Hero'
 import { slug } from 'github-slugger'
 import Card from '@/components/Card'
