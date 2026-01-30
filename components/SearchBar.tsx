@@ -88,12 +88,12 @@ export default function SearchBar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-blue-900/50 [filter:saturate(0.85)_brightness(0.92)_grayscale(1)] backdrop-blur-xs"
+            className="pointer-events-none fixed inset-0 z-50 bg-blue-900/50 [filter:saturate(0.85)_brightness(0.92)_grayscale(1)] backdrop-blur-xs"
             onClick={() => setOpen(false)}
           />
         )}
       </AnimatePresence>
-      <nav className="fixed top-2 right-2 left-2 z-50 h-18 md:top-4 md:right-4 md:left-4 lg:top-6 lg:right-6 lg:left-6">
+      <nav className="pointer-events-none fixed top-2 right-2 left-2 z-50 h-18 md:top-4 md:right-4 md:left-4 lg:top-6 lg:right-6 lg:left-6">
         <AnimatePresence>
           {open && (
             <motion.div

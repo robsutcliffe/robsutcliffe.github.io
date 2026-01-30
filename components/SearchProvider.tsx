@@ -5,15 +5,6 @@ import { KBarProvider, useRegisterActions } from 'kbar'
 import { useRouter } from 'next/navigation'
 import { slug as slugger } from 'github-slugger'
 
-const formatDate = (date: string, locale = 'en-US') => {
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-  return new Date(date).toLocaleDateString(locale, options)
-}
-
 export const SearchProvider = ({
   searchConfig,
   children,
@@ -45,9 +36,8 @@ export const SearchProvider = ({
         actions.push({
           id: post.path,
           name: post.title,
-          keywords: post?.summary || '',
+          keywords: `${post?.summary || ''} ${post?.body || ''}`,
           section: section,
-          subtitle: formatDate(post.date, 'en-US'),
           path: searchPath,
           perform: () => router.push('/' + searchPath),
         })
