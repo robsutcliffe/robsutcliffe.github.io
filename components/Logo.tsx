@@ -18,7 +18,7 @@ export default function Logo() {
 
   useEffect(() => {
     const checkSize = () => {
-      if (scrollY.get() > 300 && windowWidth < 1025) {
+      if (scrollY.get() > 50 && windowWidth < 1025) {
         setIsSmall(true)
       } else {
         setIsSmall(false)
@@ -28,7 +28,7 @@ export default function Logo() {
   }, [windowWidth, scrollY])
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (latest > 300 && windowWidth < 1025) {
+    if (latest > 50 && windowWidth < 1025) {
       setIsSmall(true)
     } else {
       setIsSmall(false)

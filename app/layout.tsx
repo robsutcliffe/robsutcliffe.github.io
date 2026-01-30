@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-slate-100 text-black antialiased">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <div className="flex h-screen flex-col justify-between font-sans">
+          <div className="flex min-h-screen flex-col justify-between font-sans">
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Border />
               <Link
