@@ -91,7 +91,7 @@ export default function SearchBar() {
           />
         )}
       </AnimatePresence>
-      <nav className="absolute top-2 right-2 left-2 z-50 h-18 md:top-4 md:right-4 md:left-4 lg:top-6 lg:right-6 lg:left-6">
+      <nav className="fixed top-2 right-2 left-2 z-50 h-18 md:top-4 md:right-4 md:left-4 lg:top-6 lg:right-6 lg:left-6">
         <AnimatePresence>
           {open && (
             <motion.div
