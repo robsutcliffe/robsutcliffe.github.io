@@ -1,9 +1,5 @@
 const TableWrapper = ({ children }) => {
-  return (
-    <div className="w-full overflow-x-auto">
-      <table>{children}</table>
-    </div>
-  )
+  return <div className="not-prose my-2 w-full overflow-x-auto">{children}</div>
 }
 
 export default TableWrapper

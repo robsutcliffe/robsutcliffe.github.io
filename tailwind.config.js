@@ -23,6 +23,8 @@ module.exports = {
         12: '3rem',
         13: '3.25rem',
         14: '3.5rem',
+        16: '4rem',
+        18: '4.5rem',
       },
       fontFamily: {
         sans: ['var(--font-poppins)', ...fontFamily.sans],
@@ -127,16 +129,30 @@ module.exports = {
               },
               code: { color: theme('colors.primary.400') },
             },
-            'h1,h2': {
+            h1: {
+              fontWeight: '700',
+              fontSize: theme('fontSize.4xl'),
+              lineHeight: theme('lineHeight.10'),
+              letterSpacing: theme('letterSpacing.wide'),
+              color: theme('colors.blue.950'),
+              fontFamily: theme('fontFamily.serif'),
+              '@screen md': {
+                fontSize: theme('fontSize.6xl'),
+                lineHeight: theme('lineHeight.16'),
+              },
+              '@screen lg': {
+                lineHeight: theme('lineHeight.18'),
+              },
+            },
+            h2: {
               fontWeight: '700',
               fontFamily: theme('fontFamily.serif'),
             },
             h3: {
               fontWeight: '600',
-              fontFamily: theme('fontFamily.serif'),
             },
-            'h4,h5,h6': {
-              fontFamily: theme('fontFamily.serif'),
+            'h5 strong': {
+              color: theme('colors.red.700'),
             },
             code: {
               color: '#061e2a',
@@ -152,9 +168,16 @@ module.exports = {
               },
               code: { color: theme('colors.primary.400') },
             },
-            'h1,h2,h3,h4,h5,h6': {
+            h1: {
               color: theme('colors.gray.100'),
               fontFamily: theme('fontFamily.serif'),
+            },
+            'h2,h3,h4,h5,h6': {
+              color: theme('colors.gray.100'),
+              fontFamily: theme('fontFamily.serif'),
+            },
+            'h5 strong': {
+              color: theme('colors.red.500'),
             },
           },
         },

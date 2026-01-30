@@ -24,8 +24,12 @@ export default function Button({
 }: ButtonProps) {
   const [isHovered, setIsHovered] = useState(false)
 
+  const isLeftAligned = extraClasses?.includes('justify-start')
+
   return (
-    <div className={`flex ${noHeight ? '' : 'h-24'} w-full items-center justify-end px-4 lg:px-0`}>
+    <div
+      className={`flex ${noHeight ? '' : 'h-24'} w-full items-center ${isLeftAligned ? 'justify-start' : 'justify-end'} px-4 lg:px-0`}
+    >
       <Link
         href={href}
         onMouseEnter={() => !outline && setIsHovered(true)}

@@ -56,6 +56,71 @@ input:-webkit-autofill:focus {
   overflow: auto hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
+  @apply font-serif text-4xl leading-10 font-bold tracking-wide text-blue-950 sm:text-4xl md:text-6xl md:leading-16 lg:leading-18;
+}
+
+h2 {
   font-family: theme('fontFamily.serif');
 }
+
+/* Custom Tabs content styling */
+.prose.prose-sm :is(ul) {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.prose.prose-sm :is(li) {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.prose.prose-sm :is(li)::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: theme('colors.blue.500');
+  font-weight: bold;
+}
+
+.prose.prose-sm :is(li) p {
+  margin: 0;
+}
+
+.prose.prose-sm :is(p) + :is(ul),
+.prose.prose-sm :is(ul) + :is(p),
+.prose.prose-sm :is(p) + :is(p) {
+  margin-top: 1.25rem;
+}
+
+.prose.prose-sm :is(li) + :is(li) {
+  margin-top: 0.2rem;
+}
+
+.prose.prose-sm strong {
+  color: inherit;
+}
+
+.prose.prose-sm table {
+  width: auto;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.prose.prose-sm table th,
+.prose.prose-sm table td {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.prose.prose-sm table th:first-child,
+.prose.prose-sm table td:first-child {
+  padding-left: 0;
+}
+
+.prose.prose-sm table th:last-child,
+.prose.prose-sm table td:last-child {
+  padding-right: 0;
+}
+
+

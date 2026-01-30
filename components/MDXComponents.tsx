@@ -5,13 +5,38 @@ import Image from './Image'
 import CustomLink from './Link'
 import TableWrapper from './TableWrapper'
 import YouTube from './YouTube'
+import FAQ from './FAQ'
+import CtaButton from './CtaButton'
+import Badge from './Badge'
+import Offer from './Offer'
+import BottomLine from './BottomLine'
+import Matrix from './Matrix'
+import Tabs from './Tabs'
+import CostGrid from './CostGrid'
+import Checklist from './Checklist'
+import DualChecklist from './DualChecklist'
 
 export const components: any = {
   Image,
   TOCInline,
   a: CustomLink,
   pre: Pre,
-  table: TableWrapper,
+  table: (props) => (
+    <TableWrapper>
+      <table className="border-collapse text-left" {...props} />
+    </TableWrapper>
+  ),
+  TableWrapper,
   BlogNewsletterForm,
   YouTube,
+  FAQ,
+  CtaButton,
+  Badge,
+  Offer,
+  BottomLine,
+  Matrix,
+  Tabs,
+  CostGrid,
+  Checklist,
+  DualChecklist,
 }

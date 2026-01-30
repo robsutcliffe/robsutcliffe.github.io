@@ -75,12 +75,12 @@ export default function Hero() {
         <p className="mx-auto mb-6 w-fit bg-cyan-500/90 px-4 py-2 text-xs font-bold tracking-wide whitespace-nowrap text-cyan-900 uppercase">
           Conversion Optimisation Services
         </p>
-        <h1 className="mx-auto w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-right text-4xl leading-tight font-light tracking-tight text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
+        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-right font-serif text-4xl leading-tight font-light tracking-tight text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
           Convert <i className="text-xl sm:text-2xl md:text-5xl">traffic</i>
-        </h1>
-        <h1 className="mx-auto w-fit bg-blue-800/50 px-6 pt-2 pb-6 text-right text-4xl leading-tight font-light tracking-tight text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
+        </p>
+        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-2 pb-6 text-right font-serif text-4xl leading-tight font-light tracking-tight text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
           <i className="text-xl sm:text-2xl md:text-5xl">into</i> Loyal Customers
-        </h1>
+        </p>
         <p className="mx-auto w-fit bg-blue-800/50 px-6 pb-6 !font-sans text-sm leading-6 tracking-wide text-cyan-200 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:max-w-2/3 sm:text-base md:max-w-4/5 md:px-12 md:text-lg md:leading-7">
           Optimisation sprints designed to unlock meaningful revenue growth through testing,
           analysis and iteration
