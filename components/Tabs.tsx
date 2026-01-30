@@ -40,7 +40,7 @@ const Tabs = ({ items }: TabsProps) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -10 }}
             transition={{ duration: 0.2 }}
-            className="prose prose-sm dark:prose-invert max-w-none"
+            className="prose prose-sm max-w-none"
           >
             {items[activeTab].content}
           </motion.div>

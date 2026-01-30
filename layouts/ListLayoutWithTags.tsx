@@ -74,7 +74,7 @@ export default function ListLayoutWithTags({
     <SectionContainer>
       <article>
         <PageTitle>Insights</PageTitle>
-        <p className="max-w-3xl px-6 py-3 text-lg text-blue-950/80 lg:px-0">
+        <p className="max-w-3xl py-3 text-base text-blue-950/80 lg:text-lg">
           <i className="font-bold">Short, practical pieces from real client work</i>: experiments
           that worked, things that didn’t, and the dashboards, interfaces, and flows that actually
           changed behaviour.

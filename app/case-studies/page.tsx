@@ -17,7 +17,7 @@ export default function CaseStudiesPage() {
       <SectionContainer>
         <article>
           <PageTitle>Case Studies</PageTitle>
-          <p className="max-w-3xl px-6 py-3 text-lg text-blue-950/80 lg:px-0">
+          <p className="max-w-3xl py-3 text-base text-blue-950/80 lg:text-lg">
             <i className="font-bold">Before-and-after stories from projects</i> where we simplified
             UX, improved performance, and clarified the data picture so teams could ship with more
             confidence.

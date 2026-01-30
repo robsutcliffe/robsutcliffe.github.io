@@ -17,7 +17,7 @@ export default function ServicesPage() {
       <SectionContainer>
         <article>
           <PageTitle>Services</PageTitle>
-          <p className="max-w-3xl px-6 py-3 text-lg text-blue-950/80 lg:px-0">
+          <p className="max-w-3xl py-3 text-base text-blue-950/80 lg:text-lg">
             <i className="font-bold">
               I help Shopify brands ship focused UX, performance, and analytics improvements
             </i>{' '}

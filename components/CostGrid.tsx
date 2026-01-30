@@ -12,7 +12,7 @@ interface CostGridProps {
 
 const CostGrid = ({ items }: CostGridProps) => {
   return (
-    <div className="not-prose my-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="not-prose my-8 grid grid-cols-1 gap-2 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
       {items.map((item, index) => (
         <div key={index} className="border border-blue-950/50 p-6">
           <p className="mb-2 font-sans text-lg">{item.title}</p>

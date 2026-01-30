@@ -13,13 +13,13 @@ export default function Home({ posts, services, caseStudies }) {
     <>
       <Hero />
       <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
-        <div className="flex h-24 flex-row items-center gap-4">
-          <div className="h-0.25 w-8 bg-blue-950" />
+        <div className="flex h-24 flex-row items-center gap-2 md:gap-4">
+          <div className="h-0.25 w-4 bg-blue-950 md:w-8" />
           <p className="text-xl tracking-tight text-blue-950">
             Recommended <b className="">Services</b>
           </p>
         </div>
-        <div className="max-w-3xl pl-6 md:max-w-4xl md:pl-8 lg:pl-12 xl:max-w-5xl">
+        <div className="max-w-3xl md:max-w-4xl md:pl-8 lg:pl-12 xl:max-w-5xl">
           <div className="-my-4 flex flex-wrap md:-mx-2 md:-my-6 lg:-m-6">
             {services.slice(0, 2).map((service) => (
               <Card
@@ -66,13 +66,13 @@ export default function Home({ posts, services, caseStudies }) {
         </div>
       </div>
       <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
-        <div className="flex h-24 flex-row items-center gap-4">
-          <div className="h-0.25 w-8 bg-blue-950" />
+        <div className="flex h-24 flex-row items-center gap-2 md:gap-4">
+          <div className="h-0.25 w-4 bg-blue-950 md:w-8" />
           <p className="text-xl tracking-tight text-blue-950">
             Latest <b className="">Case Studies</b>
           </p>
         </div>
-        <div className="max-w-3xl pl-6 md:max-w-4xl md:pl-8 lg:pl-12 xl:max-w-5xl">
+        <div className="max-w-3xl md:max-w-4xl md:pl-8 lg:pl-12 xl:max-w-5xl">
           <div className="-my-4 flex flex-wrap md:-mx-2 md:-my-6 lg:-m-6">
             {caseStudies.slice(0, 2).map((study) => (
               <Card

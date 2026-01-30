@@ -18,7 +18,7 @@ const Checklist = ({ items }: ChecklistProps) => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
             </svg>
           </span>
-          <span className="text-gray-700 dark:text-gray-300">{item}</span>
+          <span className="text-gray-700">{item}</span>
         </li>
       ))}
     </ul>
