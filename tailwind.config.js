@@ -154,6 +154,10 @@ module.exports = {
             'h5 strong': {
               color: theme('colors.red.700'),
             },
+            hr: {
+              borderColor: theme('colors.blue.950'),
+              opacity: 0.5,
+            },
             code: {
               color: '#061e2a',
             },
@@ -178,6 +182,10 @@ module.exports = {
             },
             'h5 strong': {
               color: theme('colors.red.500'),
+            },
+            hr: {
+              borderColor: theme('colors.blue.950'),
+              opacity: 0.5,
             },
           },
         },

@@ -64,6 +64,10 @@ h2 {
   font-family: theme('fontFamily.serif');
 }
 
+hr {
+  @apply border-blue-950/50;
+}
+
 /* Custom Tabs content styling */
 .prose.prose-sm :is(ul) {
   list-style-type: none;
