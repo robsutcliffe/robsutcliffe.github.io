@@ -15,13 +15,15 @@ export default function SearchBar() {
   const searchContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
     const handleResize = () => setWindowWidth(window.innerWidth)
 
     handleScroll()
     handleResize()
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', handleResize)
 
     return () => {
