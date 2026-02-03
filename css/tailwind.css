@@ -68,6 +68,8 @@ h1 {
 
 h2 {
   font-family: theme('fontFamily.serif');
+  margin-top: theme('spacing.8');
+  margin-bottom: theme('spacing.2');
 }
 
 hr {

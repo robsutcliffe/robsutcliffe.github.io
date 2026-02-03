@@ -15,6 +15,8 @@ import Tabs from './Tabs'
 import CostGrid from './CostGrid'
 import Checklist from './Checklist'
 import DualChecklist from './DualChecklist'
+import Process from './Process'
+import HighlightBox from './HighlightBox'
 
 export const components: any = {
   Image,
@@ -39,4 +41,6 @@ export const components: any = {
   CostGrid,
   Checklist,
   DualChecklist,
+  Process,
+  HighlightBox,
 }

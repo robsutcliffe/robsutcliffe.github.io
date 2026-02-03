@@ -136,17 +136,21 @@ module.exports = {
               letterSpacing: theme('letterSpacing.wide'),
               color: theme('colors.blue.950'),
               fontFamily: theme('fontFamily.serif'),
-              '@screen md': {
-                fontSize: theme('fontSize.6xl'),
-                lineHeight: theme('lineHeight.16'),
-              },
-              '@screen lg': {
-                lineHeight: theme('lineHeight.18'),
+              screens: {
+                md: {
+                  fontSize: theme('fontSize.6xl'),
+                  lineHeight: theme('lineHeight.16'),
+                },
+                lg: {
+                  lineHeight: theme('lineHeight.18'),
+                },
               },
             },
             h2: {
               fontWeight: '700',
               fontFamily: theme('fontFamily.serif'),
+              marginBottom: theme('spacing.2'),
+              marginTop: theme('spacing.8'),
             },
             h3: {
               fontWeight: '600',

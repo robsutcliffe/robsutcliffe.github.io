@@ -6,7 +6,7 @@ interface BadgeProps {
 
 const Badge = ({ children }: BadgeProps) => {
   return (
-    <span className="not-prose my-4 inline-block bg-cyan-500/90 px-3 py-1 text-xs font-bold tracking-wide text-cyan-900 uppercase">
+    <span className="not-prose my-4 inline-block bg-cyan-200 px-3 py-1 text-xs font-bold tracking-wide text-blue-950 uppercase">
       {children}
     </span>
   )

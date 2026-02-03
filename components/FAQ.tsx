@@ -20,7 +20,7 @@ const FAQ = ({ items }: FAQProps) => {
   }
 
   return (
-    <div className="not-prose my-8">
+    <div className="not-prose mt-4">
       {items.map((item, index) => (
         <div
           key={index}
