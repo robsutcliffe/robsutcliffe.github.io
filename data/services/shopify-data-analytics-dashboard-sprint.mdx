@@ -207,43 +207,141 @@ From "drowning in data" to "data-driven decisions in minutes."
   items={[
     {
       question: "Won't this just give me the same data I already have, just prettier?",
-      answer: "No. We're not making dashboards from existing reports. We're: 1. Pulling raw data from every source 2. Reconciling conflicts (why Shopify and GA4 show different revenue) 3. Creating metrics that don't exist elsewhere (true LTV by channel, margin by cohort, etc.) If your current data is just scattered, this will look the same. But if your data is *conflicting*, this changes everything.",
+      answer: (
+        <>
+          <p>
+            No. We're not making dashboards from existing reports. We're:
+          </p>
+          <ol>
+            <li>Pulling raw data from every source</li>
+            <li>Reconciling conflicts (why Shopify and GA4 show different revenue)</li>
+            <li>
+              Creating metrics that don't exist elsewhere (
+              <strong>true LTV by channel, margin by cohort, etc.</strong>)
+            </li>
+          </ol>
+          <p>
+            If your current data is just scattered, this will look the same. But if your data is{' '}
+            <em>conflicting</em>, this changes everything.
+          </p>
+        </>
+      ),
     },
     {
-      question: "How do I know the data is accurate?",
-      answer: "We validate against source systems. Every metric gets verified: - Does total revenue match Shopify's source data? ✓ - Do GA4 numbers match Google Analytics? ✓ - Do ads spend numbers match Meta/Google? ✓ We don't build dashboards until data accuracy is 100% confirmed.",
+      question: 'How do I know the data is accurate?',
+      answer: (
+        <>
+          <p>We validate against source systems. Every metric gets verified:</p>
+          <ul>
+            <li>Does total revenue match Shopify's source data? ✓</li>
+            <li>Do GA4 numbers match Google Analytics? ✓</li>
+            <li>Do ads spend numbers match Meta/Google? ✓</li>
+          </ul>
+          <p>We don't build dashboards until data accuracy is 100% confirmed.</p>
+        </>
+      ),
     },
     {
-      question: "How often does the data refresh?",
-      answer: "Real-time (every 15-30 minutes) for Growth Command and Enterprise. Insight Base refreshes nightly, which is fine for high-level KPIs.",
+      question: 'How often does the data refresh?',
+      answer: (
+        <p>
+          Real-time (every 15-30 minutes) for Growth Command and Enterprise. Insight Base refreshes
+          nightly, which is fine for high-level KPIs.
+        </p>
+      ),
     },
     {
-      question: "What if I add a new tool (Recharge, Gorgias, etc.)?",
-      answer: "We can integrate it. Some integrations are built-in; some require custom connectors. Let's discuss during the audit.",
+      question: 'What if I add a new tool (Recharge, Gorgias, etc.)?',
+      answer: (
+        <p>
+          We can integrate it. Some integrations are built-in; some require custom connectors. Let's
+          discuss during the audit.
+        </p>
+      ),
     },
     {
-      question: "Can I build this myself?",
-      answer: "You *could* with tools like Supermetrics + Google Data Studio. But: 1. **Setup takes 100+ hours** (data reconciliation, metric definition, testing) 2. **Maintenance is ongoing** (API changes, new data sources, metric updates) 3. **Custom logic is complex** (calculating true LTV with refunds/returns isn't trivial) Most stores start DIY and give up after 2 months. If you have the time, do it. If you need results in 30 days, use us.",
+      question: 'Can I build this myself?',
+      answer: (
+        <>
+          <p>
+            You <em>could</em> with tools like Supermetrics + Google Data Studio. But:
+          </p>
+          <ol>
+            <li>
+              <strong>Setup takes 100+ hours</strong> (data reconciliation, metric definition,
+              testing)
+            </li>
+            <li>
+              <strong>Maintenance is ongoing</strong> (API changes, new data sources, metric
+              updates)
+            </li>
+            <li>
+              <strong>Custom logic is complex</strong> (calculating true LTV with refunds/returns
+              isn't trivial)
+            </li>
+          </ol>
+          <p>
+            Most stores start DIY and give up after 2 months. If you have the time, do it. If you
+            need results in 30 days, <strong>use us</strong>.
+          </p>
+        </>
+      ),
     },
     {
-      question: "What happens after launch?",
-      answer: "For monthly plans, we handle hosting, updates, and data troubleshooting. You get on-call support for questions. For Enterprise, we also do quarterly strategy calls.",
+      question: 'What happens after launch?',
+      answer: (
+        <p>
+          For monthly plans, we handle hosting, updates, and data troubleshooting. You get on-call
+          support for questions. For Enterprise, we also do quarterly strategy calls.
+        </p>
+      ),
     },
     {
-      question: "Will I understand how to use this?",
-      answer: "Yes. We do 4 hours of team training (how to read it, what metrics mean, how to act on insights). Plus we deliver a \"Strategic Insights Brief\" showing you 3-5 immediate actions.",
+      question: 'Will I understand how to use this?',
+      answer: (
+        <p>
+          Yes. We do 4 hours of team training (how to read it, what metrics mean, how to act on
+          insights). Plus we deliver a "Strategic Insights Brief" showing you 3-5 immediate actions.
+        </p>
+      ),
     },
     {
-      question: "What if we need help interpreting the data?",
-      answer: "For Enterprise plans, that's included (quarterly strategy calls). For Growth Command, we provide initial training + a Slack channel for first 30 days. Insight Base is self-service (but still has training).",
+      question: 'What if we need help interpreting the data?',
+      answer: (
+        <p>
+          For Enterprise plans, that's included (quarterly strategy calls). For Growth Command, we
+          provide initial training + a Slack channel for first 30 days. Insight Base is self-service
+          (but still has training).
+        </p>
+      ),
     },
     {
-      question: "Can I export the data?",
-      answer: "Yes. The dashboard has export functionality. We also provide API access so you can pull data into other tools if needed.",
+      question: 'Can I export the data?',
+      answer: (
+        <p>
+          Yes. The dashboard has export functionality. We also provide API access so you can pull
+          data into other tools if needed.
+        </p>
+      ),
     },
     {
       question: "What's the difference between the tiers, really?",
-      answer: " - **Insight Base:** 2 data sources, 8 metrics, good for smaller stores with simple operations - **Growth Command:** 5 sources, 15 metrics, cohort analysis—most stores need this - **Enterprise:** Unlimited sources, predictive modeling, ongoing strategy—for mature, data-heavy businesses Most stores start with Growth Command and upgrade later.",
+      answer: (
+        <ul>
+          <li>
+            <strong>Insight Base:</strong> 2 data sources, 8 metrics, good for smaller stores with
+            simple operations
+          </li>
+          <li>
+            <strong>Growth Command:</strong> 5 sources, 15 metrics, cohort analysis—most stores need
+            this
+          </li>
+          <li>
+            <strong>Enterprise:</strong> Unlimited sources, predictive modeling, ongoing
+            strategy—for mature, data-heavy businesses
+          </li>
+        </ul>
+      ),
     },
   ]}
 />

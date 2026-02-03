@@ -181,38 +181,75 @@ Your funnel goes from "bleeding traffic" to "converting visitors into customers.
   items={[
     {
       question: 'Will you guarantee a specific conversion rate lift?',
-      answer:
-        "Yes, 20%+ or we keep working/refund 50%. But here's the caveat: if your baseline conversion is already 4%+, hitting 20% relative lift gets harder (you're hitting diminishing returns). We'll assess in the kickoff call and give you honest odds.",
+      answer: (
+        <p>
+          <strong>Yes, 20%+ or we keep working/refund 50%.</strong> But here's the caveat: if your
+          baseline conversion is already 4%+, hitting 20% relative lift gets harder (you're hitting
+          diminishing returns). We'll assess in the kickoff call and give you honest odds.
+        </p>
+      ),
     },
     {
       question: 'What if my conversion rate is already decent (3%+)?',
-      answer:
-        'Still room to improve. Most stores at 3% can hit 3.5-4% (15-30% lift). The bigger opportunity is usually AOV and repeat rate, not just conversion.',
+      answer: (
+        <p>
+          Still room to improve. Most stores at 3% can hit 3.5-4% (<strong>15-30% lift</strong>). The
+          bigger opportunity is usually AOV and repeat rate, not just conversion.
+        </p>
+      ),
     },
     {
       question: 'Can you improve mobile conversions specifically?',
-      answer:
-        'Yes. We always test mobile-specific optimizations (simpler checkout, faster load, bigger buttons, trust elements higher on screen). If mobile is your main leak, the "Checkout Focus" option is best.',
+      answer: (
+        <p>
+          <strong>Yes.</strong> We always test mobile-specific optimizations (simpler checkout,
+          faster load, bigger buttons, trust elements higher on screen). If mobile is your main
+          leak, the "Checkout Focus" option is best.
+        </p>
+      ),
     },
     {
       question: "What if I'm only getting 500 visitors/day?",
-      answer:
-        "Tests take longer to reach statistical significance with lower traffic. We can still run them, but 7-day windows become 14-day windows. Let's chat about your specific situation.",
+      answer: (
+        <p>
+          Tests take longer to reach statistical significance with lower traffic. We can still run
+          them, but 7-day windows become 14-day windows. Let's chat about your specific situation.
+        </p>
+      ),
     },
     {
       question: 'Do you need access to my Shopify admin?',
-      answer:
-        "Yes. We need to: 1. Install Hotjar (heat mapping) 2. Access GA4 data 3. Hard-code test variations into theme 4. Run experiments via Shopify's native tools You control the access and can revoke it anytime.",
+      answer: (
+        <>
+          <p>Yes. We need to:</p>
+          <ul>
+            <li>Install Hotjar (heat mapping)</li>
+            <li>Access GA4 data</li>
+            <li>Hard-code test variations into theme</li>
+            <li>Run experiments via Shopify's native tools</li>
+          </ul>
+          <p>You control the access and can revoke it anytime.</p>
+        </>
+      ),
     },
     {
       question: 'Will testing slow down my site?',
-      answer:
-        "No. We use Shopify's native A/B testing tools (zero performance impact). When we hard-code winners, we clean up code so there's no bloat.",
+      answer: (
+        <p>
+          No. We use Shopify's native A/B testing tools (zero performance impact). When we hard-code
+          winners, we clean up code so there's no bloat.
+        </p>
+      ),
     },
     {
       question: 'What if a test "breaks" checkout?',
-      answer:
-        'We test everything on staging first. No changes go live without QA on actual checkout flow (we place real test orders). Worst case, we revert to the previous version instantly. Zero risk to your actual customers.',
+      answer: (
+        <p>
+          We test everything on staging first. No changes go live without QA on actual checkout flow
+          (we place real test orders). Worst case, we revert to the previous version instantly. Zero
+          risk to your actual customers.
+        </p>
+      ),
     },
   ]}
 />

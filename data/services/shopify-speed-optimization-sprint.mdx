@@ -179,49 +179,119 @@ Clear steps, measurable speed gains, and zero fluff—here’s how we work toget
   items={[
     {
       question: 'Will this break my site or mess with my design?',
-      answer:
-        "No. We don't touch your design, branding, or functionality. We only remove bloat and optimize what's already there. We test extensively on staging before going live. You'll see no visual changes—just speed.",
+      answer: (
+        <p>
+          No. We don't touch your design, branding, or functionality. We only remove bloat and
+          optimize what's already there. We test extensively on staging before going live. You'll
+          see no visual changes—just speed.
+        </p>
+      ),
     },
     {
       question:
         "How much is this really going to improve things? I've heard about speed before but never seen results.",
-      answer:
-        "Fair skepticism. Speed improvement is only valuable if it translates to conversions. We focus on Core Web Vitals, not vanity metrics. If your site is currently 3-5+ seconds, we'll get you sub-2 seconds (measurable, guaranteed). The conversion lift follows from there.",
+      answer: (
+        <>
+          <p>
+            Fair skepticism. Speed improvement is only valuable if it translates to conversions. We
+            focus on <strong>Core Web Vitals</strong>, not vanity metrics.
+          </p>
+          <p>If your site is currently 3-5+ seconds, we'll get you:</p>
+          <ul>
+            <li>
+              <strong>Sub-2 seconds</strong> page loads (measurable, guaranteed)
+            </li>
+            <li>
+              <strong>Green Core Web Vitals</strong> scores
+            </li>
+            <li>Faster time-to-interactive</li>
+          </ul>
+          <p>The conversion lift follows from there.</p>
+        </>
+      ),
     },
     {
       question: "What if I don't see the \$2-4K revenue improvement?",
-      answer:
-        "We can't guarantee conversion lift (that depends on your traffic quality, ads, product-market fit). But we *can* guarantee load time. If speed improves but conversions don't, there's likely a different problem (offer, positioning, ads). We'll help you diagnose that and recommend the next step. But the speed will be fixed—that's our guarantee.",
+      answer: (
+        <p>
+          We can't guarantee conversion lift (that depends on your traffic quality, ads,
+          product-market fit). But we <em>can</em> guarantee load time. If speed improves but
+          conversions don't, there's likely a different problem (offer, positioning, ads). We'll
+          help you diagnose that and recommend the next step. But the speed will be fixed—
+          <strong>that's our guarantee</strong>.
+        </p>
+      ),
     },
     {
       question: 'How long does this actually take?',
-      answer:
-        "The 4-week sprint is our standard timeline. Week 1 is diagnosis, weeks 2-3 are fixes, week 4 is testing/deployment. If your site is complex or you need faster, let's talk—we can sometimes compress to 3 weeks.",
+      answer: (
+        <p>
+          The 4-week sprint is our standard timeline. Week 1 is diagnosis, weeks 2-3 are fixes, week
+          4 is testing/deployment. If your site is complex or you need faster, let's talk—we can
+          sometimes compress to 3 weeks.
+        </p>
+      ),
     },
     {
       question: "I'm on Shopify Plus / a custom build. Does this work?",
-      answer:
-        "We specialize in standard Shopify stores. If you're on Plus or custom, the principles are the same but timeline might extend. Let's hop on a call and I'll assess.",
+      answer: (
+        <p>
+          We specialize in standard Shopify stores. If you're on Plus or custom, the principles are
+          the same but timeline might extend. Let's hop on a call and I'll assess.
+        </p>
+      ),
     },
     {
       question: "What's included in the \"Speed Playbook\"?",
-      answer:
-        "A document showing: what we fixed, why we fixed it, which Shopify apps to avoid (or how to use them better), best practices for your team going forward, and what *not* to do when adding new features/apps.",
+      answer: (
+        <>
+          <p>A document showing:</p>
+          <ul>
+            <li>What we fixed and why</li>
+            <li>Which Shopify apps to avoid (or how to use them better)</li>
+            <li>Best practices for your team going forward</li>
+            <li>What NOT to do when adding new features/apps</li>
+          </ul>
+        </>
+      ),
     },
     {
       question: 'Can I do some of this myself?',
-      answer:
-        "You *could*, but: (1) it takes 100+ hours of learning + work, (2) one mistake = broken checkout, (3) Core Web Vitals fixes are finicky and require ongoing testing. The \$5K usually pays for itself in 1-2 months of recovered revenue. Your time is worth more.",
+      answer: (
+        <>
+          <p>
+            You <em>could</em>, but:
+          </p>
+          <ol>
+            <li>It takes 100+ hours of learning + work</li>
+            <li>One mistake = broken checkout</li>
+            <li>Core Web Vitals fixes are finicky and require ongoing testing</li>
+          </ol>
+          <p>
+            The $5K usually pays for itself in 1-2 months of recovered revenue. Your time is worth
+            more.
+          </p>
+        </>
+      ),
     },
     {
       question: 'What if I add new apps after this?',
-      answer:
-        "New apps can slow your site down again. That's why I recommend the \$1.5K/month monitoring service. But even without it, the core optimizations stay in place. You'd need to add *a lot* of bloat to undo the work.",
+      answer: (
+        <p>
+          New apps can slow your site down again. That's why I recommend the $1.5K/month monitoring
+          service. But even without it, the core optimizations stay in place. You'd need to add{' '}
+          <em>a lot</em> of bloat to undo the work.
+        </p>
+      ),
     },
     {
-      question: 'What happens if you\'re not available soon?',
-      answer:
-        "If the timeline doesn't work for you, I'll recommend one of the other agencies I know. Better you get help quickly than wait months for me.",
+      question: "What happens if you're not available soon?",
+      answer: (
+        <p>
+          If the timeline doesn't work for you, I'll recommend one of the other agencies I know.
+          Better you get help quickly than wait months for me.
+        </p>
+      ),
     },
   ]}
 />
