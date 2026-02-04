@@ -26,7 +26,7 @@ export default function HoverLink({ href, date, title, tags, summary }) {
             <Tag key={tag} text={tag} />
           ))}
         </div>
-        <h2 className="-ml-6 inline-block w-fit p-3 px-6 text-2xl leading-8 font-bold text-blue-950 transition duration-300 group-hover:bg-blue-950 group-hover:text-red-200 group-focus:bg-blue-950 group-focus:text-red-200">
+        <h2 className="!-mt-1 -ml-6 inline-block w-fit p-3 px-6 text-2xl leading-8 font-bold text-blue-950 transition duration-300 group-hover:bg-blue-950 group-hover:text-red-200 group-focus:bg-blue-950 group-focus:text-red-200">
           {title}
         </h2>
         <div className="prose text-ff-navy/70 group-hover:text-ff-navy max-w-none leading-normal">

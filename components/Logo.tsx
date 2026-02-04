@@ -1,39 +1,21 @@
 'use client'
 
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function Logo() {
-  const { scrollY } = useScroll()
-  const [isSmall, setIsSmall] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(0)
+  const [isSticky, setIsSticky] = useState(true)
 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth)
+    const handleResize = () => {
+      const width = window.innerWidth
+      setIsSticky(width > 1020)
+    }
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
-
-  useEffect(() => {
-    const checkSize = () => {
-      if (scrollY.get() > 50 && windowWidth < 1025) {
-        setIsSmall(true)
-      } else {
-        setIsSmall(false)
-      }
-    }
-    checkSize()
-  }, [windowWidth, scrollY])
-
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (latest > 50 && windowWidth < 1025) {
-      setIsSmall(true)
-    } else {
-      setIsSmall(false)
-    }
-  })
 
   return (
     <Link href="/">
@@ -43,17 +25,15 @@ export default function Logo() {
           transformOrigin: 'top left',
         }}
         initial={{ left: -200 }}
-        animate={{
-          scale: isSmall ? 0.75 : 1,
-          top: isSmall ? -16 : 0,
-          left: isSmall ? 8 : 0,
-        }}
+        animate={{ left: 0 }}
         whileHover="hover"
         variants={{
           hover: { left: -10 },
         }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="pointer-events-auto fixed top-0 left-0 z-50 mt-6 flex h-24 items-center justify-center bg-white pl-2 text-black md:mt-8 md:pl-4 lg:mt-12 lg:pl-6"
+        className={`pointer-events-auto ${
+          isSticky ? 'fixed' : 'absolute'
+        } top-0 left-0 z-50 mt-6 flex h-24 items-center justify-center bg-white pl-2 text-black md:mt-8 md:pl-4 lg:mt-12 lg:pl-6`}
       >
         <svg
           className="mx-2 md:mx-4 lg:mx-6"
