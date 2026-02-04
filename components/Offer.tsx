@@ -2,7 +2,7 @@ import React from 'react'
 
 const Offer = () => {
   return (
-    <div className="not-prose my-8 bg-yellow-100 p-8">
+    <div className="not-prose my-8 border-1 border-yellow-600 bg-yellow-100 p-8">
       <h3 className="mb-4 text-xl font-bold text-blue-950">
         Already completed Speed or Data Analytics?
       </h3>
