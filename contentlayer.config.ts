@@ -153,6 +153,8 @@ export const CaseStudy = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    nextAvailable: { type: 'string' },
+    cost: { type: 'string' },
   },
   computedFields: {
     ...computedFields,
@@ -188,6 +190,8 @@ export const Service = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    nextAvailable: { type: 'string' },
+    cost: { type: 'string' },
   },
   computedFields: {
     ...computedFields,

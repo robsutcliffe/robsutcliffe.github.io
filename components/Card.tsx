@@ -13,7 +13,7 @@ const colorMap = {
   green: 'group-hover:text-green-300 group-focus:text-green-300',
 }
 
-const Card = ({ title, description, imgSrc, href, color = 'yellow' }) => {
+const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailable, cost }) => {
   const [isHovered, setIsHovered] = useState(false)
   const hoverTextColor = colorMap[color] || colorMap.yellow
 
@@ -26,6 +26,18 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow' }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative h-full overflow-hidden rounded-xs border border-blue-950/50 transition duration-300 outline-none group-hover:border-blue-950 group-focus:border-blue-950 group-focus-visible:ring-2 group-focus-visible:ring-red-500 group-focus-visible:ring-offset-2 group-active:scale-95">
+        <div className="absolute top-0 z-30 flex w-full justify-between text-xs tracking-wide text-white uppercase">
+          <div className="bg-blue-950 px-3 py-2">
+            {nextAvailable ? (
+              <>
+                Next Available: <span className="font-bold">{nextAvailable}</span>
+              </>
+            ) : (
+              <b>Available Now</b>
+            )}
+          </div>
+          <div className="bg-blue-950 px-3 py-2">{cost}</div>
+        </div>
         <Image
           alt={title}
           src={imgSrc}

@@ -29,6 +29,8 @@ export default function Home({ posts, services, caseStudies }) {
                 description={service.summary || ''}
                 imgSrc={service.images?.[0] || ''}
                 href={`/${service.path}`}
+                nextAvailable={service.nextAvailable}
+                cost={service.cost}
               />
             ))}
           </div>
@@ -82,6 +84,8 @@ export default function Home({ posts, services, caseStudies }) {
                 description={study.summary || ''}
                 imgSrc={study.images?.[0] || ''}
                 href={`/${study.path}`}
+                nextAvailable={study.nextAvailable}
+                cost={study.cost}
               />
             ))}
           </div>

@@ -31,6 +31,8 @@ export default function CaseStudiesPage() {
                   description={post.summary || ''}
                   imgSrc={post.images?.[0] || ''}
                   href={`/${post.path}`}
+                  nextAvailable={post.nextAvailable}
+                  cost={post.cost}
                 />
               ))}
             </div>
