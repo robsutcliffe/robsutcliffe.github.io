@@ -16,6 +16,11 @@ export default function Hero() {
   const opacityBase2 = useTransform(scrollYProgress, [0, 0.5], [1, 0.1])
   const opacityBase3 = useTransform(scrollYProgress, [0, 0.8], [1, 0.5])
 
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <div
       ref={containerRef}
@@ -30,6 +35,7 @@ export default function Hero() {
           opacity: opacityBase,
           scale: 1.1,
         }}
+        {...(mounted ? { fetchPriority: 'high' } : {})}
       />
       <motion.div
         className="absolute inset-0"

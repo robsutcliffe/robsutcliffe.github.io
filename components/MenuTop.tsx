@@ -18,8 +18,16 @@ export default function MenuTop({ hover, open, setHover, setOpen }) {
           />
         </div>
       )}
-      <button onClick={() => setOpen((prev) => !prev)} className="focus-ring">
-        <MenuIcon className="relative z-10 h-12 w-12 cursor-pointer" stroke="#080417" />
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className="focus-ring"
+        aria-label={open ? 'Close Menu' : 'Open Menu'}
+      >
+        <MenuIcon
+          className="relative z-10 h-12 w-12 cursor-pointer"
+          stroke="#080417"
+          aria-hidden="true"
+        />
       </button>
     </motion.div>
   )

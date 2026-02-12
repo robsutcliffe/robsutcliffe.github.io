@@ -165,6 +165,7 @@ export default function SearchBar() {
           animate={getVariant()}
           onClick={() => setOpen((prev) => !prev)}
           className={`${open ? 'bg-blue-500 text-white' : 'bg-white hover:bg-blue-500 hover:text-white'} focus-ring pointer-events-auto absolute right-0 flex h-full w-18 cursor-pointer items-center justify-center p-2 transition duration-300`}
+          aria-label={open ? 'Close Search and Menu' : 'Open Search and Menu'}
         >
           <MultiIcon />
         </motion.button>

@@ -72,14 +72,24 @@ module.exports = () => {
     experimental: {
       turbopack: {},
     },
-    // async headers() {
-    //   return [
-    //     {
-    //       source: '/(.*)',
-    //       headers: securityHeaders,
-    //     },
-    //   ]
-    // },
+    // Aggressive caching for static assets
+    async headers() {
+      return [
+        {
+          source: '/static/(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable',
+            },
+          ],
+        },
+        {
+          source: '/(.*)',
+          headers: securityHeaders,
+        },
+      ]
+    },
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.svg$/,

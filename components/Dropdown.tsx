@@ -26,6 +26,7 @@ export default function Dropdown({ options }) {
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className="hover:bg-ff-blue focus-ring absolute top-0 right-0 flex h-24 w-24 transform items-center justify-center overflow-hidden bg-blue-950 duration-300"
+          aria-label={open ? 'Close dropdown' : 'Open dropdown'}
         >
           <AnimatedBackground isHovered={hover} opacity="0.5" stroke="#061E2A" />
           <CaretIcon stroke="#ffffff" className="relative z-10 h-10 w-10" />
