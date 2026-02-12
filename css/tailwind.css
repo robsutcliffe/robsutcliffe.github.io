@@ -99,25 +99,25 @@ hr {
   color: inherit;
 }
 
-.prose.prose-sm table {
+table {
   width: auto;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
 }
 
-.prose.prose-sm table th,
-.prose.prose-sm table td {
+table th,
+table td {
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-.prose.prose-sm table th:first-child,
-.prose.prose-sm table td:first-child {
+table th:first-child,
+table td:first-child {
   padding-left: 0;
 }
 
-.prose.prose-sm table th:last-child,
-.prose.prose-sm table td:last-child {
+table th:last-child,
+table td:last-child {
   padding-right: 0;
 }
 
