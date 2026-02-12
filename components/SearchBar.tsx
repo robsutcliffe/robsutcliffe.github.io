@@ -102,7 +102,7 @@ export default function SearchBar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="pointer-events-auto absolute top-0 right-18 left-2 bg-blue-950 p-[1.5px] lg:left-27"
+              className="pointer-events-auto absolute top-0 right-0 left-2 bg-blue-950 p-[1.5px] lg:right-18 lg:left-27"
             >
               <KBarSearch
                 placeholder="Search..."
