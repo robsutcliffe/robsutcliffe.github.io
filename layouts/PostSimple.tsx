@@ -30,7 +30,7 @@ export default function PostLayout({ content, next, prev, authorDetails, childre
               <div className="prose max-w-none pb-8">{children}</div>
             </div>
             {siteMetadata.comments && (
-              <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300" id="comment">
+              <div className="pt-6 pb-6 text-center text-gray-700" id="comment">
                 <Comments slug={slug} />
               </div>
             )}

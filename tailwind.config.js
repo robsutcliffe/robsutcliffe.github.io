@@ -12,7 +12,7 @@ module.exports = {
     './layouts/**/*.{js,ts,tsx}',
     './data/**/*.mdx',
   ],
-  darkMode: 'class',
+  darkMode: false,
   theme: {
     extend: {
       backdropBlur: {
@@ -164,32 +164,6 @@ module.exports = {
             },
             code: {
               color: '#061e2a',
-            },
-          },
-        },
-        invert: {
-          css: {
-            a: {
-              color: theme('colors.primary.500'),
-              '&:hover': {
-                color: `${theme('colors.primary.400')}`,
-              },
-              code: { color: theme('colors.primary.400') },
-            },
-            h1: {
-              color: theme('colors.gray.100'),
-              fontFamily: theme('fontFamily.serif'),
-            },
-            'h2,h3,h4,h5,h6': {
-              color: theme('colors.gray.100'),
-              fontFamily: theme('fontFamily.serif'),
-            },
-            'h5 strong': {
-              color: theme('colors.red.500'),
-            },
-            hr: {
-              borderColor: theme('colors.blue.950'),
-              opacity: 0.5,
             },
           },
         },

@@ -46,7 +46,7 @@ const HighlightBox = ({
     <div
       className={`not-prose mt-4 mb-8 overflow-hidden bg-blue-950 px-8 pb-2 text-white ${className}`}
     >
-      <div className="prose prose-invert prose-headings:m-0 prose-strong:text-white max-w-none text-white/80">
+      <div className="prose prose-headings:m-0 prose-strong:text-white max-w-none text-white/80">
         {title && (
           <h2 className="mb-4 font-serif text-3xl !leading-tight text-white md:text-4xl">
             {title}

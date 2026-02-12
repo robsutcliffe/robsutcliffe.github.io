@@ -36,7 +36,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
           </div>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose dark:prose-invert max-w-none py-10">{children}</div>
+              <div className="prose max-w-none py-10">{children}</div>
             </div>
           </div>
         </article>
