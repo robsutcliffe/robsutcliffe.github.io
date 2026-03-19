@@ -17,12 +17,12 @@ export default function FlowChartBackground({
   // Scaling factors based on the nested transforms in the original SVG
   // Original base stroke-width was 35.45px, but user wants it thinner.
   // We'll normalize the strokeWidth.
-  const yellow300 = '#ffffff'
-  const yellow400 = '#ffffff'
-  const yellow500 = '#ffffff'
-  const yellow600 = '#ffffff'
-  const highlightColor = '#115669'
-  const animationColor = '#115669'
+  const yellow300 = '#A3BB1E'
+  const yellow400 = '#A3BB1E'
+  const yellow500 = '#A3BB1E'
+  const yellow600 = '#A3BB1E'
+  const highlightColor = '#EF3B25'
+  const animationColor = '#EF3B25'
 
   return (
     <motion.svg
@@ -60,7 +60,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow300,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -70,7 +70,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow400,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -80,7 +80,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow500,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -90,7 +90,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow300,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -100,7 +100,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow400,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -110,7 +110,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow500,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -120,7 +120,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow300,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -130,7 +130,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow400,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -140,7 +140,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow500,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <g transform="matrix(0.0666289,0,0,0.142496,3816.7,-8690.43)">
@@ -149,7 +149,7 @@ export default function FlowChartBackground({
               style={{
                 fill: 'none',
                 stroke: highlightColor,
-                strokeWidth: strokeWidth * 35.45,
+                strokeWidth: strokeWidth * 50,
               }}
             />
             <motion.path
@@ -157,7 +157,7 @@ export default function FlowChartBackground({
               style={{
                 fill: 'none',
                 stroke: animationColor,
-                strokeWidth: strokeWidth * 35.45 * 1.5,
+                strokeWidth: strokeWidth * 75,
               }}
               animate={{
                 strokeDasharray: ['400, 22000'],
@@ -177,7 +177,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow300,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <path
@@ -187,7 +187,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow400,
               strokeWidth: strokeWidth * 35.45,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <rect
@@ -196,7 +196,7 @@ export default function FlowChartBackground({
             width="764.448"
             height="764.448"
             transform="matrix(0.0114124,0.0104296,-0.0114124,0.0104296,4381.57,-209.017)"
-            style={{ fill: 'rgb(21,8,56)' }}
+            style={{ fill: highlightColor }}
           />
           <rect
             x="-7523.11"
@@ -208,7 +208,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow300,
               strokeWidth: strokeWidth * 263.34,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <rect
@@ -221,7 +221,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow500,
               strokeWidth: strokeWidth * 263.34,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <rect
@@ -234,7 +234,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow600,
               strokeWidth: strokeWidth * 263.34,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <rect
@@ -247,7 +247,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow300,
               strokeWidth: strokeWidth * 263.34,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <rect
@@ -260,7 +260,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow500,
               strokeWidth: strokeWidth * 263.34,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
           <rect
@@ -273,7 +273,7 @@ export default function FlowChartBackground({
               fill: 'none',
               stroke: yellow500,
               strokeWidth: strokeWidth * 263.34,
-              opacity: 0.7,
+              opacity: 0.5,
             }}
           />
         </g>
