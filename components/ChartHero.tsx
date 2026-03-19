@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[calc(100vh-0.002rem)] min-h-[640px] overflow-hidden bg-yellow-100 p-2 pb-0 text-slate-900 md:h-[calc(100vh-0.005rem)] md:p-4 md:pb-0 lg:h-[calc(100vh-1.5rem)] lg:p-6 lg:pb-0"
+      className="relative h-[calc(100vh-0.002rem)] min-h-[640px] overflow-hidden bg-cyan-100/50 p-2 pb-0 text-slate-900 md:h-[calc(100vh-0.005rem)] md:p-4 md:pb-0 lg:h-[calc(100vh-1.5rem)] lg:p-6 lg:pb-0"
     >
       <div className="relative h-full w-full pt-24 md:pt-30 lg:pt-36">
         <div className="absolute top-1/2 z-10 w-full -translate-y-1/2">
@@ -24,8 +24,8 @@ export default function Hero() {
             <FlowChartBackground strokeWidth={0.4} className={mounted ? '' : 'invisible'} />
           </div>
           <div className="absolute bottom-[calc(56%)] z-20 w-full text-center xl:bottom-[calc(35%)] xl:left-36 xl:w-auto xl:text-left">
-            <h2 className="pb-6 font-serif text-4xl leading-tight font-light tracking-tighter text-yellow-800 sm:text-5xl">
-              <span className="text-yellow-600">
+            <h2 className="pb-6 font-serif text-4xl leading-tight font-light tracking-tighter text-cyan-800 sm:text-5xl">
+              <span className="text-cyan-600">
                 Your traffic is there. <br />
                 Your conversions aren't.
               </span>{' '}
@@ -33,7 +33,7 @@ export default function Hero() {
             </h2>
           </div>
           <div className="absolute top-[calc(68%)] z-20 flex w-full flex-col gap-4 text-center xl:left-36 xl:w-fit xl:text-left 2xl:flex-row 2xl:items-center 2xl:gap-12">
-            <p className="mx-auto max-w-2xl font-sans text-sm leading-relaxed font-medium text-yellow-800 md:text-base lg:text-base xl:mx-0">
+            <p className="mx-auto max-w-2xl font-sans text-sm leading-relaxed font-medium text-cyan-800 md:text-base lg:text-base xl:mx-0">
               CRO sprints, data-driven UX audits, and dashboard readability <br />— for teams that
               already have traffic but need more revenue.
             </p>
@@ -44,7 +44,7 @@ export default function Hero() {
                   text="View services"
                   noPadding={true}
                   outline={true}
-                  extraClasses="!text-primary hover:bg-yellow-100"
+                  extraClasses="!text-primary"
                   lineOpacity="0.2"
                   noHeight={true}
                 />
@@ -63,7 +63,7 @@ export default function Hero() {
           </div>
         </div>
       </div>
-      <DotBackground fill="#A3BB1E" opacity="0.4" />
+      <DotBackground fill="#115669" opacity="0.2" />
     </div>
   )
 }
