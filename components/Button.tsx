@@ -11,6 +11,7 @@ type ButtonProps = {
   outline?: boolean
   extraClasses?: string
   lineOpacity?: string
+  noPadding?: boolean
   noHeight?: boolean
 }
 
@@ -20,6 +21,7 @@ export default function Button({
   outline,
   extraClasses,
   lineOpacity = '0.4',
+  noPadding = false,
   noHeight = false,
 }: ButtonProps) {
   const [isHovered, setIsHovered] = useState(false)
@@ -28,7 +30,7 @@ export default function Button({
 
   return (
     <div
-      className={`flex ${noHeight ? '' : 'h-24'} w-full items-center ${isLeftAligned ? 'justify-start' : 'justify-end'} px-4 lg:px-0`}
+      className={`flex ${noHeight ? '' : 'h-24'} w-full items-center ${isLeftAligned ? 'justify-start' : 'justify-end'} ${noPadding ? '' : 'px-4'} lg:px-0`}
     >
       <Link
         href={href}

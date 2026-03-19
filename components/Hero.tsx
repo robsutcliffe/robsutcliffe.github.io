@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import TextLogo from '@/components/TextLogoSimple'
 import AnimatedBackground from '@/components/AnimatedBackground'
@@ -74,6 +74,7 @@ export default function Hero() {
         }}
       />
       <AnimatedBackground stroke="#66427A" opacity="0.3" />
+
       <div className="bg-primary absolute z-10 m-4 ml-19 h-24 px-4 py-8 sm:py-4 md:ml-23 md:px-6 lg:m-6 lg:ml-27">
         <TextLogo color="#fff" />
       </div>
@@ -81,10 +82,10 @@ export default function Hero() {
         <p className="mx-auto mb-6 w-fit bg-cyan-500/90 px-4 py-2 text-xs font-bold tracking-wide whitespace-nowrap text-cyan-900 uppercase">
           Conversion Optimisation Services
         </p>
-        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-right font-serif text-4xl leading-tight font-light tracking-tight text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
+        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-right font-serif text-4xl leading-tight font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
           Convert <i className="text-xl sm:text-2xl md:text-5xl">traffic</i>
         </p>
-        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-2 pb-6 text-right font-serif text-4xl leading-tight font-light tracking-tight text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
+        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-2 pb-6 text-right font-serif text-4xl leading-tight font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
           <i className="text-xl sm:text-2xl md:text-5xl">into</i> Loyal Customers
         </p>
         <p className="mx-auto w-fit bg-blue-800/50 px-6 pb-6 !font-sans text-sm leading-6 tracking-wide text-cyan-200 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:max-w-2/3 sm:text-base md:max-w-4/5 md:px-12 md:text-lg md:leading-7">

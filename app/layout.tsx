@@ -1,7 +1,6 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import { Poppins, DM_Serif_Display } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchConfig } from 'pliny/search'
 import { SearchProvider } from '@/components/SearchProvider'
@@ -11,22 +10,133 @@ import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import MenuBar from '@/components/MenuBar'
 import Link from 'next/link'
+import localFont from 'next/font/local'
 
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
 
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
-  subsets: ['latin'],
+const bwQuintaPro = localFont({
+  src: [
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Light/Bw Quinta Pro - Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Light Italic/Bw Quinta Pro - Light Italic.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Regular/Bw Quinta Pro - Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Regular Italic/Bw Quinta Pro - Regular Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Medium/Bw Quinta Pro - Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Medium Italic/Bw Quinta Pro - Medium Italic.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Bold/Bw Quinta Pro - Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Bold Italic/Bw Quinta Pro - Bold Italic.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Black/Bw Quinta Pro - Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Quinta Pro/Black Italic/Bw Quinta Pro - Black Italic.woff2',
+      weight: '900',
+      style: 'italic',
+    },
+  ],
   display: 'swap',
-  variable: '--font-poppins',
+  variable: '--font-bw-quinta-pro',
 })
 
-const dm_serif_display = DM_Serif_Display({
-  weight: '400',
-  subsets: ['latin'],
+const bwDarius = localFont({
+  src: [
+    {
+      path: '../public/static/fonts/Bw Darius/Light/Bw Darius - Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Light Italic/Bw Darius - Light Italic.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Regular/Bw Darius - Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Regular Italic/Bw Darius - Regular Italic.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Medium/Bw Darius - Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Medium Italic/Bw Darius - Medium Italic.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Bold/Bw Darius - Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Bold Italic/Bw Darius - Bold Italic.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/ExtraBold/Bw Darius - ExtraBold.woff2',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/ExtraBold Italic/Bw Darius - ExtraBold Italic.woff2',
+      weight: '800',
+      style: 'italic',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Black/Bw Darius - Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+    {
+      path: '../public/static/fonts/Bw Darius/Black Italic/Bw Darius - Black Italic.woff2',
+      weight: '900',
+      style: 'italic',
+    },
+  ],
   display: 'swap',
-  variable: '--font-dm-serif-display',
+  variable: '--font-bw-darius',
 })
 
 export const metadata: Metadata = {
@@ -73,7 +183,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${poppins.variable} ${dm_serif_display.variable} scroll-smooth`}
+      className={`${bwQuintaPro.variable} ${bwDarius.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
@@ -102,7 +212,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Border />
               <Link
                 href="/"
-                className="bg-primary invisible absolute top-12 left-33 z-10 h-24 px-6 py-4 xl:visible"
+                className="invisible absolute top-12 left-33 z-10 h-24 bg-red-500 px-6 py-4 xl:visible"
               >
                 <TextLogo color="#fff" />
               </Link>

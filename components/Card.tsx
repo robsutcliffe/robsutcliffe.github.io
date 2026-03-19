@@ -60,7 +60,7 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailabl
             >
               {title}
             </h2>
-            <p className="prose max-w-none text-blue-950/50 transition duration-300 group-hover:text-blue-950">
+            <p className="max-w-none text-blue-950/50 transition duration-300 group-hover:text-blue-950">
               {description}
             </p>
           </div>

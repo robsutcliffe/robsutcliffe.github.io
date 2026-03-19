@@ -10,9 +10,21 @@
   --color-ff-navy: #092C39;
 }
 
-@layer components {
+@layer utilities {
   .focus-ring {
-    @apply outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 active:scale-95 active:outline-none;
+    outline: none;
+  }
+  .focus-ring:focus-visible {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity));
+    --tw-ring-offset-width: 2px;
+  }
+  .focus-ring:active {
+    transform: scale(0.95);
+    outline: none;
   }
 }
 
@@ -26,8 +38,8 @@
 
 
 .csl-entry {
-  margin-top: theme('spacing.5');
-  margin-bottom: theme('spacing.5');
+  margin-top: 1.25rem; /* theme('spacing.5') */
+  margin-bottom: 1.25rem; /* theme('spacing.5') */
 }
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
@@ -49,17 +61,47 @@ html, body {
 }
 
 h1 {
-  @apply font-serif text-4xl leading-10 font-bold tracking-wide text-blue-950 sm:text-4xl md:text-6xl md:leading-16 lg:leading-18;
+  font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 2.25rem; /* 4xl */
+  line-height: 2.5rem; /* 10 */
+  font-weight: 700;
+  color: #080417; /* blue-950 */
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 640px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3.75rem; /* 6xl */
+    line-height: 4rem; /* 16 */
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    line-height: 4.5rem; /* 18 */
+  }
 }
 
 h2 {
-  font-family: theme('fontFamily.serif');
-  margin-top: theme('spacing.8');
-  margin-bottom: theme('spacing.2');
+  font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  margin-top: 2rem; /* spacing.8 */
+  margin-bottom: 0.5rem; /* spacing.2 */
+  letter-spacing: -0.02em;
+}
+
+h3, h4, h5, h6 {
+  letter-spacing: -0.01em;
 }
 
 hr {
-  @apply border-blue-950/50;
+  border-top-width: 1px;
+  border-color: rgb(2 6 23 / 0.5); /* blue-950/50 */
 }
 
 /* Custom Tabs content styling */
@@ -77,7 +119,7 @@ hr {
   content: "•";
   position: absolute;
   left: 0;
-  color: theme('colors.blue.500');
+  color: #3b82f6; /* colors.blue.500 */
   font-weight: bold;
 }
 

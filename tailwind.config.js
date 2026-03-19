@@ -27,8 +27,14 @@ module.exports = {
         18: '4.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-poppins)', ...fontFamily.sans],
-        serif: ['var(--font-dm-serif-display)', ...fontFamily.serif],
+        sans: ['var(--font-bw-quinta-pro)', ...fontFamily.sans],
+        serif: [
+          'var(--font-bw-darius)',
+          {
+            letterSpacing: '-0.02em',
+          },
+          ...fontFamily.serif,
+        ],
       },
       colors: {
         primary: '#EE3A24',
@@ -133,7 +139,6 @@ module.exports = {
               fontWeight: '700',
               fontSize: theme('fontSize.4xl'),
               lineHeight: theme('lineHeight.10'),
-              letterSpacing: theme('letterSpacing.wide'),
               color: theme('colors.blue.950'),
               fontFamily: theme('fontFamily.serif'),
               screens: {

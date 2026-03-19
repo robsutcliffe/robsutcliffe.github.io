@@ -1,4 +1,4 @@
-import Hero from '@/components/Hero'
+import ChartHero from '@/components/ChartHero'
 import { slug } from 'github-slugger'
 import Card from '@/components/Card'
 import HoverLink from '@/components/HoverLink'
@@ -11,37 +11,39 @@ const MAX_DISPLAY = 3
 export default function Home({ posts, services, caseStudies }) {
   return (
     <>
-      <Hero />
-      <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
-        <div className="flex h-24 flex-row items-center gap-2 md:gap-4">
-          <div className="h-0.25 w-4 bg-blue-950 md:w-8" />
-          <p className="text-xl tracking-tight text-blue-950">
-            Recommended <b className="">Services</b>
-          </p>
-        </div>
-        <div className="max-w-3xl md:max-w-4xl md:pl-8 lg:pl-12 xl:max-w-5xl">
-          <div className="-my-4 flex flex-wrap md:-mx-2 md:-my-6 lg:-m-6">
-            {services.slice(0, 2).map((service) => (
-              <Card
-                key={service.title}
-                title={service.title}
-                color="yellow"
-                description={service.summary || ''}
-                imgSrc={service.images?.[0] || ''}
-                href={`/${service.path}`}
-                nextAvailable={service.nextAvailable}
-                cost={service.cost}
-              />
-            ))}
+      <ChartHero />
+      <div className="border-t border-yellow-900">
+        <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
+          <div className="flex h-24 flex-row items-center gap-2 md:gap-4">
+            <div className="h-0.25 w-4 bg-blue-950 md:w-8" />
+            <p className="text-xl tracking-tight text-blue-950">
+              Recommended <b className="">Services</b>
+            </p>
           </div>
-          <Button href="/services" text="View All Services" />
+          <div className="max-w-3xl md:max-w-4xl md:pl-8 lg:pl-12 xl:max-w-5xl">
+            <div className="-my-4 flex flex-wrap md:-mx-2 md:-my-6 lg:-m-6">
+              {services.slice(0, 2).map((service) => (
+                <Card
+                  key={service.title}
+                  title={service.title}
+                  color="yellow"
+                  description={service.summary || ''}
+                  imgSrc={service.images?.[0] || ''}
+                  href={`/${service.path}`}
+                  nextAvailable={service.nextAvailable}
+                  cost={service.cost}
+                />
+              ))}
+            </div>
+            <Button href="/services" text="View All Services" />
+          </div>
         </div>
       </div>
       <div className="relative border-t border-b border-blue-950/50 bg-blue-950/5">
         <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
           <div className="flex h-24 flex-row items-center gap-4">
             <div className="h-0.25 w-8 bg-blue-950" />
-            <p className="text-xl tracking-tight text-blue-950">
+            <p className="text-xl tracking-tighter text-blue-950">
               Latest <b className="">Insights</b>
             </p>
           </div>
