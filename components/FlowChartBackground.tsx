@@ -42,8 +42,8 @@ export default function FlowChartBackground({
         strokeMiterlimit: 1.5,
         minWidth: '1000px',
         position: 'relative',
-        left: '50%',
-        transform: 'translateX(-50%)',
+        left: '80%',
+        transform: 'translateX(-80%)',
         opacity,
       }}
     >
