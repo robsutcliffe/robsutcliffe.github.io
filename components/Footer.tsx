@@ -6,8 +6,7 @@ export default function Footer() {
     <div className="p-2 pt-0 md:p-4 md:pt-0 lg:p-6 lg:pt-0">
       <footer className="flex h-18 w-full flex-row bg-blue-950">
         <div className="flex flex-row border-l-1 border-gray-100/50 lg:ml-36">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
+          <SocialIcon kind="mail" href={siteMetadata.email} size={6} />
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
           <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
@@ -15,8 +14,7 @@ export default function Footer() {
         </div>
         {/*<div className="mt-16 flex flex-col items-center">*/}
         {/*  <div className="mb-3 flex space-x-4">*/}
-        {/*    <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />*/}
-        {/*    <SocialIcon kind="github" href={siteMetadata.github} size={6} />*/}
+        {/*    <SocialIcon kind="mail" href={siteMetadata.email} size={6} />*/}
         {/*    <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />*/}
         {/*    <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />*/}
         {/*    <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />*/}

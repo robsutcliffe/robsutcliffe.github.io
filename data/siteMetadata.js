@@ -12,11 +12,11 @@ const siteMetadata = {
   socialBanner: '',
   mastodon: '',
   email: 'rob@firefields.com',
-  github: 'https://github.com/robsutcliffe',
+  github: '',
   twitter: 'https://twitter.com/firefields',
   facebook: '',
   youtube: '',
-  linkedin: 'https://www.linkedin.com/in/robsutcliffe/',
+  linkedin: 'https://www.linkedin.com/company/firefields/',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the

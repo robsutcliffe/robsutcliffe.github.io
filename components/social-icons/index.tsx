@@ -23,7 +23,7 @@ type SocialIconProps = {
 const text = {
   twitter: '@firefilds',
   github: '@robsutcliffe',
-  linkedin: '@rob-sutcliffe',
+  linkedin: 'Firefields',
   mail: 'rob@firefields.com',
   facebook: 'facebook.com',
   youtube: 'youtube.com',
@@ -33,8 +33,11 @@ const text = {
 const SocialIcon = ({ kind, href, size = 4 }: SocialIconProps) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
-    return null
+  if (!href) return null
+
+  if (kind === 'mail' && !href.startsWith('mailto:')) {
+    href = `mailto:${href}`
+  }
 
   const SocialSvg = components[kind]
 
