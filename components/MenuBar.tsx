@@ -16,7 +16,7 @@ export default function MenuBar() {
   ]
 
   return (
-    <div className="pointer-events-auto invisible absolute top-2 right-20 z-20 flex h-18 flex-row items-center justify-between bg-white text-blue-950 md:top-4 md:right-22 lg:top-6 lg:right-24 xl:visible">
+    <div className="pointer-events-auto invisible absolute top-2 right-20 z-20 flex h-18 flex-row items-center justify-between bg-white text-blue-800 md:top-4 md:right-22 lg:top-6 lg:right-24 xl:visible">
       {links.map((link) => (
         <MenuBarItem key={link.href} href={link.href} label={link.label} pathname={pathname} />
       ))}

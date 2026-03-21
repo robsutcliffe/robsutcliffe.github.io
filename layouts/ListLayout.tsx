@@ -89,9 +89,7 @@ export default function ListLayout({
     <>
       <div className="divide-y divide-gray-200">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {title}
-          </h1>
+          <h1 className="text-blue-800">{title}</h1>
           <div className="relative max-w-lg">
             <label>
               <span className="sr-only">Search articles</span>
@@ -135,7 +133,7 @@ export default function ListLayout({
                   <div className="space-y-3 xl:col-span-3">
                     <div>
                       <h3 className="text-2xl leading-8 font-bold tracking-tight">
-                        <Link href={`/${path}`} className="text-gray-900">
+                        <Link href={`/${path}`} className="text-blue-800">
                           {title}
                         </Link>
                       </h3>

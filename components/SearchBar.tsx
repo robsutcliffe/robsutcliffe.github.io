@@ -102,14 +102,14 @@ export default function SearchBar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="pointer-events-auto absolute top-0 right-0 left-2 bg-blue-950 p-[1.5px] lg:right-18 lg:left-27"
+              className="pointer-events-auto absolute top-0 right-0 left-2 bg-white p-[1.5px] lg:right-18 lg:left-27"
             >
               <KBarSearch
-                placeholder="Search..."
+                defaultPlaceholder="Search..."
                 className="focus-ring h-17.5 w-full border-0 bg-white px-12 text-2xl"
               />
-              <div className="h-[calc(100vh-6rem)] overflow-y-scroll lg:h-[calc(100vh-12rem)]">
-                <div className="space-y-0">
+              <div className="h-[calc(100vh-6rem)] overflow-y-scroll border-blue-800 lg:h-[calc(100vh-12rem)]">
+                <div className="space-y-0 border-b border-blue-50">
                   {headings.map((heading) => {
                     const sectionResults = hasSearchTerm
                       ? actionResults.filter(
@@ -121,9 +121,9 @@ export default function SearchBar() {
                       <div key={heading.name}>
                         <Link
                           href={heading.href}
-                          className="focus-ring flex flex-row items-center gap-4 bg-blue-950 py-3 font-semibold text-white hover:bg-blue-500"
+                          className="group focus-ring flex flex-row items-center gap-4 border-t border-blue-50 bg-white py-3 font-semibold text-blue-800 hover:bg-blue-500 hover:text-white"
                         >
-                          <div className="h-0.25 w-8 bg-white" />
+                          <div className="h-0.25 w-8 bg-blue-800 group-hover:bg-white" />
                           {heading.name}
                         </Link>
 
@@ -135,7 +135,7 @@ export default function SearchBar() {
                                 <div key={item.id || index}>
                                   <Link
                                     href={'/' + (item.path || item.id)}
-                                    className="focus-ring relative flex cursor-pointer justify-between px-12 py-3 text-blue-100/80 transition-all duration-300 hover:bg-blue-500 hover:text-white"
+                                    className="focus-ring relative flex cursor-pointer justify-between border-t border-blue-50 px-12 py-3 text-blue-600 transition-all duration-300 hover:bg-blue-500 hover:text-white"
                                   >
                                     <AnimatedBackground
                                       isHovered={false}

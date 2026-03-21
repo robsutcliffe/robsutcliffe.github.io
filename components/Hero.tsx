@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import TextLogo from '@/components/TextLogoSimple'
 import AnimatedBackground from '@/components/AnimatedBackground'
 import Button from '@/components/Button'
+import Link from 'next/link'
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -78,21 +79,20 @@ export default function Hero() {
       <div className="bg-primary absolute z-10 m-4 ml-19 h-24 px-4 py-8 sm:py-4 md:ml-23 md:px-6 lg:m-6 lg:ml-27">
         <TextLogo color="#fff" />
       </div>
-      <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 px-2 pt-20 text-center md:w-min md:px-4 md:pt-26 lg:px-6">
-        <p className="mx-auto mb-6 w-fit bg-cyan-500/90 px-4 py-2 text-xs font-bold tracking-wide whitespace-nowrap text-cyan-900 uppercase">
-          Conversion Optimisation Services
+      <div className="absolute top-1/2 left-32 w-full -translate-y-1/2 px-2 pt-20 md:w-min md:px-4 md:pt-26 lg:px-6">
+        <h2 className="w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-left font-serif text-2xl leading-normal font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-3xl md:px-12 md:text-4xl md:whitespace-nowrap lg:text-5xl">
+          Your traffic is there. <br />
+          Your conversions aren't.
+          <br />I find out why and fix it.
+        </h2>
+        <p className="w-fit bg-blue-800/50 px-6 pb-6 !font-sans text-sm leading-6 tracking-wide text-cyan-200 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:max-w-2/3 sm:text-base md:max-w-4/5 md:px-12 md:text-lg md:leading-7">
+          <Link href="/services/shopify-conversion-rate-optimization-sprint" className="underline">
+            CRO sprints
+          </Link>
+          , data-driven UX audits, and dashboard readability <br />— for teams that already have
+          traffic but need more revenue.
         </p>
-        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-right font-serif text-4xl leading-tight font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
-          Convert <i className="text-xl sm:text-2xl md:text-5xl">traffic</i>
-        </p>
-        <p className="mx-auto w-fit bg-blue-800/50 px-6 pt-2 pb-6 text-right font-serif text-4xl leading-tight font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-5xl md:px-12 md:text-7xl md:leading-24 md:whitespace-nowrap lg:text-8xl">
-          <i className="text-xl sm:text-2xl md:text-5xl">into</i> Loyal Customers
-        </p>
-        <p className="mx-auto w-fit bg-blue-800/50 px-6 pb-6 !font-sans text-sm leading-6 tracking-wide text-cyan-200 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:max-w-2/3 sm:text-base md:max-w-4/5 md:px-12 md:text-lg md:leading-7">
-          Optimisation sprints designed to unlock meaningful revenue growth through testing,
-          analysis and iteration
-        </p>
-        <div className="mx-auto flex w-fit flex-col justify-start bg-blue-800/50 px-6 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:flex-row sm:py-0 md:gap-2 lg:gap-4">
+        <div className="flex w-fit flex-col justify-start bg-blue-800/50 px-6 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:flex-row sm:py-0 md:gap-2 lg:gap-4">
           <div className="pb-4 lg:pb-6">
             <Button
               href="/services"

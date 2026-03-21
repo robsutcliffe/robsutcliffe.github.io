@@ -58,6 +58,7 @@ html, body {
   overflow-x: hidden;
   position: relative;
   width: 100%;
+  color: #241169; /* blue-800 */
 }
 
 h1 {
@@ -65,7 +66,7 @@ h1 {
   font-size: 2.25rem; /* 4xl */
   line-height: 2.5rem; /* 10 */
   font-weight: 700;
-  color: #080417; /* blue-950 */
+  color: #241169; /* blue-800 */
   letter-spacing: -0.03em;
 }
 
@@ -88,20 +89,49 @@ h1 {
   }
 }
 
-h2 {
-  font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  margin-top: 2rem; /* spacing.8 */
-  margin-bottom: 0.5rem; /* spacing.2 */
-  letter-spacing: -0.02em;
-}
+@layer base {
+  h1 {
+    font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 2.25rem; /* 4xl */
+    line-height: 2.5rem; /* 10 */
+    font-weight: 700;
+    color: #241169; /* blue-800 */
+    letter-spacing: -0.03em;
+  }
 
-h3, h4, h5, h6 {
-  letter-spacing: -0.01em;
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.75rem; /* 6xl */
+      line-height: 4rem; /* 16 */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      line-height: 4.5rem; /* 18 */
+    }
+  }
+
+  h2, h3, h4 {
+    font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    color: #241169; /* blue-800 */
+  }
+
+  h2 {
+    margin-top: 2rem; /* spacing.8 */
+    margin-bottom: 0.5rem; /* spacing.2 */
+  }
 }
 
 hr {
   border-top-width: 1px;
-  border-color: rgb(2 6 23 / 0.5); /* blue-950/50 */
+  border-color: #241169; /* blue-950/50 */
 }
 
 /* Custom Tabs content styling */

@@ -16,7 +16,7 @@ export default function CTA() {
           </p>
           <Link
             href="/contact"
-            className="focus-ring rounded-xs bg-blue-500 px-10 py-5 text-xl font-bold text-white transition duration-300 hover:bg-blue-600"
+            className="focus-ring rounded-xs bg-red-500 px-10 py-5 text-xl font-bold text-white transition duration-300 hover:bg-red-600"
           >
             Contact Us
           </Link>

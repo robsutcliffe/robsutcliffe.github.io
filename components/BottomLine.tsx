@@ -22,11 +22,11 @@ const BottomLine = ({ text1, text2, text3, ctaText }: BottomLineProps) => {
 
   return (
     <div className="not-prose my-12 border-l-4 border-blue-800 bg-blue-500/5 px-8 pt-8 pb-1">
-      <h3 className="mb-4 text-sm font-bold text-blue-800">The Bottom Line:</h3>
-      <div className="flex flex-col text-xs leading-relaxed font-medium text-blue-950/80 md:text-sm">
+      <h3 className="mb-4 text-lg font-bold text-blue-800">The Bottom Line:</h3>
+      <div className="flex flex-col text-xs leading-relaxed font-medium text-blue-800/80 md:text-sm">
         {text1 && <div>{highlightBold(text1)}</div>}
         {text2 && <div>{highlightBold(text2)}</div>}
-        {text3 && <div className="mt-2 text-sm text-blue-950">{highlightBold(text3)}</div>}
+        {text3 && <div className="mt-2 text-sm text-blue-800">{highlightBold(text3)}</div>}
       </div>
       {ctaText && <CtaButton text={ctaText} />}
     </div>

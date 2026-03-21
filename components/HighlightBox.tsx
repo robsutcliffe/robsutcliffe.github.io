@@ -44,7 +44,7 @@ const HighlightBox = ({
 
   return (
     <div
-      className={`not-prose mt-4 mb-8 overflow-hidden bg-blue-950 px-8 pb-2 text-white ${className}`}
+      className={`not-prose mt-4 mb-8 overflow-hidden bg-blue-900 px-8 pb-2 text-white ${className}`}
     >
       <div className="prose prose-headings:m-0 prose-strong:text-white max-w-none text-white/80">
         {title && (
@@ -56,7 +56,7 @@ const HighlightBox = ({
           <ul className="mb-4 space-y-2 pl-1">
             {items.map((item, index) => (
               <li key={index} className="flex items-center gap-3 text-blue-50/90">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-200" />
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-300" />
                 <span>{parseMarkdown(item)}</span>
               </li>
             ))}

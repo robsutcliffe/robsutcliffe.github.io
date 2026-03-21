@@ -25,7 +25,7 @@ export default function MenuTop({ hover, open, setHover, setOpen }) {
       >
         <MenuIcon
           className="relative z-10 h-12 w-12 cursor-pointer"
-          stroke="#080417"
+          stroke="#241169"
           aria-hidden="true"
         />
       </button>

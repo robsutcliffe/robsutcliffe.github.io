@@ -14,6 +14,8 @@ import localFont from 'next/font/local'
 
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
+import ScrollToTop from '@/components/ScrollToTop'
+import { Suspense } from 'react'
 
 const bwQuintaPro = localFont({
   src: [
@@ -204,9 +206,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {...({ fetchPriority: 'high' } as any)}
         />
       </head>
-      <body className="bg-slate-100 text-black antialiased">
+      <body className="bg-slate-100 text-blue-800 antialiased">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+          <Suspense fallback={null}>
+            <ScrollToTop />
+          </Suspense>
           <div className="flex min-h-screen flex-col justify-between font-sans">
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Border />

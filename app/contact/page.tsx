@@ -45,7 +45,7 @@ export default function ContactForm() {
   return (
     <>
       <SectionContainer>
-        <div className="w-full pb-3 text-lg text-blue-950/80">
+        <div className="w-full pb-3 text-lg text-blue-800">
           <PageTitle>Contact Us</PageTitle>
           <p>
             <i className="font-bold">
@@ -78,7 +78,7 @@ export default function ContactForm() {
               <div className="flex flex-1 flex-col gap-3">
                 {/* Full Name */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-950 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Full Name
                   </label>
                   <input
@@ -86,13 +86,13 @@ export default function ContactForm() {
                     name="full_name"
                     required
                     disabled={isSubmitting}
-                    className="w-full border border-blue-950 bg-transparent p-4 px-6 text-xl text-blue-950 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                    className="w-full border border-blue-800 bg-transparent p-4 px-6 text-xl text-blue-800 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
                   />
                 </fieldset>
 
                 {/* Email */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-950 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Email
                   </label>
                   <input
@@ -100,33 +100,33 @@ export default function ContactForm() {
                     name="email"
                     required
                     disabled={isSubmitting}
-                    className="w-full border border-blue-950 bg-transparent p-4 px-6 text-xl text-blue-950 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                    className="w-full border border-blue-800 bg-transparent p-4 px-6 text-xl text-blue-800 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
                   />
                 </fieldset>
 
                 {/* Phone Number */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-950 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Phone Number
                   </label>
                   <input
                     type="tel"
                     name="phone_number"
                     disabled={isSubmitting}
-                    className="w-full border border-blue-950 bg-transparent p-4 px-6 text-xl text-blue-950 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                    className="w-full border border-blue-800 bg-transparent p-4 px-6 text-xl text-blue-800 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
                   />
                 </fieldset>
 
                 {/* Budget */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-950 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Budget
                   </label>
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-4 border border-blue-950 bg-transparent p-5 px-6 focus-within:border-blue-500">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-4 border border-blue-800 bg-transparent p-5 px-6 focus-within:border-blue-500">
                     {['£2k-£5k', '£5k-£10k', '£10k-£20k', '£20k+'].map((range) => (
                       <label
                         key={range}
-                        className="flex cursor-pointer items-center gap-2 text-sm text-blue-950"
+                        className="flex cursor-pointer items-center gap-2 text-sm text-blue-800"
                       >
                         <div className="relative flex h-5 w-5 items-center justify-center">
                           <input
@@ -134,7 +134,7 @@ export default function ContactForm() {
                             name="budget"
                             value={range}
                             disabled={isSubmitting}
-                            className="peer h-4 w-4 cursor-pointer appearance-none border border-blue-950 bg-transparent checked:border-blue-500 focus:ring-0 focus:ring-offset-0 disabled:opacity-50"
+                            className="peer h-4 w-4 cursor-pointer appearance-none border border-blue-800 bg-transparent checked:border-blue-500 focus:ring-0 focus:ring-offset-0 disabled:opacity-50"
                           />
                           <div className="pointer-events-none absolute h-2.5 w-2.5 scale-0 rounded-full bg-blue-500 transition-transform peer-checked:scale-100" />
                         </div>
@@ -148,14 +148,14 @@ export default function ContactForm() {
               {/* Right Column - Message */}
               <div className="flex flex-1 flex-col">
                 <fieldset className="group flex h-full flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-950 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Message
                   </label>
                   <textarea
                     name="message"
                     required
                     disabled={isSubmitting}
-                    className="min-h-40 w-full flex-1 resize-none border border-blue-950 bg-transparent p-4 px-6 text-base text-blue-950 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                    className="min-h-40 w-full flex-1 resize-none border border-blue-800 bg-transparent p-4 px-6 text-base text-blue-800 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
                   />
                 </fieldset>
               </div>

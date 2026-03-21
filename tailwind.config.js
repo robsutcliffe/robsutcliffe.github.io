@@ -128,6 +128,7 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            color: theme('colors.blue.800'),
             a: {
               color: theme('colors.primary.500'),
               '&:hover': {
@@ -139,8 +140,9 @@ module.exports = {
               fontWeight: '700',
               fontSize: theme('fontSize.4xl'),
               lineHeight: theme('lineHeight.10'),
-              color: theme('colors.blue.950'),
+              color: theme('colors.blue.800'),
               fontFamily: theme('fontFamily.serif'),
+              letterSpacing: '-0.03em',
               screens: {
                 md: {
                   fontSize: theme('fontSize.6xl'),
@@ -156,9 +158,24 @@ module.exports = {
               fontFamily: theme('fontFamily.serif'),
               marginBottom: theme('spacing.2'),
               marginTop: theme('spacing.8'),
+              color: theme('colors.blue.800'),
             },
             h3: {
               fontWeight: '600',
+              fontFamily: theme('fontFamily.serif'),
+              color: theme('colors.blue.800'),
+            },
+            h4: {
+              fontFamily: theme('fontFamily.serif'),
+              color: theme('colors.blue.800'),
+            },
+            h5: {
+              fontFamily: theme('fontFamily.serif'),
+              color: theme('colors.blue.800'),
+            },
+            h6: {
+              fontFamily: theme('fontFamily.serif'),
+              color: theme('colors.blue.800'),
             },
             'h5 strong': {
               color: theme('colors.red.700'),

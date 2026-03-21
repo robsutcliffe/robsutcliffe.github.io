@@ -25,11 +25,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
         <ScrollTopAndComment />
         <article>
           <PageTitle>{title}</PageTitle>
-          <div className="flex flex-row items-center gap-3 tracking-wide text-blue-950">
+          <div className="flex flex-row items-center gap-3 tracking-wide text-blue-800">
             <div className="py-1">
               By <b>{authorDetails.map((author) => author.name)}</b>
             </div>
-            <span className="opacity-20">◼</span>
+            <span className="opacity-10">◼</span>
             <div className="py-1">
               Published <b>{formatDate(date, siteMetadata.locale)}</b>
             </div>

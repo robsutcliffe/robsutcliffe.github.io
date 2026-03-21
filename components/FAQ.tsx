@@ -28,7 +28,7 @@ const FAQ = ({ items }: FAQProps) => {
         return (
           <div
             key={index}
-            className={`overflow-hidden border ${index === items.length - 1 ? '' : 'border-b-0'} border-blue-950/50`}
+            className={`overflow-hidden border ${index === items.length - 1 ? '' : 'border-b-0'} border-blue-800`}
           >
             <button
               id={buttonId}
@@ -71,7 +71,7 @@ const FAQ = ({ items }: FAQProps) => {
                   }}
                   transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                 >
-                  <div className="prose prose-sm max-w-none border-t border-blue-950/50 bg-white p-4">
+                  <div className="prose prose-sm max-w-none border-t border-blue-800 bg-white p-4">
                     {item.answer}
                   </div>
                 </motion.div>

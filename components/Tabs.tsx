@@ -24,11 +24,11 @@ const Tabs = ({ items }: TabsProps) => {
           const buttonId = `tab-mobile-${index}`
           const isOpen = activeTab === index
           return (
-            <div key={index} className="border border-blue-950/50 bg-white">
+            <div key={index} className="border border-blue-800/50 bg-white">
               <button
                 id={buttonId}
                 className={`flex w-full items-center justify-between px-6 py-4 text-left text-sm font-medium transition-all duration-200 ${
-                  isOpen ? 'bg-blue-500 text-white' : 'text-blue-950'
+                  isOpen ? 'bg-blue-500 text-white' : 'text-blue-800'
                 }`}
                 onClick={() => setActiveTab(isOpen ? -1 : index)}
                 aria-expanded={isOpen}
@@ -93,7 +93,7 @@ const Tabs = ({ items }: TabsProps) => {
                 className={`px-6 py-4 text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   isSelected
                     ? 'bg-blue-500 text-white'
-                    : 'text-blue-950 hover:bg-blue-500 hover:text-white'
+                    : 'text-blue-800 hover:bg-blue-500 hover:text-white'
                 }`}
                 onClick={() => setActiveTab(index)}
               >
@@ -102,7 +102,7 @@ const Tabs = ({ items }: TabsProps) => {
             )
           })}
         </div>
-        <div className="relative overflow-hidden border border-blue-950/50 bg-white p-6 transition duration-300">
+        <div className="relative overflow-hidden border border-blue-800/50 bg-white p-6 transition duration-300">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
