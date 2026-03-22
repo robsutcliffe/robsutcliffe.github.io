@@ -39,7 +39,7 @@ export default function Home({ posts, services, caseStudies }) {
           </div>
         </div>
       </div>
-      <div className="relative border-t border-b border-blue-700 bg-yellow-100">
+      <div className="relative border-t border-b border-blue-700 bg-yellow-100/50">
         <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
           <div className="flex h-24 flex-row items-center gap-4">
             <div className="h-0.25 w-8 bg-blue-700" />
