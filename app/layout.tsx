@@ -206,7 +206,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {...({ fetchPriority: 'high' } as any)}
         />
       </head>
-      <body className="bg-slate-100 text-blue-800 antialiased">
+      <body className="bg-yellow-50/80 text-blue-800 antialiased">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <Suspense fallback={null}>

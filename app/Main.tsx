@@ -12,7 +12,7 @@ export default function Home({ posts, services, caseStudies }) {
   return (
     <>
       <DotsHero />
-      <div className="border-t border-blue-800">
+      <div className="border-t border-blue-700">
         <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
           <div className="flex h-24 flex-row items-center gap-2 md:gap-4">
             <div className="h-0.25 w-4 bg-blue-800 md:w-8" />
@@ -39,16 +39,16 @@ export default function Home({ posts, services, caseStudies }) {
           </div>
         </div>
       </div>
-      <div className="relative border-t border-b border-blue-800 bg-blue-50/50">
+      <div className="relative border-t border-b border-blue-700 bg-yellow-100">
         <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
           <div className="flex h-24 flex-row items-center gap-4">
-            <div className="h-0.25 w-8 bg-blue-800" />
+            <div className="h-0.25 w-8 bg-blue-700" />
             <p className="text-xl tracking-tighter text-blue-800">
               Latest <b className="">Insights</b>
             </p>
           </div>
-          <div className="max-w-3xl divide-y divide-gray-200 md:max-w-4xl xl:max-w-5xl">
-            <div className="flex flex-col border-t border-blue-800/50 lg:border-blue-800">
+          <div className="max-w-3xl divide-y divide-blue-700 md:max-w-4xl xl:max-w-5xl">
+            <div className="flex flex-col border-t border-blue-700">
               {posts.slice(0, MAX_DISPLAY).map((post) => {
                 const { slug: postSlug, date, title, summary, tags } = post
                 const tag = tags && tags.length > 0 ? slug(tags[0]) : 'insights'
@@ -73,7 +73,7 @@ export default function Home({ posts, services, caseStudies }) {
       </div>
       <div className="px-2 md:px-4 lg:mr-26 lg:ml-36 lg:px-6">
         <div className="flex h-24 flex-row items-center gap-2 md:gap-4">
-          <div className="h-0.25 w-4 bg-blue-800 md:w-8" />
+          <div className="h-0.25 w-4 bg-blue-700 md:w-8" />
           <p className="text-xl tracking-tight text-blue-800">
             Latest <b className="">Case Studies</b>
           </p>

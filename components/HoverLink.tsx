@@ -18,7 +18,7 @@ export default function HoverLink({ href, date, title, tags, summary }) {
       onMouseLeave={() => setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
-      className="group focus-ring relative border-b-1 border-blue-600 px-12 py-6 hover:border-blue-800"
+      className="group focus-ring relative border-b-1 border-blue-700 px-12 py-6 hover:border-blue-800"
     >
       <AnimatedBackground isHovered={isHovered} stroke="#241169" opacity="0.07" />
       <article className="relative z-10 flex flex-col space-y-2 xl:space-y-0">
