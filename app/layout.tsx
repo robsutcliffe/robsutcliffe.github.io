@@ -217,9 +217,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Border />
               <Link
                 href="/"
-                className="invisible absolute top-12 left-33 z-10 h-24 bg-red-500 px-6 py-4 xl:visible"
+                className="invisible absolute top-12 left-33 z-10 h-24 bg-red-500 px-6 py-5 xl:visible"
               >
-                <TextLogo color="#fff" />
+                <TextLogo color="#F7F6C2" />
               </Link>
               <MenuBar />
               {/*<Header />*/}

@@ -177,6 +177,9 @@ module.exports = {
               fontFamily: theme('fontFamily.serif'),
               color: theme('colors.blue.800'),
             },
+            strong: {
+              color: theme('colors.blue.800'),
+            },
             'h5 strong': {
               color: theme('colors.red.700'),
             },
@@ -185,7 +188,7 @@ module.exports = {
               opacity: 0.5,
             },
             code: {
-              color: '#061e2a',
+              color: theme('colors.blue.800'),
             },
           },
         },

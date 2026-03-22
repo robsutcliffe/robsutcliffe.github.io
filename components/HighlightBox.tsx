@@ -46,23 +46,27 @@ const HighlightBox = ({
     <div
       className={`not-prose mt-4 mb-8 overflow-hidden bg-blue-900 px-8 pb-2 text-white ${className}`}
     >
-      <div className="prose prose-headings:m-0 prose-strong:text-white max-w-none text-white/80">
-        {title && (
-          <h2 className="mb-4 font-serif text-3xl !leading-tight text-white md:text-4xl">
-            {title}
-          </h2>
-        )}
-        {items && (
-          <ul className="mb-4 space-y-2 pl-1">
-            {items.map((item, index) => (
-              <li key={index} className="flex items-center gap-3 text-blue-50/90">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-300" />
-                <span>{parseMarkdown(item)}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-        <CtaButton text={ctaText} />
+      <div className="prose prose-headings:m-0 prose-strong:text-white flex max-w-none flex-col justify-between text-white/80 xl:flex-row">
+        <div>
+          {title && (
+            <h2 className="mb-4 font-serif text-3xl !leading-tight text-white md:text-4xl">
+              {title}
+            </h2>
+          )}
+          {items && (
+            <ul className="mb-4 space-y-2 pl-1">
+              {items.map((item, index) => (
+                <li key={index} className="flex items-center gap-3 text-blue-50/90">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-300" />
+                  <span>{parseMarkdown(item)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="flex flex-row items-end">
+          <CtaButton text={ctaText} />
+        </div>
       </div>
     </div>
   )

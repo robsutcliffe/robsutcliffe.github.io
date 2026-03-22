@@ -149,8 +149,14 @@ hr {
   content: "•";
   position: absolute;
   left: 0;
-  color: #3b82f6; /* colors.blue.500 */
+  color: #241169; /* colors.blue.500 */
   font-weight: bold;
+}
+
+.prose {
+  :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
+    color: #241169; /* colors.blue.500 */
+  }
 }
 
 .prose.prose-sm :is(li) p {
@@ -167,9 +173,7 @@ hr {
   margin-top: 0.2rem;
 }
 
-.prose.prose-sm strong {
-  color: inherit;
-}
+
 
 table {
   width: auto;

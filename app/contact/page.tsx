@@ -78,7 +78,7 @@ export default function ContactForm() {
               <div className="flex flex-1 flex-col gap-3">
                 {/* Full Name */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Full Name
                   </label>
                   <input
@@ -92,7 +92,7 @@ export default function ContactForm() {
 
                 {/* Email */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Email
                   </label>
                   <input
@@ -106,7 +106,7 @@ export default function ContactForm() {
 
                 {/* Phone Number */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Phone Number
                   </label>
                   <input
@@ -119,7 +119,7 @@ export default function ContactForm() {
 
                 {/* Budget */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Budget
                   </label>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-4 border border-blue-800 bg-transparent p-5 px-6 focus-within:border-blue-500">
@@ -148,7 +148,7 @@ export default function ContactForm() {
               {/* Right Column - Message */}
               <div className="flex flex-1 flex-col">
                 <fieldset className="group flex h-full flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-gray-100 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-800 group-focus-within:text-blue-500">
                     Message
                   </label>
                   <textarea

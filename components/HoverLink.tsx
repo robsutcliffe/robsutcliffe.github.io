@@ -27,7 +27,7 @@ export default function HoverLink({ href, date, title, tags, summary }) {
             <Tag key={tag} text={tag} />
           ))}
         </div>
-        <h2 className="relative !-mt-2 -ml-6 inline-block w-fit p-3 px-6 text-2xl leading-8 font-bold text-blue-800 transition duration-300 group-hover:text-red-200 group-focus:bg-blue-800 group-focus:text-red-200">
+        <h2 className="relative !-mt-2 -ml-6 inline-block w-fit p-3 px-6 text-2xl leading-8 font-bold text-blue-800 transition duration-300 group-hover:text-yellow-200 group-focus:bg-blue-800 group-focus:text-red-200">
           <SlidingBackground isHovered={isHovered} />
           <span className="relative z-10">{title}</span>
         </h2>

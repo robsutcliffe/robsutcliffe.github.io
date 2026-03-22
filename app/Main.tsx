@@ -83,7 +83,7 @@ export default function Home({ posts, services, caseStudies }) {
             {caseStudies.slice(0, 2).map((study) => (
               <Card
                 key={study.title}
-                color="purple"
+                color="yellow"
                 title={study.title}
                 description={study.summary || ''}
                 imgSrc={study.images?.[0] || ''}

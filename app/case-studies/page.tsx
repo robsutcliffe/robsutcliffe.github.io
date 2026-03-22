@@ -26,7 +26,7 @@ export default function CaseStudiesPage() {
             <div className="flex flex-wrap">
               {posts.map((post) => (
                 <Card
-                  color="purple"
+                  color="yellow"
                   key={post.title}
                   title={post.title}
                   description={post.summary || ''}

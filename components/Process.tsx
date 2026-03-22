@@ -52,7 +52,7 @@ const Process = ({ stages }: ProcessProps) => {
             )}
 
             {/* Circle with number */}
-            <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-1 border-blue-800 bg-gray-100 text-blue-800">
+            <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-1 border-blue-800 bg-yellow-50 text-blue-800">
               {stage.number}
             </div>
 
@@ -70,7 +70,7 @@ const Process = ({ stages }: ProcessProps) => {
                 ))}
               </ul>
               {stage.outcome && (
-                <div className="bg-blue-500/5 px-4 py-2">
+                <div className="bg-white px-4 py-2">
                   <p className="text-sm font-medium text-blue-800">
                     {parseMarkdown(stage.outcome)}
                   </p>
