@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <div
       ref={containerRef}
-      className="relative m-2 mb-0 flex h-[calc(100vh-1rem)] min-w-[320px] items-center overflow-hidden bg-blue-800 md:m-4 md:mb-0 md:h-[calc(100vh-2rem)] lg:m-6 lg:mb-0 lg:h-[calc(100vh-3rem)]"
+      className="relative m-2 mb-0 flex h-[calc(100vh-1rem)] min-h-72 min-w-[320px] items-center overflow-hidden bg-blue-800 md:m-4 md:mb-0 md:h-[calc(100vh-2rem)] lg:m-6 lg:mb-0 lg:h-[calc(100vh-3rem)]"
     >
       <CircleBackground />
       <div className="absolute top-26 bottom-0 flex w-full items-center md:top-28 lg:top-30">
