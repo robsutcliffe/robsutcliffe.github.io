@@ -212,7 +212,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Suspense fallback={null}>
             <ScrollToTop />
           </Suspense>
-          <div className="flex min-h-dvh flex-col justify-between font-sans">
+          <div className="flex min-h-svh flex-col justify-between font-sans">
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Border />
               <Link

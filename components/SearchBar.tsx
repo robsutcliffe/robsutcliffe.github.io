@@ -108,7 +108,7 @@ export default function SearchBar() {
                 defaultPlaceholder="Search..."
                 className="focus-ring h-17.5 w-full border-0 bg-white px-12 text-2xl"
               />
-              <div className="h-[calc(100dvh-6rem)] overflow-y-scroll border-blue-800 lg:h-[calc(100dvh-12rem)]">
+              <div className="h-[calc(100svh-6rem)] overflow-y-scroll border-blue-800 lg:h-[calc(100svh-12rem)]">
                 <div className="space-y-0 border-b border-blue-50">
                   {headings.map((heading) => {
                     const sectionResults = hasSearchTerm

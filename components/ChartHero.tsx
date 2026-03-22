@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[calc(100dvh-0.002rem)] min-h-[700px] min-w-[420px] overflow-hidden bg-yellow-100 p-2 pb-0 md:h-[calc(100dvh-0.005rem)] md:p-4 md:pb-0 lg:h-[calc(100dvh-1.5rem)] lg:p-6 lg:pb-0"
+      className="relative h-[calc(100svh-0.002rem)] min-h-[700px] min-w-[420px] overflow-hidden bg-yellow-100 p-2 pb-0 md:h-[calc(100svh-0.005rem)] md:p-4 md:pb-0 lg:h-[calc(100svh-1.5rem)] lg:p-6 lg:pb-0"
     >
       <div className="relative h-full w-full md:-mt-6 xl:mt-6">
         <div className="absolute top-24 z-20 w-full px-4 text-center md:top-16 xl:top-auto xl:bottom-[calc(35%)] xl:left-36 xl:w-auto xl:px-0 xl:text-left">

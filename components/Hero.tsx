@@ -25,7 +25,7 @@ export default function Hero() {
   return (
     <div
       ref={containerRef}
-      className="relative h-[calc(100dvh-0.002rem)] overflow-hidden bg-black p-2 text-white md:h-[calc(100dvh-0.005rem)] md:p-4 lg:h-[calc(100dvh-1.5rem)] lg:p-6"
+      className="relative h-[calc(100svh-0.002rem)] overflow-hidden bg-black p-2 text-white md:h-[calc(100svh-0.005rem)] md:p-4 lg:h-[calc(100svh-1.5rem)] lg:p-6"
     >
       <motion.div
         className="absolute inset-0"
