@@ -13,7 +13,7 @@ const SlidingBackground = ({ isHovered = false, className = '' }) => {
             animate={{ x: '-10%', skewX: -45 }}
             exit={{ x: '110%', skewX: -45 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="absolute inset-y-0 -left-1/4 w-[150%] bg-blue-800"
+            className="absolute inset-y-0 -left-1/4 w-[150%] bg-yellow-200/50"
           />
         )}
       </AnimatePresence>

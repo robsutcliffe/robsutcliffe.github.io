@@ -46,13 +46,11 @@ const HighlightBox = ({
     <div
       className={`not-prose mt-4 mb-8 overflow-hidden bg-blue-900 px-8 pb-2 text-white ${className}`}
     >
+      {title && (
+        <h2 className="mb-4 font-serif text-3xl !leading-tight text-white md:text-4xl">{title}</h2>
+      )}
       <div className="prose prose-headings:m-0 prose-strong:text-white flex max-w-none flex-col justify-between text-white/80 xl:flex-row">
         <div>
-          {title && (
-            <h2 className="mb-4 font-serif text-3xl !leading-tight text-white md:text-4xl">
-              {title}
-            </h2>
-          )}
           {items && (
             <ul className="mb-4 space-y-2 pl-1">
               {items.map((item, index) => (
@@ -64,7 +62,7 @@ const HighlightBox = ({
             </ul>
           )}
         </div>
-        <div className="flex flex-row items-end">
+        <div className="flex min-w-14 flex-row items-end">
           <CtaButton text={ctaText} />
         </div>
       </div>

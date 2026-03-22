@@ -5,13 +5,13 @@ import React from 'react'
 
 export default function CTA() {
   return (
-    <div className="border-b border-gray-100/50 bg-blue-950">
+    <div className="border-b border-blue-100/50 bg-blue-800">
       <div className="mx-auto max-w-3xl p-12 xl:max-w-5xl">
         <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="mb-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+          <h2 className="mb-1 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Ready to work together?
           </h2>
-          <p className="mb-8 text-lg text-white/80">
+          <p className="mb-8 text-lg text-yellow-100/80">
             Let's discuss how we can help you achieve your goals.
           </p>
           <Link

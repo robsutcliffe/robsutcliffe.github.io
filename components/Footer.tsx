@@ -4,8 +4,8 @@ import SocialIcon from '@/components/social-icons'
 export default function Footer() {
   return (
     <div className="p-2 pt-0 md:p-4 md:pt-0 lg:p-6 lg:pt-0">
-      <footer className="flex h-18 w-full flex-row bg-blue-950">
-        <div className="flex flex-row border-l-1 border-gray-100/50 lg:ml-36">
+      <footer className="flex h-18 w-full flex-row bg-blue-800">
+        <div className="flex flex-row border-l-1 border-blue-100/50 lg:ml-36">
           <SocialIcon kind="mail" href={siteMetadata.email} size={6} />
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
           <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />

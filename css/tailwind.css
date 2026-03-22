@@ -63,8 +63,8 @@ html, body {
 
 h1 {
   font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 2.25rem; /* 4xl */
-  line-height: 2.5rem; /* 10 */
+  font-size: 1.875rem; /* 3xl */
+  line-height: 2.25rem; /* 9 */
   font-weight: 700;
   color: #241169; /* blue-800 */
   letter-spacing: -0.03em;
@@ -72,28 +72,28 @@ h1 {
 
 @media (min-width: 640px) {
   h1 {
-    font-size: 2.25rem;
+    font-size: 1.875rem;
   }
 }
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 3.75rem; /* 6xl */
-    line-height: 4rem; /* 16 */
+    font-size: 3rem; /* 5xl */
+    line-height: 3rem; /* 12 */
   }
 }
 
 @media (min-width: 1024px) {
   h1 {
-    line-height: 4.5rem; /* 18 */
+    line-height: 3.5rem; /* 14 */
   }
 }
 
 @layer base {
   h1 {
     font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    font-size: 2.25rem; /* 4xl */
-    line-height: 2.5rem; /* 10 */
+    font-size: 1.875rem; /* 3xl */
+    line-height: 2.25rem; /* 9 */
     font-weight: 700;
     color: #241169; /* blue-800 */
     letter-spacing: -0.03em;
@@ -101,20 +101,20 @@ h1 {
 
   @media (min-width: 640px) {
     h1 {
-      font-size: 2.25rem;
+      font-size: 1.875rem;
     }
   }
 
   @media (min-width: 768px) {
     h1 {
-      font-size: 3.75rem; /* 6xl */
-      line-height: 4rem; /* 16 */
+      font-size: 3rem; /* 5xl */
+      line-height: 3rem; /* 12 */
     }
   }
 
   @media (min-width: 1024px) {
     h1 {
-      line-height: 4.5rem; /* 18 */
+      line-height: 3.5rem; /* 14 */
     }
   }
 

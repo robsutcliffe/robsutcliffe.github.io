@@ -165,11 +165,11 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="focus-ring relative mt-2 cursor-pointer overflow-hidden bg-blue-500 p-6 font-bold text-white transition-opacity disabled:opacity-60"
+              className="focus-ring relative mt-2 cursor-pointer overflow-hidden bg-red-500 p-6 font-bold text-white transition-opacity disabled:opacity-60"
               onMouseEnter={() => !isSubmitting && setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <AnimatedBackground isHovered={isHovered} opacity="0.5" stroke="#061E2A" />
+              <AnimatedBackground isHovered={isHovered} opacity="0.3" stroke="#061E2A" />
               <span className="relative z-10">{isSubmitting ? 'Sending...' : 'Send Request'}</span>
             </button>
           </>

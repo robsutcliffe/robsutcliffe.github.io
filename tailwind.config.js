@@ -138,18 +138,18 @@ module.exports = {
             },
             h1: {
               fontWeight: '700',
-              fontSize: theme('fontSize.4xl'),
-              lineHeight: theme('lineHeight.10'),
+              fontSize: theme('fontSize.3xl'),
+              lineHeight: theme('lineHeight.9'),
               color: theme('colors.blue.800'),
               fontFamily: theme('fontFamily.serif'),
               letterSpacing: '-0.03em',
               screens: {
                 md: {
-                  fontSize: theme('fontSize.6xl'),
-                  lineHeight: theme('lineHeight.16'),
+                  fontSize: theme('fontSize.5xl'),
+                  lineHeight: theme('lineHeight.12'),
                 },
                 lg: {
-                  lineHeight: theme('lineHeight.18'),
+                  lineHeight: theme('lineHeight.14'),
                 },
               },
             },

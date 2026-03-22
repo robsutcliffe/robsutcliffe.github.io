@@ -34,13 +34,13 @@ export default function Calendly() {
   }, [])
 
   return (
-    <div className="border-b border-gray-100/50 bg-blue-950">
+    <div className="border-b border-blue-100/50 bg-blue-800">
       <div className="mx-auto max-w-5xl p-12 pb-0 lg:max-w-7xl">
         <div className="flex flex-col items-center justify-center text-center">
           <h2 className="mb-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Book a 30 minute strategy call
           </h2>
-          <p className="text-lg text-white/80">
+          <p className="text-lg text-yellow-100/80">
             Let's discuss how we can help you achieve your goals.
           </p>
           <div

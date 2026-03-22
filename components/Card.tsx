@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from './Image'
 import Link from './Link'
 import AnimatedBackground from './AnimatedBackground'
@@ -16,7 +16,20 @@ const colorMap = {
 
 const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailable, cost }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const hoverTextColor = colorMap[color] || colorMap.yellow
+  const [hasBlueImg, setHasBlueImg] = useState(false)
+
+  const blueImgSrc = imgSrc?.replace(/\.(webp|png|jpg|jpeg)$/, '-blue.$1')
+
+  useEffect(() => {
+    if (blueImgSrc) {
+      const img = new window.Image()
+      img.src = blueImgSrc
+      img.onload = () => setHasBlueImg(true)
+      img.onerror = () => setHasBlueImg(false)
+    }
+  }, [blueImgSrc])
+
+  const hoverTextColor = 'group-hover:text-blue-900 group-focus:text-blue-900' // colorMap[color] || colorMap.yellow
 
   return (
     <Link
@@ -47,11 +60,19 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailabl
           <Image
             alt={title}
             src={imgSrc}
-            className="h-full w-full object-cover object-center grayscale transition duration-300 group-hover:grayscale-0 group-focus:grayscale-0"
+            className="h-full w-full object-cover object-center transition duration-300"
             width={544}
             height={306}
           />
-          <div className="absolute inset-0 bg-blue-900 mix-blend-color transition duration-300 group-hover:opacity-0 group-focus:opacity-0" />
+          {hasBlueImg && (
+            <Image
+              alt={title}
+              src={blueImgSrc}
+              className="absolute inset-0 h-full w-full object-cover object-center transition duration-300 group-hover:opacity-0 group-focus:opacity-0"
+              width={544}
+              height={306}
+            />
+          )}
         </div>
         <AnimatedBackground
           isHovered={isHovered}

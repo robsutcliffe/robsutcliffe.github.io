@@ -20,7 +20,7 @@ export default function Button({
   href,
   outline,
   extraClasses,
-  lineOpacity = '0.4',
+  lineOpacity = '0.2',
   noPadding = false,
   noHeight = false,
 }: ButtonProps) {
@@ -38,7 +38,7 @@ export default function Button({
         onMouseLeave={() => setIsHovered(false)}
         onFocus={() => !outline && setIsHovered(true)}
         onBlur={() => setIsHovered(false)}
-        className={`${outline ? 'ring ring-red-500 ring-inset' : 'bg-blue-500'} focus-ring relative flex cursor-pointer flex-row items-center overflow-hidden rounded-xs py-4 text-white transition duration-300 ${extraClasses}`}
+        className={`${outline ? 'ring ring-red-500 ring-inset' : 'bg-red-500'} focus-ring relative flex cursor-pointer flex-row items-center overflow-hidden rounded-xs py-4 text-white transition duration-300 ${extraClasses}`}
       >
         <AnimatedBackground isHovered={isHovered} opacity={lineOpacity} stroke="#080417" />
         <motion.div
