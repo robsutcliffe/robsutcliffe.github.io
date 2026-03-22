@@ -18,7 +18,7 @@ export default function HoverLink({ href, date, title, tags, summary }) {
       onMouseLeave={() => setIsHovered(false)}
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
-      className="group focus-ring relative border-b-1 border-blue-800/50 px-12 py-6 hover:border-blue-800 lg:border-blue-900"
+      className="group focus-ring relative border-b-1 border-blue-600 px-12 py-6 hover:border-blue-800"
     >
       <AnimatedBackground isHovered={isHovered} stroke="#241169" opacity="0.07" />
       <article className="relative z-10 flex flex-col space-y-2 xl:space-y-0">
@@ -31,7 +31,7 @@ export default function HoverLink({ href, date, title, tags, summary }) {
           <SlidingBackground isHovered={isHovered} />
           <span className="relative z-10">{title}</span>
         </h2>
-        <div className="prose max-w-none leading-normal text-blue-700/70 group-hover:text-blue-700">
+        <div className="prose max-w-none leading-normal text-blue-800/70 group-hover:text-blue-800">
           {summary}
         </div>
         <time

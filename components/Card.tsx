@@ -30,7 +30,7 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailabl
         <div className="absolute top-0 z-20 flex w-full justify-between text-xs tracking-wide text-white uppercase">
           {nextAvailable && (
             <div
-              className={` ${nextAvailable === 'now' ? 'border-r border-b border-blue-800 bg-yellow-200 font-bold text-blue-800' : 'bg-blue-800'} px-3 py-2`}
+              className={` ${nextAvailable === 'now' ? 'border-r border-b border-blue-600 bg-yellow-200 font-bold text-blue-800' : 'bg-blue-800'} px-3 py-2`}
             >
               {nextAvailable === 'now' ? (
                 <span className="font-bold">Available Now</span>

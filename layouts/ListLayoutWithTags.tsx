@@ -88,7 +88,7 @@ export default function ListLayoutWithTags({
           that worked, things that didn’t, and the dashboards, interfaces, and flows that actually
           changed behaviour.
         </p>
-        <div className="my-12 flex flex-col border-t-1 border-blue-800 hover:border-blue-800 lg:border-blue-900">
+        <div className="my-12 flex flex-col border-t-1 border-blue-600 hover:border-blue-800">
           {displayPosts.map((post) => {
             const { path, date, title, summary, tags, slug: postSlug } = post
             const tag = tags && tags.length > 0 ? slug(tags[0]) : 'insights'
