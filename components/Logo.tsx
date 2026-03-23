@@ -33,12 +33,12 @@ export default function Logo() {
         transition={{ duration: 0.3, ease: 'easeOut' }}
         className={`pointer-events-auto ${
           isSticky ? 'fixed' : 'absolute'
-        } top-0 left-0 z-50 mt-6 flex h-24 items-center justify-center bg-white pl-2 text-black md:mt-8 md:pl-4 lg:mt-12 lg:pl-6`}
+        } top-0 left-0 z-50 mt-8 flex h-20 items-center justify-center bg-white pl-0 text-black md:mt-8 md:mt-12`}
       >
         <svg
-          className="mx-2 md:mx-4 lg:mx-6"
-          width="60"
-          height="60"
+          className="mx-6"
+          width="35"
+          height="35"
           viewBox="0 0 100 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

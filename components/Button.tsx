@@ -30,7 +30,7 @@ export default function Button({
 
   return (
     <div
-      className={`flex ${noHeight ? '' : 'h-24'} w-full items-center ${isLeftAligned ? 'justify-start' : 'justify-end'} ${noPadding ? '' : 'px-4'} lg:px-0`}
+      className={`flex ${noHeight ? '' : 'h-24 sm:h-32'} w-full items-center ${isLeftAligned ? 'justify-start' : 'justify-end'} ${noPadding ? '' : 'px-4'} lg:px-0`}
     >
       <Link
         href={href}
@@ -38,7 +38,7 @@ export default function Button({
         onMouseLeave={() => setIsHovered(false)}
         onFocus={() => !outline && setIsHovered(true)}
         onBlur={() => setIsHovered(false)}
-        className={`${outline ? 'ring ring-red-500 ring-inset' : 'bg-red-500'} focus-ring relative flex cursor-pointer flex-row items-center overflow-hidden rounded-xs py-4 text-white transition duration-300 ${extraClasses}`}
+        className={`${outline ? 'ring ring-red-500 ring-inset' : 'bg-red-500'} focus-ring relative flex h-12 cursor-pointer flex-row items-center overflow-hidden rounded-sm py-4 text-xs font-bold text-white uppercase transition duration-300 sm:h-16 sm:text-sm ${extraClasses}`}
       >
         <AnimatedBackground isHovered={isHovered} opacity={lineOpacity} stroke="#080417" />
         <motion.div

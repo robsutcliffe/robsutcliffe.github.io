@@ -45,7 +45,7 @@ const SocialIcon = ({ kind, href, size = 4 }: SocialIconProps) => {
 
   return (
     <motion.a
-      className="focus-ring relative flex h-18 min-w-18 cursor-pointer items-center justify-center overflow-hidden border-r-1 border-blue-100/50 px-6 text-sm text-white transition-colors hover:bg-blue-500 focus:bg-blue-500"
+      className="focus-ring relative flex h-16 min-w-16 cursor-pointer items-center justify-center overflow-hidden border-r-1 border-blue-100/50 px-6 text-sm text-white transition-colors hover:bg-blue-500 focus:bg-blue-500"
       target="_blank"
       rel="noopener noreferrer"
       href={href}

@@ -6,17 +6,17 @@ import React from 'react'
 export default function CTA() {
   return (
     <div className="border-b border-blue-100/50 bg-blue-800">
-      <div className="mx-auto max-w-3xl p-12 xl:max-w-5xl">
+      <div className="mx-auto max-w-3xl p-8 xl:max-w-5xl">
         <div className="flex flex-col items-center justify-center text-center">
-          <h2 className="mb-1 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-2xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl sm:leading-12">
             Ready to work together?
           </h2>
-          <p className="mb-8 text-lg text-yellow-100/80">
+          <p className="mt-4 mb-8 text-base leading-6 text-yellow-200 sm:mt-0 sm:text-lg sm:leading-8">
             Let's discuss how we can help you achieve your goals.
           </p>
           <Link
             href="/contact"
-            className="focus-ring rounded-xs bg-red-500 px-10 py-5 text-xl font-bold text-white transition duration-300 hover:bg-red-600"
+            className="focus-ring flex h-12 items-center rounded-sm bg-red-500 px-10 text-sm font-bold text-white uppercase transition duration-300 hover:bg-red-600 sm:h-16"
           >
             Contact Us
           </Link>

@@ -6,7 +6,7 @@ interface CtaButtonProps {
 
 const CtaButton = ({ text }: CtaButtonProps) => {
   return (
-    <div className="not-prose -mx-4 my-6 lg:mx-0">
+    <div className="not-prose -mx-4 my-2 lg:mx-0">
       <Button
         href="/contact"
         text={text}

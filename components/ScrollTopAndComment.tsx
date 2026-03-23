@@ -32,7 +32,7 @@ const ScrollTopAndComment = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed right-2 bottom-2 hidden flex-col gap-3 md:right-4 md:bottom-4 md:flex lg:right-6 lg:bottom-6"
+          className="fixed right-4 bottom-4 hidden flex-col gap-3 md:flex"
         >
           {siteMetadata.comments?.provider && (
             <button
@@ -54,7 +54,7 @@ const ScrollTopAndComment = () => {
             onClick={handleScrollTop}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="focus-ring relative flex h-18 w-18 cursor-pointer items-center justify-center overflow-hidden border-t border-l border-gray-100/50 bg-blue-950 text-white transition-all duration-300 hover:bg-blue-500"
+            className="focus-ring relative flex h-16 w-16 cursor-pointer items-center justify-center overflow-hidden border-t border-l border-blue-100/50 bg-blue-800 text-white transition-all duration-300 hover:bg-blue-500"
           >
             <AnimatedBackground isHovered={isHovered} opacity="0.5" stroke="#061E2A" />
             <span className="relative z-10">

@@ -1,15 +1,6 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
-@theme {
-  --color-ff-red: #E43A24;
-  --color-ff-yellow: #CEE424;
-  --color-ff-blue: #3A24E4;
-  --color-ff-green: #24E43A;
-  --color-ff-purple: #E424CE;
-  --color-ff-navy: #092C39;
-}
-
 @layer utilities {
   .focus-ring {
     outline: none;
@@ -61,119 +52,16 @@ html, body {
   color: #241169; /* blue-800 */
 }
 
-h1 {
-  font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 1.875rem; /* 3xl */
-  line-height: 2.25rem; /* 9 */
-  font-weight: 700;
-  color: #241169; /* blue-800 */
-  letter-spacing: -0.03em;
-}
-
-@media (min-width: 640px) {
-  h1 {
-    font-size: 1.875rem;
-  }
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3rem; /* 5xl */
-    line-height: 3rem; /* 12 */
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    line-height: 3.5rem; /* 14 */
-  }
-}
-
-@layer base {
-  h1 {
-    font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    font-size: 1.875rem; /* 3xl */
-    line-height: 2.25rem; /* 9 */
-    font-weight: 700;
-    color: #241169; /* blue-800 */
-    letter-spacing: -0.03em;
-  }
-
-  @media (min-width: 640px) {
-    h1 {
-      font-size: 1.875rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    h1 {
-      font-size: 3rem; /* 5xl */
-      line-height: 3rem; /* 12 */
-    }
-  }
-
-  @media (min-width: 1024px) {
-    h1 {
-      line-height: 3.5rem; /* 14 */
-    }
-  }
-
-  h2, h3, h4 {
-    font-family: var(--font-bw-darius), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-    color: #241169; /* blue-800 */
-  }
-
-  h2 {
-    margin-top: 2rem; /* spacing.8 */
-    margin-bottom: 0.5rem; /* spacing.2 */
-  }
-}
-
-hr {
-  border-top-width: 1px;
-  border-color: #241169; /* blue-950/50 */
-}
-
-/* Custom Tabs content styling */
-.prose.prose-sm :is(ul) {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.prose.prose-sm :is(li) {
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.prose.prose-sm :is(li)::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: #241169; /* colors.blue.500 */
-  font-weight: bold;
-}
-
 .prose {
   :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
     color: #241169; /* colors.blue.500 */
   }
 }
 
-.prose.prose-sm :is(li) p {
+.tabs ul li {
   margin: 0;
+  line-height: 2rem;
 }
-
-.prose.prose-sm :is(p) + :is(ul),
-.prose.prose-sm :is(ul) + :is(p),
-.prose.prose-sm :is(p) + :is(p) {
-  margin-top: 1.25rem;
-}
-
-.prose.prose-sm :is(li) + :is(li) {
-  margin-top: 0.2rem;
-}
-
-
 
 table {
   width: auto;

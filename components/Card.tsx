@@ -33,17 +33,17 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailabl
 
   return (
     <Link
-      className="md group relative max-w-[544px] p-6 outline-none md:w-1/2"
+      className="md group relative max-w-[544px] outline-none"
       href={href}
       aria-label={`Link to ${title}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative h-full overflow-hidden rounded-xs border border-blue-600 transition duration-300 outline-none group-hover:border-blue-800 group-focus:border-blue-800 group-focus-visible:ring-2 group-focus-visible:ring-red-500 group-focus-visible:ring-offset-2 group-active:scale-95">
+      <div className="shadow-inset-all relative h-full overflow-hidden rounded-xs transition duration-300 outline-none group-hover:border-blue-800 group-focus:border-blue-800 group-focus-visible:ring-2 group-focus-visible:ring-red-500 group-focus-visible:ring-offset-2 group-active:scale-95">
         <div className="absolute top-0 z-20 flex w-full justify-between text-xs tracking-wide text-white uppercase">
           {nextAvailable && (
             <div
-              className={` ${nextAvailable === 'now' ? 'border-r border-b border-blue-600 bg-yellow-200 font-bold text-blue-800' : 'bg-blue-800'} px-3 py-2`}
+              className={` ${nextAvailable === 'now' ? 'box-border border border-blue-600 bg-yellow-200 font-bold text-blue-800' : 'bg-blue-800'} px-3 py-2`}
             >
               {nextAvailable === 'now' ? (
                 <span className="font-bold">Available Now</span>
@@ -56,7 +56,7 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailabl
           )}
           {cost && <div className="bg-blue-800 px-3 py-2">{cost}</div>}
         </div>
-        <div className="relative z-10 h-40 overflow-hidden bg-white transition duration-300 md:h-36 lg:h-48">
+        <div className="relative z-10 box-border h-40 overflow-hidden border border-blue-700 bg-white transition duration-300 md:h-36 lg:h-48">
           <Image
             alt={title}
             src={imgSrc}
@@ -81,14 +81,14 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailabl
           className="z-20"
         />
         <div className="relative z-30">
-          <div className="px-6 pb-6">
+          <div className="px-4 sm:px-8 sm:py-4">
             <h2
-              className={`relative !mt-3 -ml-6 inline-block p-3 pl-6 text-2xl leading-8 font-bold transition duration-300 group-focus:bg-blue-800 ${hoverTextColor}`}
+              className={`relative -ml-4 inline-block px-4 py-4 text-xl leading-6 font-bold transition duration-300 group-focus:bg-yellow-200 sm:-ml-8 sm:pl-8 sm:text-2xl sm:leading-8 ${hoverTextColor}`}
             >
               <SlidingBackground isHovered={isHovered} />
               <span className="relative z-10">{title}</span>
             </h2>
-            <p className="max-w-none text-blue-800/80 transition duration-300 group-hover:text-blue-900">
+            <p className="mb-4 max-w-none text-sm leading-5 text-blue-800/80 transition duration-300 group-hover:text-blue-900 sm:text-base sm:leading-6">
               {description}
             </p>
           </div>

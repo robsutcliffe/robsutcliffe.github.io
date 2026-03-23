@@ -136,56 +136,48 @@ module.exports = {
               },
               code: { color: theme('colors.primary.400') },
             },
-            h1: {
-              fontWeight: '700',
-              fontSize: theme('fontSize.3xl'),
-              lineHeight: theme('lineHeight.9'),
+            p: {
+              fontSize: theme('fontSize.base'),
+              lineHeight: theme('lineHeight.6'),
+              marginBottom: theme('spacing.2'),
+              marginTop: theme('spacing.4'),
+            },
+            'h1, h2, h3, h4, h5, h6': {
               color: theme('colors.blue.800'),
-              fontFamily: theme('fontFamily.serif'),
+              fontWeight: '600',
+              fontFamily: theme('fontFamily.serif')[0],
+            },
+            h1: {
+              fontSize: theme('fontSize.3xl'),
+              lineHeight: theme('lineHeight.12'),
               letterSpacing: '-0.03em',
-              screens: {
-                md: {
-                  fontSize: theme('fontSize.5xl'),
-                  lineHeight: theme('lineHeight.12'),
-                },
-                lg: {
-                  lineHeight: theme('lineHeight.14'),
-                },
+              '@screen md': {
+                fontSize: theme('fontSize.5xl'),
+                lineHeight: '3.25rem',
+              },
+              '@screen lg': {
+                lineHeight: theme('lineHeight.16'),
               },
             },
             h2: {
-              fontWeight: '700',
-              fontFamily: theme('fontFamily.serif'),
-              marginBottom: theme('spacing.2'),
               marginTop: theme('spacing.8'),
-              color: theme('colors.blue.800'),
-            },
-            h3: {
-              fontWeight: '600',
-              fontFamily: theme('fontFamily.serif'),
-              color: theme('colors.blue.800'),
-            },
-            h4: {
-              fontFamily: theme('fontFamily.serif'),
-              color: theme('colors.blue.800'),
-            },
-            h5: {
-              fontFamily: theme('fontFamily.serif'),
-              color: theme('colors.blue.800'),
-            },
-            h6: {
-              fontFamily: theme('fontFamily.serif'),
-              color: theme('colors.blue.800'),
+              marginBottom: theme('spacing.2'),
+              fontSize: theme('fontSize.2xl'),
             },
             strong: {
               color: theme('colors.blue.800'),
             },
             'h5 strong': {
               color: theme('colors.red.700'),
+              fontFamily: theme('fontFamily.sans')[0],
+              lineHeight: theme('lineHeight.8'),
             },
             hr: {
-              borderColor: theme('colors.blue.950'),
-              opacity: 0.5,
+              border: 'none',
+              height: '1px',
+              backgroundColor: theme('colors.blue.700'),
+              marginTop: theme('spacing.2'),
+              marginBottom: `calc(${theme('spacing.8')} - 1px)`,
             },
             code: {
               color: theme('colors.blue.800'),
@@ -193,7 +185,36 @@ module.exports = {
           },
         },
       }),
+      boxShadow: {
+        // all sides
+        'inset-all': 'inset 0 0 0 1px #2E1792',
+        // individual sides
+        'inset-t': 'inset 0 1px 0 0 #2E1792',
+        'inset-r': 'inset -1px 0 0 0 #2E1792',
+        'inset-b': 'inset 0 -1px 0 0 #2E1792',
+        'inset-l': 'inset 1px 0 0 0 #2E1792',
+        // two-side combos
+        'inset-x': 'inset 1px 0 0 0 #2E1792, inset -1px 0 0 0 #2E1792',
+        'inset-y': 'inset 0 1px 0 0 #2E1792, inset 0 -1px 0 0 #2E1792',
+        'inset-tl': 'inset 0 1px 0 0 #2E1792, inset 1px 0 0 0 #2E1792',
+        'inset-tr': 'inset 0 1px 0 0 #2E1792, inset -1px 0 0 0 #2E1792',
+        'inset-bl': 'inset 0 -1px 0 0 #2E1792, inset 1px 0 0 0 #2E1792',
+        'inset-br': 'inset 0 -1px 0 0 #2E1792, inset -1px 0 0 0 #2E1792',
+      },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    ({ addBase, theme }) => {
+      addBase({
+        html: {
+          fontFamily: theme('fontFamily.sans')[0],
+        },
+        'h1, h2, h3, h4, h5, h6': {
+          fontFamily: theme('fontFamily.serif')[0],
+        },
+      })
+    },
+  ],
 }

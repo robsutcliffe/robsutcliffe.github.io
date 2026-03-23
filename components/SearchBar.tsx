@@ -93,7 +93,7 @@ export default function SearchBar() {
           />
         )}
       </AnimatePresence>
-      <nav className="pointer-events-none fixed top-2 right-2 left-2 z-50 h-18 md:top-4 md:right-4 md:left-4 lg:top-6 lg:right-6 lg:left-6">
+      <nav className="pointer-events-none fixed top-4 right-4 left-4 z-50 h-16">
         <AnimatePresence>
           {open && (
             <motion.div
@@ -102,14 +102,14 @@ export default function SearchBar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="pointer-events-auto absolute top-0 right-0 left-2 bg-yellow-50 p-[1.5px] lg:right-18 lg:left-27"
+              className="pointer-events-auto absolute top-0 right-0 left-0 bg-yellow-50"
             >
               <KBarSearch
                 defaultPlaceholder="Search..."
-                className="focus-ring h-17.5 w-full border-0 bg-white px-12 text-2xl"
+                className="shadow-inset-all h-16 w-full border-0 bg-white px-12 text-2xl"
               />
-              <div className="h-[calc(100svh-6rem)] overflow-y-scroll border-blue-800 lg:h-[calc(100svh-12rem)]">
-                <div className="space-y-0 border-b border-yellow-200">
+              <div className="h-[calc(100svh-6rem)] overflow-y-scroll border-blue-800">
+                <div className="space-y-0">
                   {headings.map((heading) => {
                     const sectionResults = hasSearchTerm
                       ? actionResults.filter(
@@ -121,7 +121,7 @@ export default function SearchBar() {
                       <div key={heading.name}>
                         <Link
                           href={heading.href}
-                          className="group focus-ring flex flex-row items-center gap-4 border-t border-yellow-200 bg-yellow-50 py-3 font-semibold text-blue-700 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white"
+                          className="group focus-ring flex flex-row items-center gap-4 border-b border-yellow-200 bg-yellow-50 py-3 font-semibold text-blue-700 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white"
                         >
                           <div className="h-0.25 w-8 bg-blue-700 group-hover:bg-yellow-50 group-focus:bg-yellow-50" />
                           {heading.name}
@@ -135,7 +135,7 @@ export default function SearchBar() {
                                 <div key={item.id || index}>
                                   <Link
                                     href={'/' + (item.path || item.id)}
-                                    className="focus-ring relative flex cursor-pointer justify-between border-t border-yellow-200 px-12 py-3 text-blue-600 transition-all duration-300 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white"
+                                    className="focus-ring relative flex cursor-pointer justify-between border-b border-yellow-200 px-12 py-3 text-blue-600 transition-all duration-300 hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white"
                                   >
                                     <AnimatedBackground
                                       isHovered={false}
@@ -164,7 +164,7 @@ export default function SearchBar() {
           id="search-bar-toggle"
           animate={getVariant()}
           onClick={() => setOpen((prev) => !prev)}
-          className={`${open ? 'bg-blue-500 text-white' : 'bg-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'} focus-ring pointer-events-auto absolute right-0 flex h-full w-18 cursor-pointer items-center justify-center p-2 transition duration-300`}
+          className={`${open ? 'bg-blue-500 text-white' : 'bg-white hover:bg-blue-500 hover:text-white focus:bg-blue-500 focus:text-white'} focus-ring pointer-events-auto absolute right-0 flex h-full w-16 cursor-pointer items-center justify-center p-2 transition duration-300`}
           aria-label={open ? 'Close Search and Menu' : 'Open Search and Menu'}
         >
           <MultiIcon />

@@ -206,7 +206,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {...({ fetchPriority: 'high' } as any)}
         />
       </head>
-      <body className="bg-yellow-50/80 text-blue-800 antialiased">
+      <body className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased">
+        {/*<div*/}
+        {/*  className="pointer-events-none absolute inset-0 z-50 h-full w-full"*/}
+        {/*  style={{*/}
+        {/*    backgroundImage: `*/}
+        {/*      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px),*/}
+        {/*      linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px)*/}
+        {/*    `,*/}
+        {/*    backgroundSize: '4px 4px, 16px 16px',*/}
+        {/*  }}*/}
+        {/*/>*/}
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <Suspense fallback={null}>
@@ -217,7 +227,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Border />
               <Link
                 href="/"
-                className="invisible absolute top-12 left-33 z-10 h-24 bg-red-500 px-6 py-5 xl:visible"
+                className="invisible absolute top-12 left-20 z-10 h-20 bg-red-500 py-6 pr-6 pl-2 md:visible"
               >
                 <TextLogo color="#FDFCED" />
               </Link>

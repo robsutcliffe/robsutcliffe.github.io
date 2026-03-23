@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import CircleBackground from '@/components/CircleBackground'
 import Button from '@/components/Button'
 import DotBackground from '@/components/DotBackground'
@@ -9,25 +9,20 @@ import Link from 'next/link'
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   return (
     <div
       ref={containerRef}
-      className="relative m-2 mb-0 flex h-[calc(100svh-1rem)] min-h-72 min-w-[320px] items-center overflow-hidden bg-blue-800 md:m-4 md:mb-0 md:h-[calc(100svh-2rem)] lg:m-6 lg:mb-0 lg:h-[calc(100svh-3rem)]"
+      className="relative m-4 flex h-[calc(100svh-2rem)] items-center overflow-hidden bg-blue-800 md:mb-0"
     >
       <CircleBackground />
-      <div className="absolute top-26 bottom-0 flex w-full items-center md:top-28 lg:top-30">
-        <div className="z-10 flex w-full flex-col gap-6 text-center">
+      <div className="absolute top-22 bottom-0 flex w-full items-center sm:top-26 md:top-28 lg:top-30">
+        <div className="z-10 flex w-full flex-col gap-4 px-4 text-center">
           <h2 className="!my-0 text-2xl leading-8 font-normal tracking-tight text-yellow-200 sm:text-4xl sm:leading-12 md:text-5xl md:leading-14 lg:text-6xl lg:leading-16">
             Your traffic is there. <br />
             Your conversions aren't.
             <br />I find out why and fix it.
           </h2>
-          <p className="mx-auto max-w-2xl px-4 font-sans text-xs leading-relaxed font-bold text-yellow-50 sm:text-sm md:text-base lg:font-medium xl:bg-transparent xl:px-0">
+          <p className="mx-auto max-w-2xl px-4 font-sans text-xs leading-6 font-bold text-yellow-50 sm:text-base sm:leading-8 lg:font-medium xl:bg-transparent xl:px-0">
             <Link
               href="/services/shopify-conversion-rate-optimization-sprint"
               className="underline"
@@ -39,10 +34,10 @@ export default function Hero() {
               Data Analytics Dashboards,
             </Link>{' '}
             and{' '}
-            <Link href="/services/shopify-speed-optimization-sprint" className="underline">
+            <Link href="/services/shopify-speed-optimization-sprint" className="underline lg:mr-6">
               Web Performance Tuning
             </Link>
-            <br />— for teams that already have traffic but need more revenue.
+            — for teams that already have traffic but need more revenue.
           </p>
           <div className="mx-auto flex w-full flex-row items-start justify-center gap-4">
             <div>

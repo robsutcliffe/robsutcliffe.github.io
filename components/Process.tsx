@@ -39,39 +39,44 @@ const Process = ({ stages }: ProcessProps) => {
   }
 
   return (
-    <div className="not-prose mt-4 mb-8">
+    <div className="not-prose mt-4 mb-8 -ml-2 sm:ml-0">
       <div className="space-y-0">
         {stages.map((stage, index) => (
-          <div key={index} className="relative flex pb-6 last:pb-0">
+          <div key={index} className="relative flex pb-4 last:pb-0">
             {/* Line connecting circles */}
             {index !== stages.length - 1 && (
               <div
-                className="absolute top-12 left-6 -ml-px h-full w-[1px] bg-blue-800/50"
+                className="absolute top-8 left-4 -ml-px h-full w-[1px] bg-blue-700 sm:top-12 sm:left-6"
                 aria-hidden="true"
               />
             )}
 
             {/* Circle with number */}
-            <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-1 border-blue-800 bg-yellow-50 text-blue-800">
+            <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-800 text-yellow-50 sm:h-12 sm:w-12 sm:border-1 sm:border-blue-700 sm:bg-yellow-50 sm:text-blue-800">
               {stage.number}
             </div>
 
-            <div className="mt-6 -mr-3 h-[1px] w-9 bg-blue-800/50" />
+            <div className="mt-4 -mr-3 h-[1px] w-4 bg-blue-700 sm:mt-6 sm:w-9" />
 
             {/* Content */}
-            <div className="pt-3">
-              <h3 className="mb-4 pl-7 text-base font-bold text-blue-800">{stage.title}</h3>
-              <ul className="mb-3 space-y-2 text-sm">
+            <div>
+              <h3 className="py-1 pl-5 text-base leading-6 font-extrabold text-blue-800 sm:py-0 sm:pl-7 sm:leading-12">
+                {stage.title}
+              </h3>
+              <ul className="mt-2 mb-2 space-y-2 text-base sm:mt-0">
                 {stage.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="flex items-center gap-4 text-blue-800/80">
-                    <span className="ml-1 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-800" />
+                  <li
+                    key={itemIndex}
+                    className="flex items-center gap-2 leading-5 text-blue-800/80 sm:gap-4 sm:leading-6"
+                  >
+                    <span className="ml-2 h-1 w-1 shrink-0 rounded-full bg-blue-800" />
                     <span>{parseMarkdown(item)}</span>
                   </li>
                 ))}
               </ul>
               {stage.outcome && (
-                <div className="bg-white px-4 py-2">
-                  <p className="text-sm font-medium text-blue-800">
+                <div className="-ml-3 bg-yellow-200/30 py-2 pl-8 sm:pl-10">
+                  <p className="text-base leading-6 font-medium text-blue-800 sm:leading-8">
                     {parseMarkdown(stage.outcome)}
                   </p>
                 </div>

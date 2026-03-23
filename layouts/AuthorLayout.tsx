@@ -15,7 +15,9 @@ export default function AuthorLayout({ children, content }: Props) {
     <>
       <div className="divide-y divide-gray-200">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-blue-800">About</h1>
+          <h1 className="text-3xl font-semibold text-blue-800 md:text-5xl lg:leading-[3.75rem]">
+            About
+          </h1>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8">
           <div className="flex flex-col items-center space-x-2 pt-8">

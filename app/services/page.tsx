@@ -17,15 +17,15 @@ export default function ServicesPage() {
       <SectionContainer>
         <article>
           <PageTitle>Services</PageTitle>
-          <p className="max-w-3xl py-3 text-base text-blue-800 lg:text-lg">
+          <p className="mb-4 max-w-3xl text-sm leading-5 text-blue-800 sm:text-base sm:leading-6 md:leading-8 lg:text-lg">
             <i className="font-bold">
               I help Shopify brands ship focused UX, performance, and analytics improvements
             </i>{' '}
             that move key numbers like conversion rate, AOV, and speed—without a full rebuild.
           </p>
           <div>
-            <div className="container py-6">
-              <div className="-m-6 flex flex-wrap">
+            <div className="container py-4">
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 {posts.map((post) => (
                   <Card
                     key={post.title}

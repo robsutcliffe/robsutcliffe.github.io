@@ -71,7 +71,7 @@ export default function Menu() {
           backgroundColor: 'rgba(8, 4, 23, 0)',
         },
       }}
-      className={`${open ? 'pointer-events-auto' : 'pointer-events-none'} absolute top-0 right-0 bottom-0 left-36 z-30 m-2 overflow-hidden md:m-4 lg:m-6`}
+      className={`${open ? 'pointer-events-auto' : 'pointer-events-none'} absolute top-0 right-0 bottom-0 left-36 z-30 m-4 overflow-hidden`}
     >
       <div className="flex h-full w-full flex-col">
         <MenuTop open={open} hover={hover} setHover={setHover} setOpen={setOpen} />

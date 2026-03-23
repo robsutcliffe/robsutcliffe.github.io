@@ -40,7 +40,7 @@ export default function Calendly() {
           <h2 className="mb-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Book a 30 minute strategy call
           </h2>
-          <p className="text-lg text-yellow-100/80">
+          <p className="text-lg text-yellow-200">
             Let's discuss how we can help you achieve your goals.
           </p>
           <div

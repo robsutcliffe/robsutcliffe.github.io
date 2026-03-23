@@ -83,12 +83,12 @@ export default function ListLayoutWithTags({
     <SectionContainer>
       <article>
         <PageTitle>Insights</PageTitle>
-        <p className="max-w-3xl py-3 text-base text-blue-800 lg:text-lg">
+        <p className="mb-4 max-w-3xl text-sm leading-5 text-blue-800 sm:text-base sm:leading-6 md:leading-8 lg:text-lg">
           <i className="font-bold">Short, practical pieces from real client work</i>: experiments
           that worked, things that didn’t, and the dashboards, interfaces, and flows that actually
           changed behaviour.
         </p>
-        <div className="my-12 flex flex-col border-t-1 border-blue-600 hover:border-blue-800">
+        <div className="shadow-inset-t my-8 flex flex-col">
           {displayPosts.map((post) => {
             const { path, date, title, summary, tags, slug: postSlug } = post
             const tag = tags && tags.length > 0 ? slug(tags[0]) : 'insights'

@@ -16,7 +16,7 @@ const Tabs = ({ items }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <div className="not-prose mt-4 mb-8">
+    <div className="mt-4 mb-8">
       {/* Mobile Accordion */}
       <div className="space-y-2 md:hidden">
         {items.map((item, index) => {
@@ -67,7 +67,7 @@ const Tabs = ({ items }: TabsProps) => {
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <div className="prose prose-sm max-w-none p-6">{item.content}</div>
+                    <div className="max-w-none p-6">{item.content}</div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -90,7 +90,7 @@ const Tabs = ({ items }: TabsProps) => {
                 role="tab"
                 aria-selected={isSelected}
                 aria-controls={contentId}
-                className={`px-6 py-4 text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                className={`px-6 text-sm leading-12 font-bold whitespace-nowrap uppercase transition-all duration-200 ${
                   isSelected
                     ? 'bg-blue-500 text-white'
                     : 'text-blue-800 hover:bg-blue-500 hover:text-white'
@@ -102,7 +102,7 @@ const Tabs = ({ items }: TabsProps) => {
             )
           })}
         </div>
-        <div className="relative overflow-hidden border border-blue-800/50 bg-white p-6 transition duration-300">
+        <div className="shadow-inset-all tabs relative overflow-hidden bg-white p-4 px-6 transition duration-300">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -113,7 +113,7 @@ const Tabs = ({ items }: TabsProps) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.2 }}
-              className="prose prose-sm max-w-none"
+              className="max-w-none"
             >
               {items[activeTab]?.content}
             </motion.div>

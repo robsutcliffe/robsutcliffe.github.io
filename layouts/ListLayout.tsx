@@ -89,7 +89,9 @@ export default function ListLayout({
     <>
       <div className="divide-y divide-gray-200">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-blue-800">{title}</h1>
+          <h1 className="text-3xl font-semibold text-blue-800 md:text-5xl lg:leading-[3.75rem]">
+            {title}
+          </h1>
           <div className="relative max-w-lg">
             <label>
               <span className="sr-only">Search articles</span>
