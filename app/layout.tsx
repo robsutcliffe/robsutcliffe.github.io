@@ -73,6 +73,7 @@ const bwQuintaPro = localFont({
   ],
   display: 'swap',
   variable: '--font-bw-quinta-pro',
+  adjustFontFallback: 'Arial',
 })
 
 const bwDarius = localFont({
@@ -140,6 +141,7 @@ const bwDarius = localFont({
   ],
   display: 'swap',
   variable: '--font-bw-darius',
+  adjustFontFallback: 'Times New Roman',
 })
 
 export const metadata: Metadata = {
@@ -203,6 +205,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           rel="preload"
           href="/static/fonts/Bw Quinta Pro/Regular/Bw Quinta Pro - Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/static/fonts/Bw Darius/Regular/Bw Darius - Regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

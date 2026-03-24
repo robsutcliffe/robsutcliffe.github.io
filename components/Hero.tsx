@@ -79,19 +79,24 @@ export default function Hero() {
       <div className="bg-primary absolute z-10 m-4 ml-19 h-24 px-4 py-8 sm:py-4 md:ml-23 md:px-6 lg:m-6 lg:ml-27">
         <TextLogo color="#fff" />
       </div>
-      <div className="absolute top-1/2 left-32 w-full -translate-y-1/2 px-2 pt-20 md:w-min md:px-4 md:pt-26 lg:px-6">
-        <h2 className="w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-left font-serif text-2xl leading-normal font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-3xl md:px-12 md:text-4xl md:whitespace-nowrap lg:text-5xl">
-          Your traffic is there. <br />
-          Your conversions aren't.
-          <br />I find out why and fix it.
-        </h2>
-        <p className="w-fit bg-blue-800/50 px-6 pb-6 !font-sans text-sm leading-6 tracking-wide text-cyan-200 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:max-w-2/3 sm:text-base md:max-w-4/5 md:px-12 md:text-lg md:leading-7">
-          <Link href="/services/shopify-conversion-rate-optimization-sprint" className="underline">
-            CRO sprints
-          </Link>
-          , data-driven UX audits, and dashboard readability <br />— for teams that already have
-          traffic but need more revenue.
-        </p>
+      <div className="absolute top-1/2 left-32 flex w-full -translate-y-1/2 flex-col px-2 pt-20 md:w-min md:px-4 md:pt-26 lg:px-6">
+        <div className="flex min-h-[12rem] flex-col justify-center sm:min-h-[14rem] md:min-h-[16rem] lg:min-h-[20rem]">
+          <h2 className="w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-left font-serif text-2xl leading-normal font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-3xl md:px-12 md:text-4xl md:whitespace-nowrap lg:text-5xl">
+            Your traffic is there. <br />
+            Your conversions aren't.
+            <br />I find out why and fix it.
+          </h2>
+          <p className="w-fit bg-blue-800/50 px-6 pb-6 !font-sans text-sm leading-6 tracking-wide text-cyan-200 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:max-w-2/3 sm:text-base md:max-w-4/5 md:px-12 md:text-lg md:leading-7">
+            <Link
+              href="/services/shopify-conversion-rate-optimization-sprint"
+              className="underline"
+            >
+              CRO sprints
+            </Link>
+            , data-driven UX audits, and dashboard readability <br />— for teams that already have
+            traffic but need more revenue.
+          </p>
+        </div>
         <div className="flex w-fit flex-col justify-start bg-blue-800/50 px-6 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:flex-row sm:py-0 md:gap-2 lg:gap-4">
           <div className="pb-4 lg:pb-6">
             <Button
