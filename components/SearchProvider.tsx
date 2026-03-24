@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import { slug as slugger } from 'github-slugger'
 import dynamic from 'next/dynamic'
 
+import 'pliny/search/algolia.css'
+
 const KBarProvider = dynamic(() => import('kbar').then((mod) => mod.KBarProvider), { ssr: false })
 
 const ActionRegistration = dynamic(() => Promise.resolve(InternalActionRegistration), {

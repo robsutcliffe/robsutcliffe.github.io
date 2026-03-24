@@ -81,7 +81,7 @@ export default function Hero() {
       </div>
       <div className="absolute top-1/2 left-32 flex w-full -translate-y-1/2 flex-col px-2 pt-20 md:w-min md:px-4 md:pt-26 lg:px-6">
         <div className="flex min-h-[12rem] flex-col justify-center sm:min-h-[14rem] md:min-h-[16rem] lg:min-h-[20rem]">
-          <h2 className="w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-left font-serif text-2xl leading-normal font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:text-3xl md:px-12 md:text-4xl md:whitespace-nowrap lg:text-5xl">
+          <h2 className="block h-[4.5rem] w-fit bg-blue-800/50 px-6 pt-4 pb-0 text-left font-serif text-2xl leading-normal font-light tracking-tighter text-white [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:h-[5.625rem] sm:text-3xl md:h-[6.75rem] md:px-12 md:text-4xl md:whitespace-nowrap lg:h-[9rem] lg:text-5xl">
             Your traffic is there. <br />
             Your conversions aren't.
             <br />I find out why and fix it.

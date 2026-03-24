@@ -17,7 +17,7 @@ export default function Hero() {
       <CircleBackground />
       <div className="absolute top-22 bottom-0 flex w-full items-center sm:top-26 md:top-28 lg:top-30">
         <div className="z-10 flex min-h-[16rem] w-full flex-col justify-center gap-4 px-4 text-center sm:min-h-[22rem] md:min-h-[26rem] lg:min-h-[30rem]">
-          <h2 className="!my-0 text-2xl leading-8 font-normal tracking-tight text-yellow-200 sm:text-4xl sm:leading-12 md:text-5xl md:leading-14 lg:text-6xl lg:leading-16">
+          <h2 className="!my-0 block h-[6rem] text-2xl leading-8 font-normal tracking-tight text-yellow-200 sm:h-[9rem] sm:text-4xl sm:leading-12 md:h-[10.5rem] md:text-5xl md:leading-14 lg:h-[12rem] lg:text-6xl lg:leading-16">
             Your traffic is there. <br />
             Your conversions aren't.
             <br />I find out why and fix it.

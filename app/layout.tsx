@@ -1,12 +1,10 @@
 import 'css/tailwind.css'
-import 'pliny/search/algolia.css'
 
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchConfig } from 'pliny/search'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
-import { SearchProvider } from '@/components/SearchProvider'
 import { Metadata } from 'next'
 import MenuBar from '@/components/MenuBar'
 import Link from 'next/link'
@@ -16,7 +14,11 @@ import Script from 'next/script'
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
 import ScrollToTop from '@/components/ScrollToTop'
-import { Suspense } from 'react'
+import { Suspense, lazy } from 'react'
+
+const SearchProvider = lazy(() =>
+  import('@/components/SearchProvider').then((mod) => ({ default: mod.SearchProvider }))
+)
 
 const bwQuintaPro = localFont({
   src: [
