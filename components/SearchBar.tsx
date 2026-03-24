@@ -8,6 +8,7 @@ import MultiIcon from '@/components/MultiIcon'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function SearchBar() {
+  const [mounted, setMounted] = useState(false)
   const [open, setOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [windowWidth, setWindowWidth] = useState(0)
@@ -15,6 +16,7 @@ export default function SearchBar() {
   const searchContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
@@ -75,6 +77,7 @@ export default function SearchBar() {
 
   const getVariant = () => {
     if (open) return 'open'
+    if (!mounted) return 'search'
     if (scrollY > 50 || windowWidth < 1200) return 'menu'
     return 'search'
   }
@@ -140,7 +143,7 @@ export default function SearchBar() {
                                     <AnimatedBackground
                                       isHovered={false}
                                       stroke="#061E2A"
-                                      opacity="0.3"
+                                      opacity={0.3}
                                     />
                                     <div className="relative z-10 flex space-x-2 text-lg">
                                       <div className="block">

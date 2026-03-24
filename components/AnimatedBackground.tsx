@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const AnimatedBackground = ({
   stroke = '#136988',
-  opacity = '0.3',
+  opacity = 0.3,
   isHovered = true,
   className = 'z-0',
 }) => {
@@ -42,7 +42,7 @@ const AnimatedBackground = ({
                   strokeWidth="1"
                   strokeOpacity={opacity}
                   initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
+                  animate={{ pathLength: 1, opacity: Number(opacity) }}
                   exit={{ pathLength: 0, opacity: 0 }}
                   style={{ originY: '0.5', scaleY: 1 }}
                   transition={{

@@ -199,6 +199,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <link
+          rel="preload"
+          href="/static/fonts/Bw Quinta Pro/Regular/Bw Quinta Pro - Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/static/fonts/Bw Quinta Pro/Bold/Bw Quinta Pro - Bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link rel="preconnect" href="https://plausible.io" />
         <script async defer data-domain="firefields.com" src="https://plausible.io/js/script.js" />
       </head>
       <body className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased">

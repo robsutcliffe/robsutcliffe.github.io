@@ -14,20 +14,18 @@ const colorMap = {
   green: 'group-hover:text-green-300 group-focus:text-green-300',
 }
 
-const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailable, cost }) => {
+const Card = ({
+  title,
+  description,
+  imgSrc,
+  blueImgSrc,
+  href,
+  color = 'yellow',
+  nextAvailable,
+  cost,
+  priority = false,
+}) => {
   const [isHovered, setIsHovered] = useState(false)
-  const [hasBlueImg, setHasBlueImg] = useState(false)
-
-  const blueImgSrc = imgSrc?.replace(/\.(webp|png|jpg|jpeg)$/, '-blue.$1')
-
-  useEffect(() => {
-    if (blueImgSrc) {
-      const img = new window.Image()
-      img.src = blueImgSrc
-      img.onload = () => setHasBlueImg(true)
-      img.onerror = () => setHasBlueImg(false)
-    }
-  }, [blueImgSrc])
 
   const hoverTextColor = 'group-hover:text-blue-900 group-focus:text-blue-900' // colorMap[color] || colorMap.yellow
 
@@ -63,8 +61,9 @@ const Card = ({ title, description, imgSrc, href, color = 'yellow', nextAvailabl
             className="h-full w-full object-cover object-center transition duration-300"
             width={544}
             height={306}
+            priority={priority}
           />
-          {hasBlueImg && (
+          {blueImgSrc && (
             <Image
               alt={title}
               src={blueImgSrc}

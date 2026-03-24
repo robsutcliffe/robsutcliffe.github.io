@@ -22,16 +22,18 @@ export default function Home({ posts, services, caseStudies }) {
           </div>
           <div className="w-fit max-w-3xl md:max-w-4xl lg:pl-12 xl:max-w-5xl">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              {services.slice(0, 2).map((service) => (
+              {services.slice(0, 2).map((service, index) => (
                 <Card
                   key={service.title}
                   title={service.title}
                   color="yellow"
                   description={service.summary || ''}
                   imgSrc={service.images?.[0] || ''}
+                  blueImgSrc={service.images?.[0]?.replace(/\.(webp|png|jpg|jpeg)$/, '-blue.$1')}
                   href={`/${service.path}`}
                   nextAvailable={service.nextAvailable}
                   cost={service.cost}
+                  priority={index === 0}
                 />
               ))}
             </div>

@@ -26,15 +26,17 @@ export default function ServicesPage() {
           <div>
             <div className="container py-4">
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                {posts.map((post) => (
+                {posts.map((post, index) => (
                   <Card
                     key={post.title}
                     title={post.title}
                     description={post.summary || ''}
                     imgSrc={post.images?.[0] || ''}
+                    blueImgSrc={post.images?.[0]?.replace(/\.(webp|png|jpg|jpeg)$/, '-blue.$1')}
                     href={`/${post.path}`}
                     nextAvailable={post.nextAvailable}
                     cost={post.cost}
+                    priority={index < 2}
                   />
                 ))}
               </div>

@@ -47,7 +47,7 @@ export default function Hero() {
                 noPadding={true}
                 outline={true}
                 extraClasses="!text-white !bg-blue-800"
-                lineOpacity="0.2"
+                lineOpacity={0.2}
                 noHeight={true}
               />
             </div>
@@ -57,7 +57,7 @@ export default function Hero() {
                 text="Book a call"
                 noPadding={true}
                 extraClasses="bg-red-500"
-                lineOpacity="0.2"
+                lineOpacity={0.2}
                 noHeight={true}
               />
             </div>

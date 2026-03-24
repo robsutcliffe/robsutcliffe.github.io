@@ -99,7 +99,7 @@ export default function Hero() {
               text="View services"
               outline={true}
               extraClasses="hover:bg-red-500"
-              lineOpacity="0.2"
+              lineOpacity={0.2}
               noHeight={true}
             />
           </div>
@@ -108,7 +108,7 @@ export default function Hero() {
               href="/contact"
               text="Book a call"
               extraClasses="bg-red-500"
-              lineOpacity="0.2"
+              lineOpacity={0.2}
               noHeight={true}
             />
           </div>

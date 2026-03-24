@@ -11,7 +11,7 @@ const CtaButton = ({ text }: CtaButtonProps) => {
         href="/contact"
         text={text}
         extraClasses="bg-red-500 justify-start px-0"
-        lineOpacity="0.2"
+        lineOpacity={0.2}
         noHeight={true}
       />
     </div>

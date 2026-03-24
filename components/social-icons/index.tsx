@@ -56,7 +56,7 @@ const SocialIcon = ({ kind, href, size = 4 }: SocialIconProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <AnimatedBackground isHovered={isHovered} opacity="0.3" stroke="#061E2A" />
+      <AnimatedBackground isHovered={isHovered} opacity={0.3} stroke="#061E2A" />
       <div className="relative z-10 flex items-center">
         <SocialSvg className={`fill-current text-white h-${size} w-${size}`} />
         <motion.span

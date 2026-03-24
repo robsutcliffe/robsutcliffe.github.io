@@ -103,10 +103,14 @@ export default function ContactForm() {
               <div className="flex flex-1 flex-col gap-4">
                 {/* Full Name */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                  <label
+                    htmlFor="full_name"
+                    className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500"
+                  >
                     Full Name
                   </label>
                   <input
+                    id="full_name"
                     type="text"
                     name="full_name"
                     required
@@ -119,10 +123,14 @@ export default function ContactForm() {
 
                 {/* Email */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                  <label
+                    htmlFor="email"
+                    className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500"
+                  >
                     Email
                   </label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     required
@@ -135,10 +143,14 @@ export default function ContactForm() {
 
                 {/* Phone Number */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                  <label
+                    htmlFor="phone_number"
+                    className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500"
+                  >
                     Phone Number
                   </label>
                   <input
+                    id="phone_number"
                     type="tel"
                     name="phone_number"
                     value={formData.phone_number}
@@ -150,17 +162,19 @@ export default function ContactForm() {
 
                 {/* Budget */}
                 <fieldset className="group flex flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                  <legend className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
                     Budget
-                  </label>
+                  </legend>
                   <div className="flex min-h-16 flex-wrap items-center gap-x-4 gap-y-4 border border-blue-700 bg-transparent p-5 px-6 focus-within:border-blue-500">
                     {['£2k-£5k', '£5k-£10k', '£10k-£20k', '£20k+'].map((range) => (
                       <label
                         key={range}
+                        htmlFor={`budget-${range}`}
                         className="flex cursor-pointer items-center gap-2 text-sm text-blue-700"
                       >
                         <div className="relative flex h-5 w-5 items-center justify-center">
                           <input
+                            id={`budget-${range}`}
                             type="radio"
                             name="budget"
                             value={range}
@@ -181,10 +195,14 @@ export default function ContactForm() {
               {/* Right Column - Message */}
               <div className="flex flex-1 flex-col">
                 <fieldset className="group flex h-full flex-col gap-0">
-                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                  <label
+                    htmlFor="message"
+                    className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500"
+                  >
                     Message
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     required
                     value={formData.message}
