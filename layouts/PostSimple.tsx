@@ -1,4 +1,5 @@
-import { ReactNode } from 'react'
+import dynamic from 'next/dynamic'
+import { ReactNode, Suspense, lazy } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, CaseStudy, Service, Authors } from 'contentlayer/generated'
 import Comments from '@/components/Comments'
@@ -7,7 +8,8 @@ import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import Calendly from '@/components/Calendly'
+
+const Calendly = lazy(() => import('@/components/Calendly'))
 
 interface LayoutProps {
   content: CoreContent<Blog | CaseStudy | Service>
@@ -63,7 +65,9 @@ export default function PostLayout({ content, next, prev, authorDetails, childre
           </div>
         </article>
       </SectionContainer>
-      <Calendly />
+      <Suspense fallback={null}>
+        <Calendly />
+      </Suspense>
     </>
   )
 }

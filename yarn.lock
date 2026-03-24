@@ -7651,6 +7651,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kbar@npm:latest":
+  version: 0.1.0-beta.48
+  resolution: "kbar@npm:0.1.0-beta.48"
+  dependencies:
+    "@radix-ui/react-portal": ^1.0.1
+    fast-equals: ^2.0.3
+    fuse.js: ^6.6.2
+    react-virtual: ^2.8.2
+    tiny-invariant: ^1.2.0
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 079cdb5c1a72718a826589d195fb38ad083b41334c745a4e1796a2ca2bdf03dc015623d666d5b50c6a7dafb0232ca1fcdf3b422d28046d21a79b98a32de1f417
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.5.4":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -11434,6 +11450,7 @@ __metadata:
     gray-matter: ^4.0.3
     husky: ^9.1.7
     image-size: ^2.0.2
+    kbar: latest
     lint-staged: ^16.2.7
     next: ^16.1.1
     next-contentlayer2: ^0.5.8
