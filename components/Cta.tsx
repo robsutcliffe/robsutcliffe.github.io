@@ -16,7 +16,7 @@ export default function CTA() {
           </p>
           <Link
             href="/contact"
-            className="focus-ring flex h-12 items-center rounded-sm bg-red-500 px-10 text-sm font-bold text-white uppercase transition duration-300 hover:bg-red-600 sm:h-16"
+            className="focus-ring flex h-12 items-center rounded-sm bg-white px-10 text-sm font-bold text-blue-800 uppercase transition duration-300 hover:bg-blue-50 sm:h-16"
           >
             Contact Us
           </Link>

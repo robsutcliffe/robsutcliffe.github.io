@@ -218,7 +218,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting || !isFormValid}
-              className="focus-ring relative cursor-pointer overflow-hidden rounded-sm bg-red-500 px-6 py-4 font-bold text-white transition-opacity disabled:bg-gray-400 disabled:opacity-60 md:mt-2"
+              className="focus-ring relative cursor-pointer overflow-hidden rounded-sm bg-blue-950 px-6 py-4 font-bold text-white transition-opacity disabled:bg-gray-400 disabled:opacity-60 md:mt-2"
               onMouseEnter={() => !isSubmitting && isFormValid && setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >

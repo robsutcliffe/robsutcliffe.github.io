@@ -46,7 +46,6 @@ export default function Hero() {
                 text="View services"
                 noPadding={true}
                 outline={true}
-                extraClasses="!text-white !bg-blue-800"
                 lineOpacity={0.2}
                 noHeight={true}
               />
@@ -56,7 +55,6 @@ export default function Hero() {
                 href="/contact"
                 text="Book a call"
                 noPadding={true}
-                extraClasses="bg-red-500"
                 lineOpacity={0.2}
                 noHeight={true}
               />

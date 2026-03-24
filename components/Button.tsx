@@ -34,7 +34,7 @@ export default function Button({
 
   const isLeftAligned = extraClasses?.includes('justify-start')
 
-  const linkClasses = `${outline ? 'ring ring-red-500 ring-inset' : 'bg-red-500'} focus-ring relative flex h-12 cursor-pointer flex-row items-center overflow-hidden rounded-sm py-4 text-sm font-extrabold text-white uppercase transition duration-300 sm:h-16 sm:text-base ${extraClasses}`
+  const linkClasses = `${outline ? 'bg-blue-950 text-white ring ring-white ring-inset' : 'bg-white ring ring-blue-700 ring-inset text-blue-800'} focus-ring relative flex h-12 cursor-pointer flex-row items-center overflow-hidden rounded-sm py-4 text-sm font-bold uppercase transition duration-300 sm:h-16 sm:text-base ${extraClasses}`
 
   return (
     <div
@@ -71,7 +71,7 @@ export default function Button({
                   <svg className="h-4 w-4 rotate-90" viewBox="0 0 20 20" fill="currentColor">
                     <path
                       fillRule="evenodd"
-                      fill="#ffffff"
+                      fill="#241169"
                       d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"
                       clipRule="evenodd"
                     />
