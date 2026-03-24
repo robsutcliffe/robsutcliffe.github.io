@@ -14,6 +14,7 @@ export default function BigButton({ text, href }) {
       className="group text-ff-navy relative flex h-24 w-full cursor-pointer flex-row overflow-hidden bg-white font-bold"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      aria-label={text}
     >
       {/*<AnimatedBackground isHovered={isHovered} opacity="0.1" stroke="#061E2A" />*/}
       <div className="relative z-10 flex-1 px-8 py-4 text-3xl leading-16 group-hover:underline">

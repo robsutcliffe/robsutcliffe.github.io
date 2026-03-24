@@ -223,6 +223,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link
                 href="/"
                 className="invisible absolute top-12 left-20 z-10 h-20 bg-red-500 py-6 pr-6 pl-2 md:visible"
+                aria-label="Home"
               >
                 <TextLogo color="#FDFCED" />
               </Link>

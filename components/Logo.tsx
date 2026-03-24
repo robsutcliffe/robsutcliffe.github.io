@@ -18,14 +18,12 @@ export default function Logo() {
   }, [])
 
   return (
-    <Link href="/">
+    <Link href="/" aria-label="Home">
       <motion.div
         style={{
           background: '#EE3A24',
           transformOrigin: 'top left',
         }}
-        initial={{ left: -200 }}
-        animate={{ left: 0 }}
         whileHover="hover"
         variants={{
           hover: { left: -10 },
@@ -33,7 +31,7 @@ export default function Logo() {
         transition={{ duration: 0.3, ease: 'easeOut' }}
         className={`pointer-events-auto ${
           isSticky ? 'fixed' : 'absolute'
-        } top-0 left-0 z-50 mt-8 flex h-20 items-center justify-center bg-white pl-0 text-black md:mt-8 md:mt-12`}
+        } top-0 left-0 z-50 mt-8 flex h-20 items-center justify-center bg-white pl-0 text-black md:mt-12`}
       >
         <svg
           className="mx-6"

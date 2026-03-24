@@ -43,6 +43,11 @@ export default function Button({
         <AnimatedBackground isHovered={isHovered} opacity={lineOpacity} stroke="#080417" />
         <motion.div
           className="relative z-10 flex flex-row items-center"
+          initial={{
+            gap: '0.5rem',
+            paddingLeft: '1.5rem',
+            paddingRight: '1.5rem',
+          }}
           animate={{
             gap: isHovered ? '1rem' : '0.5rem',
             paddingLeft: isHovered ? '1.25rem' : '1.5rem',

@@ -49,6 +49,7 @@ const SocialIcon = ({ kind, href, size = 4 }: SocialIconProps) => {
       target="_blank"
       rel="noopener noreferrer"
       href={href}
+      aria-label={kind}
       initial="initial"
       whileHover="hover"
       animate="initial"
@@ -56,7 +57,6 @@ const SocialIcon = ({ kind, href, size = 4 }: SocialIconProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <AnimatedBackground isHovered={isHovered} opacity="0.3" stroke="#061E2A" />
-      <span className="sr-only">{kind}</span>
       <div className="relative z-10 flex items-center">
         <SocialSvg className={`fill-current text-white h-${size} w-${size}`} />
         <motion.span
