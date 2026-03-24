@@ -1,6 +1,5 @@
 import 'css/tailwind.css'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
-import { SearchConfig } from 'pliny/search'
 import siteMetadata from '@/data/siteMetadata'
 import { Metadata } from 'next'
 import localFont from 'next/font/local'
@@ -13,11 +12,7 @@ import Link from 'next/link'
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
 import ScrollToTop from '@/components/ScrollToTop'
-import { Suspense, lazy } from 'react'
-
-const SearchProvider = lazy(() =>
-  import('@/components/SearchProvider').then((mod) => ({ default: mod.SearchProvider }))
-)
+import { Suspense } from 'react'
 
 const bwQuintaPro = localFont({
   src: [
@@ -184,19 +179,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ScrollToTop />
           </Suspense>
           <div className="flex min-h-svh flex-col justify-between font-sans">
-            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-              <Border />
-              <Link
-                href="/"
-                className="invisible absolute top-12 left-20 z-10 h-20 bg-red-500 py-6 pr-6 pl-2 md:visible"
-                aria-label="Home"
-              >
-                <TextLogo color="#FDFCED" />
-              </Link>
-              <MenuBar />
-              {/*<Header />*/}
-              <main className="mb-auto">{children}</main>
-            </SearchProvider>
+            <Border />
+            <Link
+              href="/"
+              className="invisible absolute top-12 left-20 z-10 h-20 bg-red-500 py-6 pr-6 pl-2 md:visible"
+              aria-label="Home"
+            >
+              <TextLogo color="#FDFCED" />
+            </Link>
+            <MenuBar />
+            {/*<Header />*/}
+            <main className="mb-auto">{children}</main>
             <Footer />
           </div>
         </ThemeProviders>
