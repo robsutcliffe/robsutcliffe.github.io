@@ -3,14 +3,15 @@ import 'pliny/search/algolia.css'
 
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchConfig } from 'pliny/search'
-import { SearchProvider } from '@/components/SearchProvider'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
+import { SearchProvider } from '@/components/SearchProvider'
 import { Metadata } from 'next'
 import MenuBar from '@/components/MenuBar'
 import Link from 'next/link'
 import localFont from 'next/font/local'
+import Script from 'next/script'
 
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
@@ -206,15 +207,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="font/woff2"
           crossOrigin="anonymous"
         />
-        <link
-          rel="preload"
-          href="/static/fonts/Bw Quinta Pro/Bold/Bw Quinta Pro - Bold.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         <link rel="preconnect" href="https://plausible.io" />
-        <script async defer data-domain="firefields.com" src="https://plausible.io/js/script.js" />
+        <Script
+          async
+          defer
+          data-domain="firefields.com"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased">
         {/*<div*/}

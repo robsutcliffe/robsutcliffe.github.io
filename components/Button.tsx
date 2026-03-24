@@ -34,7 +34,7 @@ export default function Button({
 
   const isLeftAligned = extraClasses?.includes('justify-start')
 
-  const linkClasses = `${outline ? 'bg-blue-950 text-white ring ring-white ring-inset' : 'bg-white ring ring-blue-700 ring-inset text-blue-800'} focus-ring relative flex h-12 cursor-pointer flex-row items-center overflow-hidden rounded-sm py-4 text-sm font-bold uppercase transition duration-300 sm:h-16 sm:text-base ${extraClasses}`
+  const linkClasses = `${outline ? 'bg-blue-800 text-white ring ring-blue-100 ring-inset' : 'bg-white ring ring-blue-700 ring-inset text-blue-800'} focus-ring relative flex h-12 cursor-pointer flex-row items-center overflow-hidden rounded-sm py-4 text-sm font-bold uppercase transition duration-300 sm:h-16 sm:text-base ${extraClasses}`
 
   return (
     <div

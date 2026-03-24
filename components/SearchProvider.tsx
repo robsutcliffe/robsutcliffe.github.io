@@ -1,9 +1,21 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { KBarProvider, useRegisterActions } from 'kbar'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import { slug as slugger } from 'github-slugger'
+import dynamic from 'next/dynamic'
+
+const KBarProvider = dynamic(() => import('kbar').then((mod) => mod.KBarProvider), { ssr: false })
+
+const ActionRegistration = dynamic(() => Promise.resolve(InternalActionRegistration), {
+  ssr: false,
+})
+
+const InternalActionRegistration = ({ actions }) => {
+  const { useRegisterActions } = require('kbar')
+  useRegisterActions(actions, [actions])
+  return null
+}
 
 export const SearchProvider = ({
   searchConfig,
@@ -67,14 +79,11 @@ export const SearchProvider = ({
   }, [defaultActions, dataLoaded, router, searchDocumentsPath, onSearchDocumentsLoad])
 
   return (
-    <KBarProvider actions={defaultActions}>
-      <ActionRegistration actions={searchActions} />
-      {children}
-    </KBarProvider>
+    <Suspense fallback={children}>
+      <KBarProvider actions={defaultActions}>
+        <ActionRegistration actions={searchActions} />
+        {children}
+      </KBarProvider>
+    </Suspense>
   )
-}
-
-const ActionRegistration = ({ actions }) => {
-  useRegisterActions(actions, [actions])
-  return null
 }
