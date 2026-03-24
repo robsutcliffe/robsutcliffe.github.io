@@ -29,7 +29,7 @@ export default function HoverLink({ href, date, title, tags, summary }) {
         </div>
         <h2 className="relative !-mt-4 -ml-12 inline-block w-fit px-6 py-4 pl-12 text-xl leading-6 font-bold text-blue-800 transition duration-300 group-hover:text-blue-900 group-focus:bg-yellow-200 group-focus:text-blue-900 md:text-2xl md:leading-8">
           <SlidingBackground isHovered={isHovered} />
-          <span className="relative z-10">{title}</span>
+          <span className="relative z-10 tracking-tight">{title}</span>
         </h2>
         <div className="prose max-w-none text-sm leading-5 text-blue-800/70 group-hover:text-blue-800 sm:text-base sm:leading-6">
           {summary}

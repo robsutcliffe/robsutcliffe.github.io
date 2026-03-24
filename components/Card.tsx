@@ -82,7 +82,7 @@ const Card = ({
         <div className="relative z-30">
           <div className="px-4 sm:px-8 sm:py-4">
             <h2
-              className={`relative -ml-4 inline-block px-4 py-4 text-xl leading-6 font-bold transition duration-300 group-focus:bg-yellow-200 sm:-ml-8 sm:pl-8 sm:text-2xl sm:leading-8 ${hoverTextColor}`}
+              className={`relative -ml-4 inline-block px-4 py-4 text-xl leading-6 font-bold tracking-tight transition duration-300 group-focus:bg-yellow-200 sm:-ml-8 sm:pl-8 sm:text-2xl sm:leading-8 ${hoverTextColor}`}
             >
               <SlidingBackground isHovered={isHovered} />
               <span className="relative z-10">{title}</span>

@@ -9,7 +9,7 @@ export default function Logo() {
         style={{
           background: '#EE3A24',
         }}
-        className="pointer-events-auto absolute top-0 left-0 z-50 mt-8 flex h-20 items-center justify-center bg-red-500 pl-0 text-black sm:fixed md:mt-12"
+        className="pointer-events-auto absolute top-0 left-0 z-50 mt-8 flex h-20 items-center justify-center bg-red-500 pl-0 text-black md:mt-12 lg:fixed"
       >
         <svg
           className="mx-6"

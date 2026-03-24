@@ -1,15 +1,14 @@
 import 'css/tailwind.css'
-
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchConfig } from 'pliny/search'
-import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
-import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
-import MenuBar from '@/components/MenuBar'
-import Link from 'next/link'
 import localFont from 'next/font/local'
 import Script from 'next/script'
+import Footer from '@/components/Footer'
+import { ThemeProviders } from './theme-providers'
+import MenuBar from '@/components/MenuBar'
+import Link from 'next/link'
 
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
@@ -28,11 +27,6 @@ const bwQuintaPro = localFont({
       style: 'normal',
     },
     {
-      path: '../public/static/fonts/Bw Quinta Pro/Light Italic/Bw Quinta Pro - Light Italic.woff2',
-      weight: '300',
-      style: 'italic',
-    },
-    {
       path: '../public/static/fonts/Bw Quinta Pro/Regular/Bw Quinta Pro - Regular.woff2',
       weight: '400',
       style: 'normal',
@@ -48,11 +42,6 @@ const bwQuintaPro = localFont({
       style: 'normal',
     },
     {
-      path: '../public/static/fonts/Bw Quinta Pro/Medium Italic/Bw Quinta Pro - Medium Italic.woff2',
-      weight: '500',
-      style: 'italic',
-    },
-    {
       path: '../public/static/fonts/Bw Quinta Pro/Bold/Bw Quinta Pro - Bold.woff2',
       weight: '700',
       style: 'normal',
@@ -60,16 +49,6 @@ const bwQuintaPro = localFont({
     {
       path: '../public/static/fonts/Bw Quinta Pro/Bold Italic/Bw Quinta Pro - Bold Italic.woff2',
       weight: '700',
-      style: 'italic',
-    },
-    {
-      path: '../public/static/fonts/Bw Quinta Pro/Black/Bw Quinta Pro - Black.woff2',
-      weight: '900',
-      style: 'normal',
-    },
-    {
-      path: '../public/static/fonts/Bw Quinta Pro/Black Italic/Bw Quinta Pro - Black Italic.woff2',
-      weight: '900',
       style: 'italic',
     },
   ],
@@ -84,11 +63,6 @@ const bwDarius = localFont({
       path: '../public/static/fonts/Bw Darius/Light/Bw Darius - Light.woff2',
       weight: '300',
       style: 'normal',
-    },
-    {
-      path: '../public/static/fonts/Bw Darius/Light Italic/Bw Darius - Light Italic.woff2',
-      weight: '300',
-      style: 'italic',
     },
     {
       path: '../public/static/fonts/Bw Darius/Regular/Bw Darius - Regular.woff2',
@@ -106,11 +80,6 @@ const bwDarius = localFont({
       style: 'normal',
     },
     {
-      path: '../public/static/fonts/Bw Darius/Medium Italic/Bw Darius - Medium Italic.woff2',
-      weight: '500',
-      style: 'italic',
-    },
-    {
       path: '../public/static/fonts/Bw Darius/Bold/Bw Darius - Bold.woff2',
       weight: '700',
       style: 'normal',
@@ -124,21 +93,6 @@ const bwDarius = localFont({
       path: '../public/static/fonts/Bw Darius/ExtraBold/Bw Darius - ExtraBold.woff2',
       weight: '800',
       style: 'normal',
-    },
-    {
-      path: '../public/static/fonts/Bw Darius/ExtraBold Italic/Bw Darius - ExtraBold Italic.woff2',
-      weight: '800',
-      style: 'italic',
-    },
-    {
-      path: '../public/static/fonts/Bw Darius/Black/Bw Darius - Black.woff2',
-      weight: '900',
-      style: 'normal',
-    },
-    {
-      path: '../public/static/fonts/Bw Darius/Black Italic/Bw Darius - Black Italic.woff2',
-      weight: '900',
-      style: 'italic',
     },
   ],
   display: 'swap',
@@ -204,27 +158,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-        <link
-          rel="preload"
-          href="/static/fonts/Bw Quinta Pro/Regular/Bw Quinta Pro - Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/static/fonts/Bw Darius/Regular/Bw Darius - Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         <link rel="preconnect" href="https://plausible.io" />
         <Script
           async
           defer
           data-domain="firefields.com"
           src="https://plausible.io/js/script.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </head>
       <body className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased">
