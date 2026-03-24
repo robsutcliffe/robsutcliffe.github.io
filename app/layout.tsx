@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 import { ThemeProviders } from './theme-providers'
 import MenuBar from '@/components/MenuBar'
 import Link from 'next/link'
+import { LazyMotion, domAnimation } from 'framer-motion'
 
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
@@ -174,24 +175,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/*  }}*/}
         {/*/>*/}
         <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <Suspense fallback={null}>
-            <ScrollToTop />
-          </Suspense>
-          <div className="flex min-h-svh flex-col justify-between font-sans">
-            <Border />
-            <Link
-              href="/"
-              className="invisible absolute top-12 left-20 z-10 h-20 bg-red-500 py-6 pr-6 pl-2 md:visible"
-              aria-label="Home"
-            >
-              <TextLogo color="#FDFCED" />
-            </Link>
-            <MenuBar />
-            {/*<Header />*/}
-            <main className="mb-auto">{children}</main>
-            <Footer />
-          </div>
+          <LazyMotion features={domAnimation}>
+            <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+            <Suspense fallback={null}>
+              <ScrollToTop />
+            </Suspense>
+            <div className="flex min-h-svh flex-col justify-between font-sans">
+              <Border />
+              <Link
+                href="/"
+                className="invisible absolute top-12 left-20 z-10 h-20 bg-red-500 py-6 pr-6 pl-2 md:visible"
+                aria-label="Home"
+              >
+                <TextLogo color="#FDFCED" />
+              </Link>
+              <MenuBar />
+              {/*<Header />*/}
+              <main className="mb-auto">{children}</main>
+              <Footer />
+            </div>
+          </LazyMotion>
         </ThemeProviders>
       </body>
     </html>
