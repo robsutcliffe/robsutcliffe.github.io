@@ -200,12 +200,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <script async defer data-domain="firefields.com" src="https://plausible.io/js/script.js" />
-        <link
-          rel="preload"
-          as="image"
-          href="/static/images/hero/hero.webp"
-          {...({ fetchPriority: 'high' } as any)}
-        />
       </head>
       <body className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased">
         {/*<div*/}

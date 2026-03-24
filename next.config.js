@@ -7,7 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' https://plausible.io;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://plausible.io;
   style-src 'self' 'unsafe-inline';
   media-src 'none';
   connect-src * https://plausible.io;

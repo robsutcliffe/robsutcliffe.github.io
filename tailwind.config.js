@@ -151,13 +151,6 @@ module.exports = {
               fontSize: theme('fontSize.3xl'),
               lineHeight: theme('lineHeight.12'),
               letterSpacing: '-0.03em',
-              '@screen md': {
-                fontSize: theme('fontSize.5xl'),
-                lineHeight: '3.25rem',
-              },
-              '@screen lg': {
-                lineHeight: theme('lineHeight.16'),
-              },
             },
             h2: {
               marginTop: theme('spacing.8'),
