@@ -1,19 +1,21 @@
 import 'css/tailwind.css'
+import dynamic from 'next/dynamic'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import siteMetadata from '@/data/siteMetadata'
 import { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Script from 'next/script'
-import Footer from '@/components/Footer'
 import { ThemeProviders } from './theme-providers'
-import MenuBar from '@/components/MenuBar'
 import Link from 'next/link'
 import { LazyMotion, domAnimation } from 'framer-motion'
 
 import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
-import ScrollToTop from '@/components/ScrollToTop'
-import { Suspense } from 'react'
+import { Suspense, lazy } from 'react'
+
+const MenuBar = lazy(() => import('@/components/MenuBar'))
+const Footer = lazy(() => import('@/components/Footer'))
+const ScrollToTop = lazy(() => import('@/components/ScrollToTop'))
 
 const bwQuintaPro = localFont({
   src: [
@@ -154,13 +156,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-        <link rel="preconnect" href="https://plausible.io" />
         <Script
-          async
-          defer
           data-domain="firefields.com"
           src="https://plausible.io/js/script.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
       </head>
       <body className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased">
@@ -189,10 +188,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               >
                 <TextLogo color="#FDFCED" />
               </Link>
-              <MenuBar />
+              <Suspense fallback={null}>
+                <MenuBar />
+              </Suspense>
               {/*<Header />*/}
               <main className="mb-auto">{children}</main>
-              <Footer />
+              <Suspense fallback={null}>
+                <Footer />
+              </Suspense>
             </div>
           </LazyMotion>
         </ThemeProviders>

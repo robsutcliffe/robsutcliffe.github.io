@@ -1,11 +1,13 @@
+import dynamic from 'next/dynamic'
 import { allCaseStudies } from 'contentlayer/generated'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import Card from '@/components/Card'
 import { genPageMetadata } from 'app/seo'
 import SectionContainer from '@/components/SectionContainer'
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import PageTitle from '@/components/PageTitle'
-import Cta from '@/components/Cta'
+
+const Cta = lazy(() => import('@/components/Cta'))
 
 export const metadata = genPageMetadata({ title: 'Case Studies' })
 
@@ -40,7 +42,9 @@ export default function CaseStudiesPage() {
           </div>
         </article>
       </SectionContainer>
-      <Cta />
+      <Suspense fallback={null}>
+        <Cta />
+      </Suspense>
     </>
   )
 }

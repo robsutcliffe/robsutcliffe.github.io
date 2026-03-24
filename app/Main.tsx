@@ -1,17 +1,26 @@
-import DotsHero from '@/components/DotsHero'
+'use client'
+
+import dynamic from 'next/dynamic'
 import { slug } from 'github-slugger'
 import Card from '@/components/Card'
 import HoverLink from '@/components/HoverLink'
 import Button from '@/components/Button'
-import React from 'react'
-import Cta from '@/components/Cta'
+import React, { Suspense } from 'react'
+
+const DotsHero = dynamic(() => import('@/components/DotsHero'), {
+  ssr: false,
+  loading: () => <div className="m-4 h-[calc(100svh-2rem)] bg-blue-800 md:mb-0" />,
+})
+const Cta = dynamic(() => import('@/components/Cta'), { ssr: false })
 
 const MAX_DISPLAY = 3
 
 export default function Home({ posts, services, caseStudies }) {
   return (
     <>
-      <DotsHero />
+      <Suspense fallback={<div className="m-4 h-[calc(100svh-2rem)] bg-blue-800 md:mb-0" />}>
+        <DotsHero />
+      </Suspense>
       <div>
         <div className="mx-8 lg:ml-26 xl:mr-26 xl:ml-36">
           <div className="flex h-24 flex-row items-center lg:gap-4">
@@ -98,7 +107,9 @@ export default function Home({ posts, services, caseStudies }) {
           <Button href="/case-studies" text="View All Case Studies" noPadding={true} />
         </div>
       </div>
-      <Cta />
+      <Suspense fallback={null}>
+        <Cta />
+      </Suspense>
     </>
   )
 }

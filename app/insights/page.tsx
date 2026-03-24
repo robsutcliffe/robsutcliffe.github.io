@@ -1,8 +1,11 @@
+import dynamic from 'next/dynamic'
 import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
-import Cta from '@/components/Cta'
+import { Suspense, lazy } from 'react'
+
+const Cta = lazy(() => import('@/components/Cta'))
 
 const POSTS_PER_PAGE = 5
 
@@ -28,7 +31,9 @@ export default function InsightsPage() {
         pagination={pagination}
         title="Insights"
       />
-      <Cta />
+      <Suspense fallback={null}>
+        <Cta />
+      </Suspense>
     </>
   )
 }

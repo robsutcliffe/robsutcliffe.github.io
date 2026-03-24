@@ -1,11 +1,13 @@
+import dynamic from 'next/dynamic'
 import { allServices } from 'contentlayer/generated'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import Card from '@/components/Card'
 import { genPageMetadata } from 'app/seo'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import React from 'react'
-import Cta from '@/components/Cta'
+import React, { Suspense, lazy } from 'react'
+
+const Cta = lazy(() => import('@/components/Cta'))
 
 export const metadata = genPageMetadata({ title: 'Services' })
 
@@ -44,7 +46,9 @@ export default function ServicesPage() {
           </div>
         </article>
       </SectionContainer>
-      <Cta />
+      <Suspense fallback={null}>
+        <Cta />
+      </Suspense>
     </>
   )
 }
