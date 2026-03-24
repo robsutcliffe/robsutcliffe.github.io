@@ -16,7 +16,6 @@ import Border from '@/components/Border'
 import TextLogo from '@/components/TextLogoSimple'
 import ScrollToTop from '@/components/ScrollToTop'
 import { Suspense } from 'react'
-import PlausibleAnalytics from '@/components/PlausibleAnalytics'
 
 const bwQuintaPro = localFont({
   src: [
@@ -200,6 +199,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        <script async defer data-domain="firefields.com" src="https://plausible.io/js/script.js" />
         <link
           rel="preload"
           as="image"
@@ -219,7 +219,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/*  }}*/}
         {/*/>*/}
         <ThemeProviders>
-          <PlausibleAnalytics />
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <Suspense fallback={null}>
             <ScrollToTop />
