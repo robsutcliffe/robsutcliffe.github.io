@@ -218,11 +218,11 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting || !isFormValid}
-              className="focus-ring relative cursor-pointer overflow-hidden rounded-sm bg-blue-950 px-6 py-4 font-bold text-white transition-opacity disabled:bg-gray-400 disabled:opacity-60 md:mt-2"
+              className="focus-ring relative cursor-pointer overflow-hidden rounded-sm border-1 border-blue-700 bg-white px-6 py-4 font-bold text-blue-800 transition-opacity disabled:bg-gray-400 disabled:opacity-60 md:mt-2"
               onMouseEnter={() => !isSubmitting && isFormValid && setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <AnimatedBackground isHovered={isHovered} opacity="0.3" stroke="#061E2A" />
+              <AnimatedBackground isHovered={isHovered} opacity={0.3} stroke="#061E2A" />
               <span className="relative z-10 leading-8">
                 {isSubmitting ? 'Sending...' : 'Send Request'}
               </span>

@@ -162,7 +162,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
       </head>
-      <body className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased">
+      <body
+        className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased"
+        suppressHydrationWarning
+      >
         {/*<div*/}
         {/*  className="pointer-events-none absolute inset-0 z-50 h-full w-full"*/}
         {/*  style={{*/}

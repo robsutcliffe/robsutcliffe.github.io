@@ -1,10 +1,14 @@
 'use client'
 
-import { useRef } from 'react'
-import CircleBackground from '@/components/CircleBackground'
+import dynamic from 'next/dynamic'
+import { useRef, Suspense } from 'react'
 import Button from '@/components/Button'
 import DotBackground from '@/components/DotBackground'
 import Link from 'next/link'
+
+const CircleBackground = dynamic(() => import('@/components/CircleBackground'), {
+  ssr: false,
+})
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -14,7 +18,9 @@ export default function Hero() {
       ref={containerRef}
       className="relative m-4 flex h-[calc(100svh-2rem)] items-center overflow-hidden bg-blue-800 md:mb-0"
     >
-      <CircleBackground />
+      <Suspense fallback={null}>
+        <CircleBackground />
+      </Suspense>
       <div className="absolute top-22 bottom-0 flex w-full items-center sm:top-26 md:top-28 lg:top-30">
         <div className="z-10 flex min-h-[16rem] w-full flex-col justify-center gap-4 px-4 text-center sm:min-h-[22rem] md:min-h-[26rem] lg:min-h-[30rem]">
           <h2 className="!my-0 block h-[6rem] text-2xl leading-8 font-normal tracking-tighter text-yellow-200 sm:h-[9rem] sm:text-4xl sm:leading-12 md:h-[10.5rem] md:text-5xl md:leading-14 lg:h-[12rem] lg:text-6xl lg:leading-16">
