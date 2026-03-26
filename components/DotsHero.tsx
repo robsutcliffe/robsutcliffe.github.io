@@ -29,8 +29,7 @@ export default function Hero() {
             <br className="responsive" /> I find out why{' '}
             <span className="-pt-[0.3em] -mx-[0.05em] text-[1.3em] font-light">&</span> fix it.
           </h2>
-          <h2 className="block text-left text-5xl text-yellow-200 md:hidden"></h2>
-          <p className="mx-auto max-w-2xl px-4 font-sans text-base leading-6 font-bold text-yellow-50 lg:font-medium xl:bg-transparent xl:px-0">
+          <p className="mx-auto max-w-2xl px-4 font-sans text-sm leading-6 font-bold text-yellow-50 md:text-base lg:font-medium xl:px-0">
             <Link
               href="/services/shopify-conversion-rate-optimization-sprint"
               className="underline"
