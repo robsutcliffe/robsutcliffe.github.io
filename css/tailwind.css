@@ -17,6 +17,17 @@
     transform: scale(0.95);
     outline: none;
   }
+
+  br.responsive {
+    display: none; /* default: no line break */
+  }
+
+  @media (min-width: 500px) {
+    /* only ≥ 768px */
+    br.responsive {
+      display: inline;
+    }
+  }
 }
 
 .task-list-item::before {
