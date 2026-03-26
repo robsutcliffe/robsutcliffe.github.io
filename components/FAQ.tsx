@@ -20,7 +20,7 @@ const FAQ = ({ items }: FAQProps) => {
   }
 
   return (
-    <div className="shadow-inset-all mt-4">
+    <div className="shadow-inset-all -mx-4 mt-4 sm:mx-0">
       {items.map((item, index) => {
         const contentId = `faq-content-${index}`
         const buttonId = `faq-button-${index}`

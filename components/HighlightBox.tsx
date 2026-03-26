@@ -44,7 +44,7 @@ const HighlightBox = ({
 
   return (
     <div
-      className={`not-prose mt-4 mb-8 overflow-hidden bg-blue-900 px-4 py-4 text-white sm:px-8 ${className}`}
+      className={`not-prose i'm-0 -mx-4 mt-4 mb-8 overflow-hidden bg-blue-900 px-4 py-4 text-white sm:mx-0 sm:px-8 ${className}`}
     >
       {title && (
         <h2 className="mb-4 py-2 font-serif text-3xl leading-8 text-white md:text-4xl">{title}</h2>
@@ -62,7 +62,7 @@ const HighlightBox = ({
             </ul>
           )}
         </div>
-        <div className="flex min-w-14 flex-row items-end justify-items-end">
+        <div className="flex w-full min-w-14 flex-col items-end justify-items-end sm:w-auto sm:flex-row">
           <CtaButton text={ctaText} />
         </div>
       </div>

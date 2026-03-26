@@ -38,7 +38,7 @@ const CostGrid = ({ items }: CostGridProps) => {
   }
 
   return (
-    <div className="not-prose mt-4 mb-8 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+    <div className="not-prose -mx-4 mt-4 mb-8 grid grid-cols-1 gap-2 sm:mx-0 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
       {items.map((item, index) => (
         <div key={index} className="shadow-inset-all p-4">
           <p className="mb-2 text-base font-bold text-blue-800 sm:mb-4">{item.title}</p>

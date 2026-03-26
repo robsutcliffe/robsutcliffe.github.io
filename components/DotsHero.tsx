@@ -16,17 +16,18 @@ export default function Hero() {
   return (
     <div
       ref={containerRef}
-      className="relative m-4 flex h-[calc(100svh-2rem)] items-center overflow-hidden bg-blue-800 md:mb-0"
+      className="relative m-4 flex h-[calc(100svh-2rem)] min-h-[600px] items-center overflow-hidden bg-blue-800 md:mb-0"
     >
       <Suspense fallback={null}>
         <CircleBackground />
       </Suspense>
       <div className="absolute top-22 bottom-0 flex w-full items-center sm:top-26 md:top-28 lg:top-30">
-        <div className="z-10 flex min-h-[16rem] w-full flex-col justify-center gap-4 px-4 text-center sm:min-h-[22rem] md:min-h-[26rem] lg:min-h-[30rem]">
+        <div className="z-10 flex min-h-[16rem] w-full flex-col justify-center gap-4 px-4 sm:min-h-[22rem] md:min-h-[26rem] md:text-center lg:min-h-[30rem]">
           <h2 className="!my-0 block h-[6rem] text-2xl leading-8 font-normal tracking-tighter text-yellow-200 sm:h-[9rem] sm:text-4xl sm:leading-12 md:h-[10.5rem] md:text-5xl md:leading-14 lg:h-[12rem] lg:text-6xl lg:leading-16">
             Your traffic is there. <br />
             Your conversions aren't.
-            <br />I find out why and fix it.
+            <br />I find out why <span className="-pt-[0.3em] text-[1.3em] font-light">&</span> fix
+            it.
           </h2>
           <p className="mx-auto max-w-2xl px-4 font-sans text-xs leading-6 font-bold text-yellow-50 sm:text-base sm:leading-8 lg:font-medium xl:bg-transparent xl:px-0">
             <Link
@@ -40,10 +41,10 @@ export default function Hero() {
               Data Analytics Dashboards,
             </Link>{' '}
             and{' '}
-            <Link href="/services/shopify-speed-optimization-sprint" className="underline lg:mr-6">
+            <Link href="/services/shopify-speed-optimization-sprint" className="underline">
               Web Performance Tuning
             </Link>
-            — for teams that already have traffic but need more revenue.
+            <br />— for teams that already have traffic but need more revenue.
           </p>
           <div className="mx-auto flex w-full flex-row items-start justify-center gap-4">
             <div>

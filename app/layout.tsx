@@ -186,7 +186,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Border />
               <Link
                 href="/"
-                className="invisible absolute top-12 left-20 z-10 h-20 bg-red-500 py-6 pr-6 pl-2 md:visible"
+                className="hi absolute top-8 left-20 z-10 h-20 bg-red-500 py-7 pr-4 pl-0 md:top-12 md:py-6 md:pr-6 md:pl-3"
                 aria-label="Home"
               >
                 <TextLogo color="#FDFCED" />

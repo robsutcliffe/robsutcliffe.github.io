@@ -16,7 +16,7 @@ const Tabs = ({ items }: TabsProps) => {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <div className="mt-4 mb-8">
+    <div className="-mx-4 mt-4 mb-8 sm:mx-0">
       {/* Mobile Accordion */}
       <div className="space-y-2 md:hidden">
         {items.map((item, index) => {

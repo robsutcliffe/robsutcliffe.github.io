@@ -163,7 +163,9 @@ module.exports = {
             'h5 strong': {
               color: theme('colors.red.700'),
               fontFamily: theme('fontFamily.sans')[0],
-              lineHeight: theme('lineHeight.8'),
+              lineHeight: theme('lineHeight.6'),
+              paddingTop: theme('spacing.2'),
+              display: 'inline-block',
             },
             hr: {
               border: 'none',
