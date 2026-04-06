@@ -1,4 +1,3 @@
-import Link from '@/components/Link'
 import DotBackground from '@/components/DotBackground'
 import Button from '@/components/Button'
 
