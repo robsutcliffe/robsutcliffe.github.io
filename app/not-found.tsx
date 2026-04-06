@@ -5,17 +5,17 @@ import Button from '@/components/Button'
 export default function NotFound() {
   return (
     <div className="relative flex min-h-[calc(100vh-80px)] flex-col items-center justify-center border-b border-blue-100/50 bg-blue-800 text-center">
-      <div className="z-20 pt-24">
+      <div className="z-20 px-12 pt-24">
         <div className="pb-8">
           <h1 className="text-6xl leading-9 tracking-tighter text-yellow-200 md:px-6 md:text-8xl md:leading-14">
             404
           </h1>
         </div>
         <div className="max-w-md">
-          <p className="mb-0 text-xl leading-normal font-extrabold text-white md:text-2xl">
+          <p className="mb-0 text-lg leading-normal font-extrabold text-white sm:text-xl md:text-2xl">
             Sorry we couldn't find this page.
           </p>
-          <p className="mb-8 text-white/80">
+          <p className="mb-4 text-sm text-white/80 sm:text-base md:mb-8">
             Maybe you can find something else that interests you from the home page or the menu at
             the top right.
           </p>
