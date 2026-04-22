@@ -41,17 +41,6 @@ export default function Hero() {
             <div className="mx-auto flex w-full flex-row items-start justify-center gap-4 xl:justify-start">
               <div>
                 <Button
-                  href="/services"
-                  text="View services"
-                  noPadding={true}
-                  outline={true}
-                  extraClasses="!text-primary"
-                  lineOpacity={0.2}
-                  noHeight={true}
-                />
-              </div>
-              <div>
-                <Button
                   href="/contact"
                   text="Book a call"
                   noPadding={true}

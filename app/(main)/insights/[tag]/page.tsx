@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allBlogs } from 'contentlayer/generated'
 import tagData from 'app/tag-data.json'
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata } from '../../seo'
 import { Metadata } from 'next'
 
 export async function generateMetadata(props: {

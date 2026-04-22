@@ -87,27 +87,11 @@ export default function Hero() {
             <br />I find out why and fix it.
           </h2>
           <p className="w-fit bg-blue-800/50 px-6 pb-6 !font-sans text-sm leading-6 tracking-wide text-cyan-200 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:max-w-2/3 sm:text-base md:max-w-4/5 md:px-12 md:text-lg md:leading-7">
-            <Link
-              href="/services/shopify-conversion-rate-optimization-sprint"
-              className="underline"
-            >
-              CRO sprints
-            </Link>
-            , data-driven UX audits, and dashboard readability <br />— for teams that already have
-            traffic but need more revenue.
+            CRO sprints, data-driven UX audits, and dashboard readability <br />— for teams that
+            already have traffic but need more revenue.
           </p>
         </div>
         <div className="flex w-fit flex-col justify-start bg-blue-800/50 px-6 [filter:saturate(0.85)_brightness(0.92)] backdrop-blur-sm sm:flex-row sm:py-0 md:gap-2 lg:gap-4">
-          <div className="pb-4 lg:pb-6">
-            <Button
-              href="/services"
-              text="View services"
-              outline={true}
-              extraClasses="hover:bg-red-500"
-              lineOpacity={0.2}
-              noHeight={true}
-            />
-          </div>
           <div className="pb-4 lg:pb-6">
             <Button
               href="/contact"

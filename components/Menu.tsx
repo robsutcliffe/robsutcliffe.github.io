@@ -9,7 +9,6 @@ import { useMatches, KBarResults, useKBar } from 'kbar'
 import AnimatedBackground from '@/components/AnimatedBackground'
 
 const menuItems = [
-  { text: 'Services', href: '/services' },
   { text: 'Insights', href: '/insights' },
   { text: 'Case Studies', href: '/case-studies' },
   { text: 'Contact', href: '/contact' },

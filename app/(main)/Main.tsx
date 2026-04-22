@@ -16,35 +16,6 @@ export default function Home({ posts, services, caseStudies }) {
   return (
     <>
       <DotsHero />
-      <div>
-        <div className="mx-8 lg:ml-26 xl:mr-26 xl:ml-36">
-          <div className="flex h-24 flex-row items-center lg:gap-4">
-            <div className="h-0.25 w-0 bg-blue-800 lg:w-8" />
-            <p className="text-xl tracking-tight text-blue-800">
-              Recommended <b className="">Services</b>
-            </p>
-          </div>
-          <div className="w-fit max-w-3xl md:max-w-4xl lg:pl-12 xl:max-w-5xl">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              {services.slice(0, 2).map((service, index) => (
-                <Card
-                  key={service.title}
-                  title={service.title}
-                  color="yellow"
-                  description={service.summary || ''}
-                  imgSrc={service.images?.[0] || ''}
-                  blueImgSrc={service.images?.[0]?.replace(/\.(webp|png|jpg|jpeg)$/, '-blue.$1')}
-                  href={`/${service.path}`}
-                  nextAvailable={service.nextAvailable}
-                  cost={service.cost}
-                  priority={index === 0}
-                />
-              ))}
-            </div>
-            <Button href="/services" text="View All Services" noPadding={true} />
-          </div>
-        </div>
-      </div>
       <div className="shadow-inset-y relative bg-yellow-100/50">
         <div className="mx-8 lg:ml-26 xl:mr-26 xl:ml-36">
           <div className="flex h-24 flex-row items-center lg:gap-4">

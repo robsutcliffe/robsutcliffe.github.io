@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import ListLayout from '@/layouts/ListLayoutWithTags'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
-import { genPageMetadata } from 'app/seo'
+import { genPageMetadata } from '../seo'
 import { Suspense, lazy } from 'react'
 
 const Cta = lazy(() => import('@/components/Cta'))

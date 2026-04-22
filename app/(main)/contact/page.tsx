@@ -72,13 +72,13 @@ export default function ContactForm() {
   return (
     <>
       <SectionContainer>
-        <PageTitle>Contact Us</PageTitle>
+        <PageTitle>Contact</PageTitle>
         <p className="mb-4 max-w-3xl text-sm leading-5 text-blue-800 sm:text-base sm:leading-6 md:leading-8 lg:text-lg">
           <i className="font-bold">
-            Tell me where your store is stuck—conversion, speed, UX, or data
-          </i>
-          —and I’ll reply with one high‑impact next step and whether a short project together makes
-          sense.
+            Tell me what you're building and where the interface is the bottleneck.
+          </i>{' '}
+          I'll reply with a candid read on whether I'm the right person for it, and if so, what a
+          short engagement together could look like.
         </p>
         <form
           onSubmit={handleSubmit}

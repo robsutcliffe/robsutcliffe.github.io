@@ -24,40 +24,17 @@ export default function Hero() {
       <div className="absolute top-22 bottom-0 flex w-full items-center sm:top-26 md:top-28 lg:top-30">
         <div className="z-10 flex w-full flex-col justify-center gap-2 px-8 text-center md:gap-4">
           <h2 className="!my-0 block text-4xl leading-10 font-normal tracking-tighter text-yellow-200 md:text-5xl md:leading-14 lg:text-6xl lg:leading-16">
-            Your traffic is there. <br className="responsive" />
-            Your conversions are not.
-            <br className="responsive" /> I find out why{' '}
-            <span className="-pt-[0.3em] -mx-[0.05em] text-[1.3em] font-light">&</span> fix it.
+            Interpretability{' '}
+            <span className="-pt-[0.3em] -mx-[0.05em] text-[1.3em] font-light">&</span>{' '}
+            Observability <br className="responsive" />
+            Interfaces <i>for</i> AI Products.
           </h2>
           <p className="mx-auto max-w-2xl px-4 font-sans text-sm leading-6 font-bold text-yellow-50 md:text-base lg:font-medium xl:px-0">
-            <Link
-              href="/services/shopify-conversion-rate-optimization-sprint"
-              className="underline"
-            >
-              Conversion Rate Optimisation
-            </Link>
-            ,{' '}
-            <Link href="/services/shopify-data-analytics-dashboard-sprint" className="underline">
-              Data Analytics Dashboards,
-            </Link>{' '}
-            and{' '}
-            <Link href="/services/shopify-speed-optimization-sprint" className="underline">
-              Web Performance Tuning
-            </Link>
-            <br className="responsive" />— for teams that already have traffic but need more
-            revenue.
+            I'm Rob Sutcliffe — a data visualisation engineer with 20 years of frontend craft,
+            <br className="responsive" /> now focused on making machine learning models legible to
+            the people who use and audit them.
           </p>
           <div className="mx-auto flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
-            <div>
-              <Button
-                href="/services"
-                text="View services"
-                noPadding={true}
-                outline={true}
-                lineOpacity={0.2}
-                noHeight={true}
-              />
-            </div>
             <div>
               <Button
                 href="/contact"

@@ -3,11 +3,11 @@
 import Logo from './Logo'
 import SearchBar from '@/components/SearchBar'
 
-export default function Border() {
+export default function Border({ showSearchBar = true }: { showSearchBar?: boolean }) {
   return (
     <>
       <Logo />
-      <SearchBar />
+      {showSearchBar && <SearchBar />}
       {/*<Menu />*/}
 
       <div className="fixed top-0 right-0 left-0 z-30 h-4 w-full bg-white" />

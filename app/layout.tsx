@@ -1,21 +1,9 @@
 import 'css/tailwind.css'
-import dynamic from 'next/dynamic'
-import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import siteMetadata from '@/data/siteMetadata'
 import { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Script from 'next/script'
-import { ThemeProviders } from './theme-providers'
-import Link from 'next/link'
-import { LazyMotion, domAnimation } from 'framer-motion'
-
-import Border from '@/components/Border'
-import TextLogo from '@/components/TextLogoSimple'
-import { Suspense, lazy } from 'react'
-
-const MenuBar = lazy(() => import('@/components/MenuBar'))
-const Footer = lazy(() => import('@/components/Footer'))
-const ScrollToTop = lazy(() => import('@/components/ScrollToTop'))
+import DesignGrid from '@/components/DesignGrid'
 
 const bwQuintaPro = localFont({
   src: [
@@ -166,42 +154,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="min-w-[320px] bg-yellow-50/80 text-blue-800 antialiased"
         suppressHydrationWarning
       >
-        {/*<div*/}
-        {/*  className="pointer-events-none absolute inset-0 z-50 h-full w-full"*/}
-        {/*  style={{*/}
-        {/*    backgroundImage: `*/}
-        {/*      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px),*/}
-        {/*      linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px)*/}
-        {/*    `,*/}
-        {/*    backgroundSize: '4px 4px, 16px 16px',*/}
-        {/*  }}*/}
-        {/*/>*/}
-        <ThemeProviders>
-          <LazyMotion features={domAnimation}>
-            <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-            <Suspense fallback={null}>
-              <ScrollToTop />
-            </Suspense>
-            <div className="flex min-h-svh flex-col justify-between font-sans">
-              <Border />
-              <Link
-                href="/"
-                className="hi absolute top-8 left-20 z-10 h-20 bg-red-500 py-7 pr-4 pl-0 md:top-12 md:py-6 md:pr-6 md:pl-3"
-                aria-label="Home"
-              >
-                <TextLogo color="#FDFCED" />
-              </Link>
-              <Suspense fallback={null}>
-                <MenuBar />
-              </Suspense>
-              {/*<Header />*/}
-              <main className="mb-auto">{children}</main>
-              <Suspense fallback={null}>
-                <Footer />
-              </Suspense>
-            </div>
-          </LazyMotion>
-        </ThemeProviders>
+        {/*<DesignGrid />*/}
+        {children}
       </body>
     </html>
   )

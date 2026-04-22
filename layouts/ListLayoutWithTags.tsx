@@ -84,9 +84,9 @@ export default function ListLayoutWithTags({
       <article>
         <PageTitle>Insights</PageTitle>
         <p className="mb-4 max-w-3xl text-sm leading-5 text-blue-800 sm:text-base sm:leading-6 md:leading-8 lg:text-lg">
-          <i className="font-bold">Short, practical pieces from real client work</i>: experiments
-          that worked, things that didn’t, and the dashboards, interfaces, and flows that actually
-          changed behaviour.
+          <i className="font-bold">Writing on data visualisation</i>, AI interpretability, and the
+          craft of building interfaces for complex systems. Part technical, part information design,
+          mostly opinionated.
         </p>
         <div className="shadow-inset-t my-8 flex flex-col">
           {displayPosts.map((post) => {

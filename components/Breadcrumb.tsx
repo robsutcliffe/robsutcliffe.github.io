@@ -21,7 +21,7 @@ const pagesRaw = [
     href: '/services',
   },
   {
-    text: 'Contact Us',
+    text: 'Contact',
     href: '/contact',
   },
 ]
