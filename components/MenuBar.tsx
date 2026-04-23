@@ -9,6 +9,7 @@ export default function MenuBar() {
   const pathname = usePathname()
 
   const links = [
+    { href: '/services', label: 'Service' },
     { href: '/insights', label: 'Insight' },
     { href: '/case-studies', label: 'Case Study' },
     { href: '/contact', label: 'Contact' },

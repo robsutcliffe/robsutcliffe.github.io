@@ -5,6 +5,7 @@ import Image from './Image'
 import Link from './Link'
 import AnimatedBackground from './AnimatedBackground'
 import SlidingBackground from './SlidingBackground'
+import DotBackground from './DotBackground'
 
 const colorMap = {
   yellow: 'group-hover:text-yellow-300 group-focus:text-yellow-300',
@@ -72,6 +73,7 @@ const Card = ({
               height={306}
             />
           )}
+          <DotBackground fill="#241169" opacity="0.3" isHovered={true} className="z-10" />
         </div>
         <AnimatedBackground
           isHovered={isHovered}

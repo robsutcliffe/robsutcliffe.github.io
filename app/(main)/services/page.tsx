@@ -21,9 +21,9 @@ export default function ServicesPage() {
           <PageTitle>Services</PageTitle>
           <p className="mb-4 max-w-3xl text-sm leading-5 text-blue-800 sm:text-base sm:leading-6 md:leading-8 lg:text-lg">
             <i className="font-bold">
-              I help Shopify brands ship focused UX, performance, and analytics improvements
+              I help product and data teams ship dataviz interfaces their users actually trust
             </i>{' '}
-            that move key numbers like conversion rate, AOV, and speed—without a full rebuild.
+            without a full rebuild and without hiring a senior in-house.
           </p>
           <div>
             <div className="container py-4">

@@ -54,6 +54,7 @@ export default function SearchBarContent({
   }, [open, setOpen, searchContainerRef])
 
   const headings = [
+    { name: 'Services', href: '/services' },
     { name: 'Case Studies', href: '/case-studies' },
     { name: 'Insights', href: '/insights' },
     { name: 'Contact', href: '/contact' },

@@ -68,7 +68,7 @@ const FAQ = ({ items }: FAQProps) => {
                   }}
                   transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                 >
-                  <div className="shadow-inset-b mx-[1px] max-w-none border-t border-blue-800 bg-white px-6 py-4">
+                  <div className="shadow-inset-b mx-[1px] max-w-none border-t border-blue-800 bg-white px-6 pt-2 pb-4">
                     {item.answer}
                   </div>
                 </motion.div>
