@@ -27,33 +27,25 @@ function Card({
   tone?: 'default' | 'accent'
   onClick?: () => void
 }) {
-  const inner = (
-    <>
+  return (
+    <div className={'px-6 py-4 text-left'}>
       <div className="flex items-center gap-1 text-sm font-black tracking-wide text-white uppercase">
         {label}
         {help && <HelpTip term={help} align="start" />}
       </div>
       <div className="font-mono text-2xl font-semibold text-white tabular-nums">{value}</div>
       {sub && <div className="text-xs text-blue-100">{sub}</div>}
-    </>
+    </div>
   )
 
-  const base = 'px-6 py-4 text-left'
-  return onClick ? (
-    <button onClick={onClick} className={`${base} transition-colors hover:bg-white/10`}>
-      {inner}
-    </button>
-  ) : (
-    <div className={base}>{inner}</div>
-  )
 }
 
 export default function OverallStats({ layers, onSelect }: OverallStatsProps) {
   const s = aggregateStats(layers, (l) => l.numerical_rank_at_threshold)
 
   return (
-    <section className="flex flex-col bg-blue-900">
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    <section className="flex w-full flex-col bg-blue-900">
+      <div className="grid w-full grid-cols-2 gap-3 lg:grid-cols-4">
         <Card
           label="Potential savings"
           help="potentialSavings"
@@ -73,22 +65,13 @@ export default function OverallStats({ layers, onSelect }: OverallStatsProps) {
           value={`${Math.round(s.savingsPctAggressive * 100)}%`}
           sub="if tighter targets hold up"
         />
-        {s.best ? (
-          <Card
-            label="Biggest opportunity"
-            help="biggestOpportunity"
-            value={`${s.best.rec.width}→${s.best.rec.recommended}`}
-            sub={`${s.best.layer.name} · ${Math.round(s.best.rec.compressionPct * 100)}% smaller`}
-            onClick={() => onSelect(s.best!.layer.id)}
-          />
-        ) : (
-          <Card
-            label="Biggest opportunity"
-            help="biggestOpportunity"
-            value="—"
-            sub="no layers flagged"
-          />
-        )}
+        <Card
+          label="Biggest opportunity"
+          help="biggestOpportunity"
+          value={`${s.best.rec.width}→${s.best.rec.recommended}`}
+          sub={`${s.best.layer.name} · ${Math.round(s.best.rec.compressionPct * 100)}% smaller`}
+          onClick={() => onSelect(s.best!.layer.id)}
+        />
       </div>
     </section>
   )

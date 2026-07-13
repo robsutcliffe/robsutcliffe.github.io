@@ -10,6 +10,6 @@ To create your own blog like this one check out the [readme file](https://github
 To report a bug with template itself use [this bug report template](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/.github/ISSUE_TEMPLATE/bug_report.md)  
 To request features for the template use [this feature request template](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/.github/ISSUE_TEMPLATE/feature_request.md)
 
-## Suggest an Edit To Blog Content  
+## Suggest an Edit To Blog Content
 
 If you believe the content on any articles on this specific blog are incorrect then please create a new branch and submit a pull request directly on this repo

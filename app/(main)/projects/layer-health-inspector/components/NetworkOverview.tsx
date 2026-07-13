@@ -25,10 +25,10 @@ export default function NetworkOverview({ layers, selectedId, onSelect }: Networ
 
   return (
     <div className="flex flex-col gap-3 bg-blue-800">
-      <div className="flex items-end overflow-x-auto px-7 pt-2">
+      <div className="relative flex items-end overflow-x-auto overflow-y-hidden px-7 pt-2 pb-6">
         {layers.map((l, i) => {
           const live = l.numerical_rank_at_threshold
-          const rec = recommend(l.size, live)
+          const rec = recommend(l.size, live, l.type)
           const style = OPPORTUNITY_STYLE[rec.opportunity]
           const active = l.id === selectedId
           const liveFrac = l.size > 0 ? live / l.size : 0
@@ -85,10 +85,8 @@ export default function NetworkOverview({ layers, selectedId, onSelect }: Networ
             </div>
           )
         })}
-      </div>
-      <div className="relative mt-4 -mb-6 h-6">
         <motion.div
-          className="absolute -mt-2.5 h-5 w-5 rotate-45 border-t border-l border-blue-800 bg-yellow-50"
+          className="absolute bottom-1 -mb-3.5 h-5 w-5 rotate-45 border-t border-l border-blue-800 bg-yellow-50"
           initial={false}
           animate={{ left: arrowX }}
           transition={{ type: 'spring', stiffness: 500, damping: 32 }}

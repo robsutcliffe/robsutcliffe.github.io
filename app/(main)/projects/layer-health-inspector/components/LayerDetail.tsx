@@ -4,9 +4,11 @@
 // preview a shrink; it starts at the recommended width.
 
 import type { Layer } from '../lib/types'
-import { recommend, rate, compact, RISK_STYLE } from '../lib/recommend'
+import { recommend, rate, compact, HIGH_RISK } from '../lib/recommend'
+import { attentionHeads, headDimFor } from '../lib/heads'
 import type { GlossaryKey } from '@/components/help-tip'
 import BarChart from './BarChart'
+import AttentionHeadChart from './AttentionHeadChart'
 import HelpTip from '@/components/help-tip'
 
 interface LayerDetailProps {
@@ -49,7 +51,14 @@ function StatRow({
 }
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v))
-const RISK_ORDER: Record<string, number> = { Low: 0, Medium: 1, High: 2 }
+const RISK_ORDER: Record<string, number> = {
+  'Very Low': 0,
+  Low: 1,
+  Medium: 2,
+  High: 3,
+  'Very High': 4,
+  Critical: 5,
+}
 
 export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailProps) {
   const values = layer.singular_values
@@ -57,7 +66,19 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
   // The recommendation is based on the layer's own live directions, so it stays
   // stable while you drag the cut.
   const live = layer.numerical_rank_at_threshold
-  const rec = recommend(size, live)
+  const rec = recommend(size, live, layer.type)
+
+  // Attention layers are trimmed head-by-head, not direction-by-direction. Group
+  // the ranked directions into standard-sized heads and snap the cut to whole heads.
+  const isAttn = layer.type.toLowerCase() === 'attn'
+  const headDim = headDimFor(size)
+  const heads = attentionHeads(layer.singular_values, size, layer.index)
+  const keepHeads = clamp(Math.round(keep / headDim), 1, heads.length)
+  const effectiveKeep = isAttn ? keepHeads * headDim : keep
+  const droppedHeads = heads
+    .slice(keepHeads)
+    .map((h) => h.label)
+    .sort((a, b) => a - b)
 
   // Directions drawn individually in the chart. Past ~2.5× the live count risk is
   // already Low and keeping more only costs savings, so everything beyond that
@@ -69,11 +90,14 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
   )
 
   // Live figures for the current cut, and how it compares to the recommendation.
-  const cur = rate(size, live, keep)
-  const weightsNow = size * size
-  const saved = weightsNow - keep * keep
-  const savedPct = weightsNow > 0 ? 1 - (keep * keep) / weightsNow : 0
-  const savedRec = weightsNow - rec.recommended * rec.recommended
+  const cur = rate(size, live, effectiveKeep, layer.type)
+  // Weights are width-in × width-out; a test width scales both sides proportionally.
+  const [widthIn, widthOut] = layer.shape
+  const weightsAt = (w: number) => widthIn * (w / size) * (widthOut * (w / size))
+  const weightsNow = widthIn * widthOut
+  const saved = weightsNow - weightsAt(effectiveKeep)
+  const savedPct = size > 0 ? 1 - effectiveKeep / size : 0
+  const savedRec = weightsNow - weightsAt(rec.recommended)
   const savedDelta = saved - savedRec
   const riskCmp = RISK_ORDER[cur.risk] - RISK_ORDER[rec.risk]
 
@@ -147,50 +171,89 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
       <div>
         <div className="flex items-baseline justify-between">
           <h3 className="flex items-center gap-1 text-xl font-extrabold tracking-tight text-blue-800">
-            Ranked information directions
+            {isAttn ? 'Attention heads by historical activity' : 'Ranked information directions'}
             <HelpTip term="rankedDirections" />
           </h3>
-          <p className="mt-3 flex items-center gap-1 pr-1 text-[11px] text-blue-600 uppercase">
-            Drag the edge of the red band to test a different width
+          <p className="mt-3 flex items-center gap-1 pr-1 text-[11px] text-blue-800 uppercase">
+            {isAttn
+              ? 'Drag the edge of the red band to drop the least active heads'
+              : 'Drag the edge of the red band to test a different width'}
             <HelpTip term="testWidth" align="start" />
           </p>
         </div>
-        <BarChart
-          values={values}
-          keep={keep}
-          live={live}
-          shown={shown}
-          onKeepChange={onKeepChange}
-        />
+        {isAttn ? (
+          <AttentionHeadChart
+            heads={heads}
+            keepHeads={keepHeads}
+            onKeepHeadsChange={(h) => onKeepChange(h * headDim)}
+          />
+        ) : (
+          <BarChart
+            values={values}
+            keep={keep}
+            live={live}
+            shown={shown}
+            onKeepChange={onKeepChange}
+          />
+        )}
+
+        {/* head-specific recommendation for attention layers */}
+        {isAttn && (
+          <p className="mt-1 ml-10 text-sm text-blue-800">
+            {droppedHeads.length > 0 ? (
+              <>
+                Test without {droppedHeads.length === 1 ? 'head' : 'heads'}{' '}
+                <span className="font-mono font-bold">
+                  {droppedHeads.map((h) => `H${h}`).join(', ')}
+                </span>{' '}
+                — the {droppedHeads.length === 1 ? 'least' : `${droppedHeads.length} least`} active
+                of {heads.length} heads ({headDim} dimensions each).
+              </>
+            ) : (
+              <>Keeping all {heads.length} heads — drag the cut left to test dropping some.</>
+            )}
+          </p>
+        )}
 
         {/* live readout for the current cut */}
 
         <div className="mt-2 ml-10 bg-yellow-100">
-          <div className="-mr-px -mb-px flex flex-row gap-6 pl-4">
+          <div className="-mr-px -mb-px flex flex-row justify-center gap-8 pl-4">
             {/* test width */}
             <div className="flex flex-col px-3 py-2">
               <div className="text-xs font-bold tracking-wide text-blue-800 uppercase">
-                Test width
+                {isAttn ? 'Heads kept' : 'Test width'}
               </div>
               <span className="font-mono text-xl font-light text-blue-800">
-                <span className="font-extrabold">{keep}</span>/{size}
+                {isAttn ? (
+                  <>
+                    <span className="font-extrabold">{keepHeads}</span>/{heads.length}{' '}
+                    <span className="text-sm font-light">
+                      ({effectiveKeep}/{size} dims)
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="font-extrabold">{keep}</span>/{size}
+                  </>
+                )}
               </span>
             </div>
             {/* weights saved */}
             <div className="flex flex-col px-3 py-2">
               <div className="text-xs font-bold tracking-wide text-blue-800 uppercase">
-                Weights saved
+                Compression
               </div>
               <span className="font-mono text-xl font-semibold text-blue-800">
-                ≈ {compact(saved)}{' '}
-                <span className="text-sm font-light">({Math.round(savedPct * 100)}% smaller)</span>
+                {Math.round(savedPct * 100)}%{' '}
+                <span className="text-sm font-light">({compact(Math.round(saved))})</span>
               </span>
             </div>
             {/* risk */}
             <div className="flex flex-col px-3 py-2">
               <div className="text-xs font-bold tracking-wide text-blue-800 uppercase">Risk</div>
               <span
-                className={`font-mono text-xl font-extrabold ${cur.risk === 'High' ? 'text-red-500' : 'text-blue-800'} `}
+                className={`font-mono text-xl font-extrabold ${HIGH_RISK.has(cur.risk) ? 'text-red-500' : 'text-blue-800'} `}
               >
                 {cur.risk}
               </span>
