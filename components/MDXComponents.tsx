@@ -17,6 +17,7 @@ import Checklist from './Checklist'
 import DualChecklist from './DualChecklist'
 import Process from './Process'
 import HighlightBox from './HighlightBox'
+import KeyTakeaways from './KeyTakeaways'
 
 export const components: any = {
   Image,
@@ -43,4 +44,5 @@ export const components: any = {
   DualChecklist,
   Process,
   HighlightBox,
+  KeyTakeaways,
 }
