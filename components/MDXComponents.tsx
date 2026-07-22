@@ -18,6 +18,7 @@ import DualChecklist from './DualChecklist'
 import Process from './Process'
 import HighlightBox from './HighlightBox'
 import KeyTakeaways from './KeyTakeaways'
+import { SvgScatterPlot, SvgScatterPlotPair } from './blog/Plot'
 
 export const components: any = {
   Image,
@@ -45,4 +46,6 @@ export const components: any = {
   Process,
   HighlightBox,
   KeyTakeaways,
+  SvgScatterPlot,
+  SvgScatterPlotPair,
 }

@@ -39,11 +39,34 @@ Let's start with a very simple example: your brain has a specific node that ligh
 
 It can be useful to be able to visualise our activations in case we see patterns. We could plot the activations for the sweetness feature on a single "sweetness" axis to visualise it.
 
-![Sweetness plotted on a single axis](/static/images/posts/neural-networks/sweetness-plot.svg)
+<SvgScatterPlot
+  data={[
+    { x: 2, y: 0, label: 'Tomato' },
+    { x: 5, y: 0, label: 'Apple' },
+    { x: 9, y: 0, label: 'Candy floss' },
+  ]}
+  xDomain={[0, 10]}
+  yDomain={[0, 0]}
+  xTicks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  yTicks={[0]}
+  xLabel="Sweetness"
+/>
 
 Then we can add a second feature to our neural network to start looking for patterns. Let's also log the time of year we ate the food. We now have a sweetness feature and a month feature. We can visualise how the activation values for three food items like this:
 
-![Sweetness plotted against month](/static/images/posts/neural-networks/sweetness-month-plot.svg)
+<SvgScatterPlot
+  data={[
+    { x: 2, y: 2, label: 'Tomato' },
+    { x: 5, y: 5, label: 'Apple' },
+    { x: 9, y: 9, label: 'Candy floss' },
+  ]}
+  xDomain={[0, 10]}
+  yDomain={[0, 10]}
+  xTicks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  yTicks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  xLabel="Sweetness"
+  yLabel="Month"
+/>
 
 ## Features With Low Predictive Relevance
 
@@ -51,9 +74,47 @@ At first, you might think the above plot doesn't look very useful, but it really
 
 For now, let's consider that we train two different neural networks. We taste 1000 foods, and for one network we log the features 'month', 'sweetness' and the target 'outside temperature', and for the other we log the features 'month', 'sweetness' and the target 'tastiness'. We can then train these two networks (we won't discuss how we train networks in this post) so they can make predictions for us in the future.
 
-![Feature plots for the two networks](/static/images/posts/neural-networks/feature-plot.svg)
+<SvgScatterPlotPair
+  left={{
+    data: [
+      { x: 2, y: 2, label: 'Tomato' },
+      { x: 5, y: 5, label: 'Apple' },
+      { x: 9, y: 9, label: 'Candy floss' },
+    ],
+    xDomain: [0, 10],
+    yDomain: [0, 10],
+    xTicks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    yTicks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    xLabel: 'Sweetness',
+    yLabel: 'Month',
+    title: 'Predicting Tastiness',
+    predictionAreas: [
+      { x0: 0, x1: 5, y0: 0, y1: 10, label: 'Bland' },
+      { x0: 5, x1: 10, y0: 0, y1: 10, label: 'Tasty' },
+    ],
+  }}
+  right={{
+    data: [
+      { x: 2, y: 2, label: 'Tomato' },
+      { x: 5, y: 5, label: 'Apple' },
+      { x: 9, y: 9, label: 'Candy floss' },
+    ],
+    xDomain: [0, 10],
+    yDomain: [0, 10],
+    xTicks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    yTicks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    xLabel: 'Sweetness',
+    yLabel: 'Month',
+    title: 'Predicting Temperature',
+    predictionAreas: [
+      { x0: 0, x1: 10, y0: 0, y1: 3, label: 'Cold' },
+      { x0: 0, x1: 10, y0: 3, y1: 7, label: 'Hot' },
+      { x0: 0, x1: 10, y0: 7, y1: 10, label: 'Cold' },
+    ],
+  }}
+/>
 
-After training, one network has identified a pattern between the month and how hot it is outside, while the other has identified a pattern between sweetness and how tasty the food is. Now, if you consider eating something of average sweetness in June, you can put the data into one neural network to identify that it has a high probability of being tasty and another neural network to predict that it has a high probability of being hot outside.
+After training, one network has identified a pattern between the month and how hot it is outside, while the other has identified a pattern between sweetness and how tasty the food is. Now, if you consider eating something sweet in June, you can put the data into one neural network to identify that it has a high probability of being tasty and another neural network to predict that it has a high probability of being hot outside.
 
 It should be clear that each of these neural networks contains an entirely redundant feature. If we want to predict the outside temperature, the sweetness feature has low predictive relevance; if we want to know how tasty some food is, the month feature has low predictive relevance.
 
