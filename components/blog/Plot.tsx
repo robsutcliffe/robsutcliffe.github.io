@@ -1,10 +1,11 @@
 import React from 'react'
 
 type PredictionArea = {
-  x0: number
-  x1: number
-  y0: number
-  y1: number
+  x0?: number
+  x1?: number
+  y0?: number
+  y1?: number
+  points?: { x: number; y: number }[]
   fill?: string
   stroke?: string
   strokeWidth?: number
@@ -64,6 +65,9 @@ export type SvgScatterPlotProps = {
   fontFamily?: string
   showTickLabels?: boolean
   showDataLabels?: boolean
+  showCorrelationLine?: boolean
+  correlationLineColor?: string
+  correlationLineWidth?: number
 }
 
 const defaultPadding = { top: 80, right: 300, bottom: 90, left: 70 }
@@ -107,6 +111,9 @@ export function SvgScatterPlot({
   fontFamily = 'Bw Quinta Pro, system-ui, sans-serif',
   showTickLabels = true,
   showDataLabels = true,
+  showCorrelationLine = false,
+  correlationLineColor = '#E424CE',
+  correlationLineWidth = 1.5,
 }: SvgScatterPlotProps) {
   const resolvedXDomain = xDomain ?? extent(data.map((d) => d.x))
   const resolvedYDomain = yDomain ?? extent(data.map((d) => d.y))
@@ -139,6 +146,15 @@ export function SvgScatterPlot({
       { length: resolvedYDomain[1] - resolvedYDomain[0] + 1 },
       (_, i) => resolvedYDomain[0] + i
     )
+
+  // Linear regression for correlation line
+  const n = data.length
+  const sumX = data.reduce((acc, d) => acc + d.x, 0)
+  const sumY = data.reduce((acc, d) => acc + d.y, 0)
+  const sumXY = data.reduce((acc, d) => acc + d.x * d.y, 0)
+  const sumX2 = data.reduce((acc, d) => acc + d.x * d.x, 0)
+  const regressionSlope = n > 1 ? (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX) : 0
+  const regressionIntercept = n > 1 ? (sumY - regressionSlope * sumX) / n : 0
 
   const x0 = padding.left
   const x1 = padding.left + innerWidth
@@ -180,10 +196,22 @@ export function SvgScatterPlot({
         )}
 
         {predictionAreas.map((area, i) => {
-          const px0 = xScale(area.x0)
-          const px1 = xScale(area.x1)
-          const py0 = yScale(area.y0)
-          const py1 = yScale(area.y1)
+          if (area.points && area.points.length >= 3) {
+            const pts = area.points.map((p) => `${xScale(p.x)},${yScale(p.y)}`).join(' ')
+            return (
+              <polygon
+                key={`prediction-area-${i}`}
+                points={pts}
+                fill={area.fill ?? 'rgba(252,233,247,0.3)'}
+                stroke={area.stroke ?? 'rgb(233,85,212)'}
+                strokeWidth={area.strokeWidth ?? 1.5}
+              />
+            )
+          }
+          const px0 = xScale(area.x0!)
+          const px1 = xScale(area.x1!)
+          const py0 = yScale(area.y0!)
+          const py1 = yScale(area.y1!)
           const rectX = Math.min(px0, px1)
           const rectY = Math.min(py0, py1)
           const rectW = Math.abs(px1 - px0)
@@ -287,6 +315,19 @@ export function SvgScatterPlot({
         <line x1={x0} x2={x1} y1={y0} y2={y0} stroke={axisColor} strokeWidth={1.5} />
         {!isLineMode && (
           <line x1={x0} x2={x0} y1={y0} y2={y1} stroke={axisColor} strokeWidth={1.5} />
+        )}
+
+        {showCorrelationLine && n > 1 && (
+          <line
+            x1={xScale(resolvedXDomain[0])}
+            y1={yScale(regressionSlope * resolvedXDomain[0] + regressionIntercept)}
+            x2={xScale(resolvedXDomain[1])}
+            y2={yScale(regressionSlope * resolvedXDomain[1] + regressionIntercept)}
+            stroke={correlationLineColor}
+            strokeWidth={correlationLineWidth}
+            strokeDasharray="6 4"
+            opacity={0.3}
+          />
         )}
 
         {data.map((d, i) => (
@@ -411,21 +452,25 @@ export function SvgScatterPlot({
 
       {/* Prediction area labels */}
       {predictionAreas.map((area, i) => {
-        const px0 = xScale(area.x0)
-        const px1 = xScale(area.x1)
-        const py0 = yScale(area.y0)
-        const py1 = yScale(area.y1)
-        const rectX = Math.min(px0, px1)
-        const rectY = Math.min(py0, py1)
-        const rectW = Math.abs(px1 - px0)
-        const rectH = Math.abs(py1 - py0)
+        let cx: number, cy: number
+        if (area.points && area.points.length >= 3) {
+          cx = area.points.reduce((s, p) => s + xScale(p.x), 0) / area.points.length
+          cy = area.points.reduce((s, p) => s + yScale(p.y), 0) / area.points.length
+        } else {
+          const px0 = xScale(area.x0!)
+          const px1 = xScale(area.x1!)
+          const py0 = yScale(area.y0!)
+          const py1 = yScale(area.y1!)
+          cx = Math.min(px0, px1) + Math.abs(px1 - px0) / 2
+          cy = Math.min(py0, py1) + Math.abs(py1 - py0) / 2
+        }
         return area.label ? (
           <div
             key={`prediction-label-${i}`}
             style={{
               position: 'absolute',
-              left: pctX(rectX + rectW / 2),
-              top: pctY(rectY + rectH / 2),
+              left: pctX(cx),
+              top: pctY(cy),
               transform: 'translateX(-50%) translateY(-50%)',
               pointerEvents: 'none',
               fontSize: '0.7rem',

@@ -56,9 +56,9 @@ Then we can add a second feature to our neural network to start looking for patt
 
 <SvgScatterPlot
   data={[
-    { x: 2, y: 2, label: 'Tomato' },
-    { x: 5, y: 5, label: 'Apple' },
-    { x: 9, y: 9, label: 'Candy floss' },
+    { x: 2, y: 1, label: 'Tomato' },
+    { x: 5, y: 8, label: 'Apple' },
+    { x: 9, y: 4, label: 'Candy floss' },
   ]}
   xDomain={[0, 10]}
   yDomain={[0, 10]}
@@ -76,11 +76,7 @@ For now, let's consider that we train two different neural networks. We taste 10
 
 <SvgScatterPlotPair
   left={{
-    data: [
-      { x: 2, y: 2, label: 'Tomato' },
-      { x: 5, y: 5, label: 'Apple' },
-      { x: 9, y: 9, label: 'Candy floss' },
-    ],
+    data: [],
     xDomain: [0, 10],
     yDomain: [0, 10],
     xTicks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -94,11 +90,7 @@ For now, let's consider that we train two different neural networks. We taste 10
     ],
   }}
   right={{
-    data: [
-      { x: 2, y: 2, label: 'Tomato' },
-      { x: 5, y: 5, label: 'Apple' },
-      { x: 9, y: 9, label: 'Candy floss' },
-    ],
+    data: [],
     xDomain: [0, 10],
     yDomain: [0, 10],
     xTicks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],

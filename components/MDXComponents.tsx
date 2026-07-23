@@ -19,6 +19,7 @@ import Process from './Process'
 import HighlightBox from './HighlightBox'
 import KeyTakeaways from './KeyTakeaways'
 import { SvgScatterPlot, SvgScatterPlotPair } from './blog/Plot'
+import { SvgScatterPlot3D } from './blog/Plot3D'
 
 export const components: any = {
   Image,
@@ -48,4 +49,5 @@ export const components: any = {
   KeyTakeaways,
   SvgScatterPlot,
   SvgScatterPlotPair,
+  SvgScatterPlot3D,
 }
