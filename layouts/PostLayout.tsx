@@ -31,7 +31,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             <div className="leading-8">
               By <b>{authorDetails.map((author) => author.name)}</b>
             </div>
-            <div className="h-2 w-2 bg-yellow-200" />
+            <div className="h-1.5 w-5 rounded-tl-full rounded-br-full bg-blue-900" />
             <div className="leading-8">
               Published <b>{formatDate(date, siteMetadata.locale)}</b>
             </div>

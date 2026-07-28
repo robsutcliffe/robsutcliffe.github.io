@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 
 type PredictionArea = {
   x0?: number
@@ -72,7 +74,7 @@ export type SvgScatterPlotProps = {
 
 const defaultPadding = { top: 80, right: 300, bottom: 90, left: 70 }
 const linePadding = { top: 20, right: 300, bottom: 90, left: 70 }
-const pairPadding = { top: 80, right: 80, bottom: 100, left: 70 }
+const pairPadding = { top: 80, right: 80, bottom: 140, left: 90 }
 
 function extent(values: number[]): [number, number] {
   return [Math.min(...values), Math.max(...values)]
@@ -115,6 +117,14 @@ export function SvgScatterPlot({
   correlationLineColor = '#E424CE',
   correlationLineWidth = 1.5,
 }: SvgScatterPlotProps) {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   const resolvedXDomain = xDomain ?? extent(data.map((d) => d.x))
   const resolvedYDomain = yDomain ?? extent(data.map((d) => d.y))
 
@@ -123,8 +133,11 @@ export function SvgScatterPlot({
   const width = widthProp ?? 1080
   const height = heightProp ?? (isLineMode ? 150 : 720)
   const basePadding = paddingProp ?? (isLineMode ? linePadding : defaultPadding)
-  // Give extra top space when a title is present
-  const padding = title ? { ...basePadding, top: Math.max(basePadding.top, 120) } : basePadding
+  // Give extra top space when a title is present; shrink right padding on mobile
+  const padding = {
+    ...(title ? { ...basePadding, top: Math.max(basePadding.top, 120) } : basePadding),
+    ...(!paddingProp && isMobile ? { right: 70 } : {}),
+  }
 
   const innerWidth = width - padding.left - padding.right
   const innerHeight = height - padding.top - padding.bottom
@@ -384,10 +397,11 @@ export function SvgScatterPlot({
         resolvedXTicks.map((tick) => (
           <div
             key={`x-tick-label-${tick}`}
+            className="hidden sm:block"
             style={{
               position: 'absolute',
               left: pctX(xScale(tick)),
-              top: pctY(y0 + 10),
+              top: pctY(y0 + 18),
               transform: 'translateX(-50%)',
               fontSize: '0.7rem',
               color: labelColor,
@@ -403,6 +417,7 @@ export function SvgScatterPlot({
         resolvedYTicks.map((tick) => (
           <div
             key={`y-tick-label-${tick}`}
+            className="hidden sm:block"
             style={{
               position: 'absolute',
               right: `calc(100% - ${pctX(x0 - 20)})`,

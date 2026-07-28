@@ -67,6 +67,18 @@ html, body {
   :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
     color: #241169; /* colors.blue.500 */
   }
+
+  :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-size: 1.055rem;
+    line-height: 1.75rem;
+  }
+
+  :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-weight: 900;
+  }
+
 }
 
 .tabs ul li {
@@ -76,19 +88,35 @@ html, body {
 
 table {
   width: auto;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-collapse: collapse;
 }
 
 table th,
 table td {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #F2F39A;
+  text-align: left;
+}
+
+table th {
+  font-weight: 700;
+  border-bottom: 1px solid #241169;
+}
+
+table tr:last-child td {
+  border-bottom: none;
 }
 
 table th:first-child,
 table td:first-child {
   padding-left: 0;
+}
+
+table th:not(:first-child),
+table td:not(:first-child) {
+  text-align: right;
 }
 
 table th:last-child,
