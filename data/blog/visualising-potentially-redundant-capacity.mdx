@@ -1,0 +1,150 @@
+---
+title: Visualising Potentially Redundant Capacity
+date: '2026-07-29'
+tags: ['machine-learning']
+draft: false
+summary: In neural networks, redundancy is about dependent directions rather than unused nodes. PCA and scree plots give us a way to visualise how much unique information each layer is actually using.
+---
+
+<KeyTakeaways
+  items={[
+    'In neural networks, redundancy is about dependent "directions" rather than unused nodes.',
+    'Maths concepts like PCA show the directions we\'re using, and eigenvalues show us how much variation they capture.',
+    'A scree plot is a useful visualisation to see the variation of activations in different directions.',
+  ]}
+/>
+
+There are many methods and tools to test whether a neural network has redundant nodes in a given layer. However, identifying when and where to invest time in testing can be challenging, and the decision to do so may be made by a non-technical stakeholder who doesn't understand these tools.
+
+For these reasons, it's valuable to monitor and identify whether a neural network might be using more computational resources and time than necessary, and roughly how much savings potential exists. Ideally, we want this information to be communicated in a way that a non-technical person can understand.
+
+So let's look at how we can spot and visualise a redundant node.
+
+## Linear Dependency
+
+Let's create a very simple neural network to predict how good some food will taste based on flavour features. The features I'll use are: Sweet, Spicy, Sour & Healthy.
+
+And our target is to predict tastiness. Before we even train the network, we might notice a linear relationship between sweet and healthy. The sweeter the food is, the less healthy it is. In fact, if we plot the activations for our sweet and healthy data on a single plot, we can see this line quite clearly.
+
+<SvgScatterPlot
+  data={[
+    { x: 1, y: 9, label: 'Broccoli' },
+    { x: 2, y: 8, label: 'Tomato' },
+    { x: 4, y: 6, label: 'Peach' },
+    { x: 5, y: 5, label: 'Apple' },
+    { x: 7, y: 3, label: 'Chocolate' },
+    { x: 9, y: 1, label: 'Candy Floss' },
+  ]}
+  xDomain={[0, 10]}
+  yDomain={[0, 10]}
+  xTicks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  yTicks={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+  xLabel="Sweet"
+  yLabel="Healthy"
+  showCorrelationLine
+/>
+
+Having a node whose activations are ignored is a problem, but this linear relationship causes further problems. It creates an ambiguity of attribution further along in the network. Our network can't establish if food tastes good because it's sweet or if food tastes good because it's unhealthy. So, in this instance, having "healthy" as a feature could cause more harm than just extra nodes in the network.
+
+But let's keep it in for a moment so we can make the network a little more realistic. More things make food unhealthy than just sugar. If we add a new feature for salty, adjust our data a little to make it more realistic, and then plot just sweet, salty, and healthy, we get something that looks like this.
+
+<SvgScatterPlot3D
+  data={[
+    { sweet: 9, salty: 0, healthy: 1, label: 'Candy Floss' },
+    { sweet: 3, salty: 0, healthy: 7, label: 'Apple' },
+    { sweet: 0, salty: 8.5, healthy: 1.5, label: 'Salted Crisps' },
+    { sweet: 0, salty: 4, healthy: 6, label: 'Pickles' },
+    { sweet: 2.5, salty: 5, healthy: 2.5, label: 'Ketchup' },
+    { sweet: 5, salty: 1, healthy: 4, label: 'Jam' },
+  ]}
+  domain={[0, 10]}
+  sweetLabel="Sweet"
+  saltyLabel="Salty"
+  healthyLabel="Healthy"
+  showCorrelationPlane
+/>
+
+Notice that all our points still lie on a single plane in this 3D plot. Even though we have three features/directions available, the data only varies along two independent directions. We could say the layer's effective capacity (or rank) is two, not three. In this example, we know we can just remove healthy as a feature, but in hidden layers it's much more common to find these unused directions.
+
+As we train the network and it adds weights and biases to nodes, it will identify specific flavour combinations that taste good. Chocolate-covered pretzels, for example, are amazing because they're 'swalty'; they have a small amount of sweet and salt together. So we get a swalty node, but also another node with the bias set to ensure it's not too swalty.
+
+As our network finds more of these combinations, we risk creating a linear dependency between two nodes. Still, we have an even greater chance of creating two nodes whose activations correlate so closely that we might want to consider it not worth the cost to have both. To get an idea of the ideal number of nodes, we don't just want to see how much each node is used, but how many dimensions are used. We want our network to learn to make the best use of the nodes it has, as that is likely different from how it's currently using the existing nodes. In our 3D plot, the activations all lie in a 2D plane. So it's not valuable to look at how much activation variety there is on a single node; we need to look at the whole layer and identify its rank (the number of unique directions the data moves) and the variation in each of those directions.
+
+## PCA and Scree Plots
+
+Let's get two nodes from our hidden layer and plot their activations.
+
+<SvgScatterPlot
+  data={[
+    { x: 1.2, y: 2.1 },
+    { x: 2.4, y: 3.8 },
+    { x: 3.1, y: 2.5 },
+    { x: 4.5, y: 5.2 },
+    { x: 5.2, y: 4.1 },
+    { x: 6.3, y: 6.8 },
+    { x: 7.1, y: 5.4 },
+    { x: 8.0, y: 7.9 },
+  ]}
+  xDomain={[0, 10]}
+  yDomain={[0, 10]}
+  xTicks={[0, 2, 4, 6, 8, 10]}
+  yTicks={[0, 2, 4, 6, 8, 10]}
+  xLabel="Node 1 Activation"
+  yLabel="Node 2 Activation"
+  showCorrelationLine
+/>
+
+We don't have a linear dependency here, so we know both nodes are adding some real value; neither can be said to be irrelevant. But it's still useful to know the variance in each direction. With our Sweet/Healthy example, if we looked at the variation of activations on each axis, we'd actually get a pretty high number, which wouldn't tell us that one of them wasn't useful. Instead, we need to move the axis to find the line with the most variance (principal direction).
+
+To identify and adjust all our activation points on this plot, we can use Principal Component Analysis (PCA). This will give us a linear transformation of all our points onto new axes, PC1 and PC2. PC1 is the line with the highest possible variance (principal direction) in the activations, and PC2 is just the orthogonal line (90 degrees) to PC1.
+
+<SvgScatterPlot
+  data={[
+    { x: 0.61, y: 5.22 },
+    { x: 2.62, y: 5.77 },
+    { x: 2.33, y: 4.32 },
+    { x: 5.13, y: 5.51 },
+    { x: 4.97, y: 4.22 },
+    { x: 7.54, y: 5.60 },
+    { x: 7.26, y: 4.01 },
+    { x: 9.55, y: 5.36 },
+  ]}
+  xDomain={[0, 10]}
+  yDomain={[0, 10]}
+  xTicks={[0, 2, 4, 6, 8, 10]}
+  yTicks={[0, 2, 4, 6, 8, 10]}
+  xLabel="PC1 (principal direction)"
+  yLabel="PC2"
+  showCorrelationLine
+/>
+
+We have the same activations with the same relationship to each other, but now we have the principal direction on one axis. All the variance that was diagonal before is now across a single axis, which we can see with the horizontal trend line.
+
+This plot itself isn't too useful to us because we may have hundreds of directions in the layer. We really just care about the variance (or eigenvalue) in each direction. If we perform this on a multi-dimensional space (like our 3D plot from before), we get a list of all the optimal eigenvalues in that layer.
+
+A scree plot shows the eigenvalues in order, so we can see how much variance there is in each direction. In our two-node example, PC1 holds almost all the variance, and PC2 looks like something we might consider losing. This bar chart is much easier for a non-technical person to understand.
+
+<SvgScreePlot
+  data={[
+    { label: 'PC1', value: 8.04 },
+    { label: 'PC2', value: 0.43 },
+  ]}
+  yLabel="Eigenvalue (Variance)"
+/>
+
+## A Tool To Estimate Layer Health
+
+Below is a prototype I built to explore how we might create an interactive scree plot for managers and teams to visualise potential savings at each layer and the risks of reducing directions.
+
+Note: The attention layers work a little differently; here, we show a bar for the variation of activations within each attention head, which indicates how much unique information each head is contributing. For the other layer types, there are varying recommendations of how risky removing additional nodes would be based on the purpose of that layer type.
+
+Click on a layer, then drag the red slider over the scree plot to a location you are considering testing. This gives you an idea of the savings and risks involved with this test.
+
+<Project name="Layer Health Inspector" />
+
+## Further Reading
+
+* **Rank / null space:** [3B1B — Inverse matrices, column space, null space](https://www.youtube.com/watch?v=uQhTuRlWMxw)
+* **Eigenvalues:** [3B1B — Eigenvectors and eigenvalues](https://www.youtube.com/watch?v=PFDu9oVAE-g)
+* **SVD:** [Gundersen — SVD as simply as possible](https://gregorygundersen.com/blog/2018/12/10/svd/)
+* **PCA:** [Setosa — PCA explained visually](https://setosa.io/ev/principal-component-analysis/)

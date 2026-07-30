@@ -29,6 +29,12 @@ const projectsData = [
     imgSrc: '/static/images/projects/survey.webp',
     href: 'https://youtu.be/aAZPw7p2GbI',
   },
+  {
+    title: 'Layer Health Inspector',
+    description: `An interactive scree plot tool for exploring potential savings at each layer of a neural network. Click a layer, drag the red slider to a node count you are considering, and see the estimated compute savings and risk level — designed to be understood by non-technical stakeholders.`,
+    imgSrc: '/static/images/projects/layer-health-inspector.webp',
+    href: '/projects/layer-health-inspector',
+  },
 ]
 
 export default projectsData
