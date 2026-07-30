@@ -23,22 +23,20 @@ function StatRow({
   sub,
   tone = 'default',
   help,
-  helpAlign = 'center',
 }: {
   label: string
   value: string
   sub?: string
   tone?: 'default' | 'accent' | 'muted'
   help?: GlossaryKey
-  helpAlign?: 'center' | 'start' | 'end'
 }) {
   const valueClass =
     tone === 'accent' ? 'text-red-500' : tone === 'muted' ? 'text-blue-800/50' : 'text-blue-800'
   return (
-    <div className="flex items-center justify-between gap-3 border-r border-b border-blue-800 px-3 py-2">
+    <div className="flex items-center justify-between gap-3 border-r border-b border-blue-800 px-1.5 py-1 md:px-3 md:py-2">
       <div className="flex items-center gap-1 text-sm text-blue-800">
         {label}
-        {help && <HelpTip term={help} align={helpAlign} />}
+        {help && <HelpTip term={help} />}
       </div>
       <div className="flex items-baseline gap-2 text-right">
         {sub && <span className="text-[11px] text-blue-800">{sub}</span>}
@@ -102,11 +100,11 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
   const riskCmp = RISK_ORDER[cur.risk] - RISK_ORDER[rec.risk]
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-3 md:gap-5">
       {/* header */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-row gap-4">
-          <h2 className="text-3xl font-extrabold text-blue-800">{layer.name}</h2>
+          <h2 className="text-2xl font-extrabold text-blue-800 md:text-3xl">{layer.name}</h2>
         </div>
         <span className="inline-flex h-7 items-center gap-1 rounded-full border border-blue-700 px-2 py-0.5 text-xs font-medium text-blue-700">
           {layer.type}
@@ -135,7 +133,6 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
             value={`${Math.round(rec.compressionPct * 100)}%`}
             tone={rec.isCandidate ? 'accent' : 'muted'}
             help="compressionOpportunity"
-            helpAlign="end"
           />
           <StatRow
             label="Conservative target"
@@ -162,23 +159,22 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
             value={rec.isCandidate ? String(rec.recommended) : '—'}
             tone={rec.isCandidate ? 'accent' : 'muted'}
             help="recommendedTestWidth"
-            helpAlign="end"
           />
         </div>
       </div>
 
       {/* one bar chart: ranked information directions */}
       <div>
-        <div className="flex items-baseline justify-between">
-          <h3 className="flex items-center gap-1 text-xl font-extrabold tracking-tight text-blue-800">
+        <div className="flex flex-col items-baseline justify-between md:flex-row">
+          <h3 className="flex items-center gap-1 text-lg font-extrabold tracking-tight text-blue-800 md:text-xl">
             {isAttn ? 'Attention heads by historical activity' : 'Ranked information directions'}
             <HelpTip term="rankedDirections" />
           </h3>
-          <p className="mt-3 flex items-center gap-1 pr-1 text-[11px] text-blue-800 uppercase">
+          <p className="mt-3 flex w-full items-center justify-end gap-1 pr-1 text-[9px] text-blue-800 uppercase md:w-auto md:text-[11px]">
             {isAttn
               ? 'Drag the edge of the red band to drop the least active heads'
               : 'Drag the edge of the red band to test a different width'}
-            <HelpTip term="testWidth" align="start" />
+            <HelpTip term="testWidth" />
           </p>
         </div>
         {isAttn ? (
@@ -217,14 +213,14 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
 
         {/* live readout for the current cut */}
 
-        <div className="mt-2 ml-10 bg-yellow-100">
+        <div className="mt-2 bg-yellow-100 lg:ml-10">
           <div className="-mr-px -mb-px flex flex-row justify-center gap-8 pl-4">
             {/* test width */}
             <div className="flex flex-col px-3 py-2">
-              <div className="text-xs font-bold tracking-wide text-blue-800 uppercase">
+              <div className="text-[0.65rem] font-bold tracking-wide text-blue-800 uppercase md:text-xs">
                 {isAttn ? 'Heads kept' : 'Test width'}
               </div>
-              <span className="font-mono text-xl font-light text-blue-800">
+              <span className="font-mono text-base font-light text-blue-800 md:text-xl">
                 {isAttn ? (
                   <>
                     <span className="font-extrabold">{keepHeads}</span>/{heads.length}{' '}
@@ -241,19 +237,21 @@ export default function LayerDetail({ layer, keep, onKeepChange }: LayerDetailPr
             </div>
             {/* weights saved */}
             <div className="flex flex-col px-3 py-2">
-              <div className="text-xs font-bold tracking-wide text-blue-800 uppercase">
+              <div className="text-[0.65rem] font-bold tracking-wide text-blue-800 uppercase md:text-xs">
                 Compression
               </div>
-              <span className="font-mono text-xl font-semibold text-blue-800">
+              <span className="font-mono text-xl font-semibold text-blue-800 md:text-base">
                 {Math.round(savedPct * 100)}%{' '}
                 <span className="text-sm font-light">({compact(Math.round(saved))})</span>
               </span>
             </div>
             {/* risk */}
             <div className="flex flex-col px-3 py-2">
-              <div className="text-xs font-bold tracking-wide text-blue-800 uppercase">Risk</div>
+              <div className="text-[0.65rem] font-bold tracking-wide text-blue-800 uppercase md:text-xs">
+                Risk
+              </div>
               <span
-                className={`font-mono text-xl font-extrabold ${HIGH_RISK.has(cur.risk) ? 'text-red-500' : 'text-blue-800'} `}
+                className={`font-mono text-base font-extrabold md:text-xl ${HIGH_RISK.has(cur.risk) ? 'text-red-500' : 'text-blue-800'} `}
               >
                 {cur.risk}
               </span>

@@ -28,16 +28,17 @@ function Card({
   onClick?: () => void
 }) {
   return (
-    <div className={'px-6 py-4 text-left'}>
-      <div className="flex items-center gap-1 text-sm font-black tracking-wide text-white uppercase">
+    <div className={'px-6 py-2 text-left md:py-4'}>
+      <div className="flex items-center gap-1 text-[0.65rem] font-black tracking-wide text-white uppercase md:text-sm">
         {label}
-        {help && <HelpTip term={help} align="start" />}
+        {help && <HelpTip term={help} />}
       </div>
-      <div className="font-mono text-2xl font-semibold text-white tabular-nums">{value}</div>
-      {sub && <div className="text-xs text-blue-100">{sub}</div>}
+      <div className="font-mono text-xl font-semibold text-white tabular-nums md:text-2xl">
+        {value}
+      </div>
+      {sub && <div className="text-[0.65rem] text-blue-100 md:text-xs">{sub}</div>}
     </div>
   )
-
 }
 
 export default function OverallStats({ layers, onSelect }: OverallStatsProps) {
@@ -45,7 +46,7 @@ export default function OverallStats({ layers, onSelect }: OverallStatsProps) {
 
   return (
     <section className="flex w-full flex-col bg-blue-900">
-      <div className="grid w-full grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="grid w-full grid-cols-2 gap-1 md:gap-3 lg:grid-cols-4">
         <Card
           label="Potential savings"
           help="potentialSavings"

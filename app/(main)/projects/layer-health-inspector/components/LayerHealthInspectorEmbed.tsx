@@ -34,17 +34,13 @@ export default function LayerHealthInspectorEmbed() {
       <OverallStats layers={data.layers} onSelect={setSelectedId} />
       <section className="border-t border-blue-950">
         <div className="flex items-center justify-between bg-blue-800 px-1 py-3 text-xs tracking-widest text-blue-500 uppercase">
-          <span className="flex items-center gap-1 px-6 text-sm font-black tracking-wide text-white uppercase">
+          <span className="flex items-center gap-1 px-6 text-[0.65rem] font-black tracking-wide text-white uppercase md:text-sm">
             Model overview
-            <HelpTip term="overview" align="start" />
+            <HelpTip term="overview" />
           </span>
         </div>
         {layer && (
-          <NetworkOverview
-            layers={data.layers}
-            selectedId={layer.id}
-            onSelect={setSelectedId}
-          />
+          <NetworkOverview layers={data.layers} selectedId={layer.id} onSelect={setSelectedId} />
         )}
         {layer && keep && (
           <section className="border-r border-b border-l border-blue-800 p-5 shadow-sm">
