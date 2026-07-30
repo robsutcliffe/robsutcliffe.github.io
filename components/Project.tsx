@@ -33,7 +33,7 @@ const Project = ({ name }: ProjectProps) => {
 
   if (EmbedComponent) {
     return (
-      <div className="not-prose -mx-4 my-8 overflow-hidden md:mx-0 lg:-mr-20 xl:-mr-60">
+      <div className="not-prose -mx-4 my-8 overflow-hidden md:mx-0 lg:-mr-28 xl:-mr-120">
         <EmbedComponent />
       </div>
     )
