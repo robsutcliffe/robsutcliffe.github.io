@@ -21,6 +21,7 @@ import KeyTakeaways from './KeyTakeaways'
 import { SvgScatterPlot, SvgScatterPlotPair } from './blog/Plot'
 import { SvgScatterPlot3D } from './blog/Plot3D'
 import { SvgScreePlot } from './blog/ScreePlot'
+import { ConfusionMatrixGroup } from './blog/ConfusionMatrix'
 import Project from './Project'
 
 export const components: any = {
@@ -53,5 +54,6 @@ export const components: any = {
   SvgScatterPlotPair,
   SvgScatterPlot3D,
   SvgScreePlot,
+  ConfusionMatrixGroup,
   Project,
 }

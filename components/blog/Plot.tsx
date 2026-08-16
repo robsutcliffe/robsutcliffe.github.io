@@ -366,7 +366,7 @@ export function SvgScatterPlot({
             left: pctX(padding.left),
             top: pctY(padding.top / 2 - 10),
             transform: 'translateY(-50%)',
-            fontSize: '0.8rem',
+            fontSize: '0.85rem',
             fontWeight: 600,
             color: '#bb1eae',
             whiteSpace: 'nowrap',
@@ -382,7 +382,7 @@ export function SvgScatterPlot({
           style={{
             position: 'absolute',
             left: pctX(padding.left),
-            top: pctY(padding.top * 0.75),
+            top: pctY(padding.top * 0.66),
             transform: 'translateY(-50%)',
             fontSize: '0.75rem',
             color: labelColor,
@@ -532,7 +532,7 @@ export function SvgScatterPlot({
               style={{
                 position: 'absolute',
                 left: pctX(xScale(d.x)),
-                top: pctY(yScale(d.y) - (d.r ?? pointRadius) - (isLineMode ? 10 : 14)),
+                top: pctY(yScale(d.y) - (d.r ?? pointRadius) - (isLineMode ? 8 : 0)),
                 transform: 'translateX(-50%) translateY(-100%)',
                 fontSize: '0.8rem',
                 fontWeight: 700,
