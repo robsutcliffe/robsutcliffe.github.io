@@ -11,6 +11,13 @@ const embedRegistry: Record<string, React.ComponentType> = {
       import('../app/(main)/projects/layer-health-inspector/components/LayerHealthInspectorEmbed'),
     { ssr: false }
   ),
+  'training-stability-meter': dynamic(
+    () =>
+      import(
+        '../app/(main)/projects/training-stability-meter/components/TrainingStabilityMeterEmbed'
+      ),
+    { ssr: false }
+  ),
 }
 
 interface ProjectProps {

@@ -22,6 +22,8 @@ import { SvgScatterPlot, SvgScatterPlotPair } from './blog/Plot'
 import { SvgScatterPlot3D } from './blog/Plot3D'
 import { SvgScreePlot } from './blog/ScreePlot'
 import { ConfusionMatrixGroup } from './blog/ConfusionMatrix'
+import { LossLandscapePlot } from './blog/LossLandscapePlot'
+import { LossLandscape3D } from './blog/LossLandscape3D'
 import Project from './Project'
 
 export const components: any = {
@@ -55,5 +57,7 @@ export const components: any = {
   SvgScatterPlot3D,
   SvgScreePlot,
   ConfusionMatrixGroup,
+  LossLandscapePlot,
+  LossLandscape3D,
   Project,
 }

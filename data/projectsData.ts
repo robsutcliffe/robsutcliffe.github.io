@@ -35,6 +35,12 @@ const projectsData = [
     imgSrc: '/static/images/projects/layer-health-inspector.webp',
     href: '/projects/layer-health-inspector',
   },
+  {
+    title: 'Training Stability Meter',
+    description: `An interactive tool for visualising neural network training stability — read the loss landscape and diagnose instability phenomena such as exploding gradients, saddle points, and loss barriers.`,
+    imgSrc: '',
+    href: '/projects/training-stability-meter',
+  },
 ]
 
 export default projectsData

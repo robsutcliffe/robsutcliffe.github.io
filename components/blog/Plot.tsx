@@ -42,6 +42,17 @@ type HighlightBand = {
   fill?: string
 }
 
+type PlotLine = {
+  x1: number
+  y1: number
+  x2: number
+  y2: number
+  stroke?: string
+  strokeWidth?: number
+  strokeDasharray?: string
+  opacity?: number
+}
+
 export type SvgScatterPlotProps = {
   data: Datum[]
   width?: number
@@ -70,6 +81,7 @@ export type SvgScatterPlotProps = {
   showCorrelationLine?: boolean
   correlationLineColor?: string
   correlationLineWidth?: number
+  lines?: PlotLine[]
 }
 
 const defaultPadding = { top: 80, right: 300, bottom: 90, left: 70 }
@@ -116,6 +128,7 @@ export function SvgScatterPlot({
   showCorrelationLine = false,
   correlationLineColor = '#E424CE',
   correlationLineWidth = 1.5,
+  lines = [],
 }: SvgScatterPlotProps) {
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
@@ -329,6 +342,21 @@ export function SvgScatterPlot({
         {!isLineMode && (
           <line x1={x0} x2={x0} y1={y0} y2={y1} stroke={axisColor} strokeWidth={1.5} />
         )}
+
+        {lines.map((l, i) => (
+          <line
+            key={`plot-line-${i}`}
+            x1={xScale(l.x1)}
+            y1={yScale(l.y1)}
+            x2={xScale(l.x2)}
+            y2={yScale(l.y2)}
+            stroke={l.stroke ?? '#E424CE'}
+            strokeWidth={l.strokeWidth ?? 1.5}
+            strokeDasharray={l.strokeDasharray}
+            opacity={l.opacity ?? 1}
+            strokeLinecap="round"
+          />
+        ))}
 
         {showCorrelationLine && n > 1 && (
           <line
