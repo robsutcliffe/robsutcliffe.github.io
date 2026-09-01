@@ -41,6 +41,12 @@ const projectsData = [
     imgSrc: '',
     href: '/projects/training-stability-meter',
   },
+  {
+    title: 'Benefit Decision Waterfall',
+    description: `An interactive SHAP waterfall explainer for algorithmic benefit eligibility. Explore step-by-step contributions of household demographics, income levels, and assistance programs toward or away from SNAP approval.`,
+    imgSrc: '',
+    href: '/projects/benefit-decision-waterfall',
+  },
 ]
 
 export default projectsData

@@ -18,6 +18,13 @@ const embedRegistry: Record<string, React.ComponentType> = {
       ),
     { ssr: false }
   ),
+  'benefit-decision-waterfall': dynamic(
+    () =>
+      import(
+        '../app/(main)/projects/benefit-decision-waterfall/components/BenefitDecisionWaterfallEmbed'
+      ),
+    { ssr: false }
+  ),
 }
 
 interface ProjectProps {
