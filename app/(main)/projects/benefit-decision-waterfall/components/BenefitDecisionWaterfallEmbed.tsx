@@ -316,7 +316,7 @@ export default function BenefitDecisionWaterfallEmbed({
   const minWageMarkerPct = (FEDERAL_MIN_WAGE / MAX_SLIDER_HOURLY) * 100
 
   return (
-    <div className="my-8 ml-24 max-w-4xl border border-blue-800">
+    <div className="mx-8 my-8 max-w-4xl border border-blue-800 lg:ml-24">
       <div className="bg-yellow-50/50">
         <Wizard current={step} steps={STEPS} setStep={setStep} />
 
@@ -441,7 +441,7 @@ export default function BenefitDecisionWaterfallEmbed({
                                               Weeks per Year
                                             </label>
                                             <input
-                                              className="h-12 w-full rounded-none border border-blue-700 bg-transparent p-2 px-4 text-sm font-bold text-blue-700 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                                              className="h-12 w-full rounded-none border border-blue-700 bg-transparent p-2 px-4 text-sm font-bold text-blue-700 transition-opacity focus:ring-0 disabled:opacity-50"
                                               type="number"
                                               min="1"
                                               max={MAX_WEEKS_WORKED}

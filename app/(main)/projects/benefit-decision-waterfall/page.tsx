@@ -117,7 +117,7 @@ export default function () {
   return (
     <div className="flex flex-col border border-blue-800 text-blue-800">
       <div className="bg-blue-800 text-white">
-        <div className="flex max-w-6xl flex-wrap items-center justify-between gap-4 pt-38 pb-4 pl-24">
+        <div className="flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 px-8 pt-38 pb-4 lg:pl-24">
           <div>
             <h1 className="mb-4 max-w-2xl px-0 text-3xl leading-10 font-extrabold tracking-tight text-white sm:text-4xl sm:leading-[3rem] md:text-5xl md:leading-[4rem]">
               Benefit Decision Explainer
@@ -136,10 +136,10 @@ export default function () {
           </div>
         </div>
       </div>
-      <div className="ml-24 max-w-4xl pt-8 pr-10">
+      <div className="mx-8 max-w-4xl pt-8 pr-10 lg:ml-24">
         As this is a demo you can save a bit of time by clicking a preset bellow:
       </div>
-      <div className="ml-24 grid max-w-4xl grid-cols-4 flex-wrap items-center justify-start gap-4 pt-3 pr-10">
+      <div className="mx-8 grid max-w-4xl grid-cols-1 flex-wrap items-center justify-start gap-4 pt-3 md:grid-cols-4 lg:ml-24">
         <button
           onClick={() => setNewPreset(0)}
           disabled={selected !== -1}

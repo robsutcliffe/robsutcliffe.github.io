@@ -73,7 +73,7 @@ function BenefitTabs({
                 : 'hover:bg-50/30 border bg-blue-50/50 text-blue-800/70 hover:-mt-1 hover:pt-2.5 hover:text-blue-800/80'
             }`}
           >
-            <span className="font-sm flex items-center gap-3 text-base tracking-wide">
+            <span className="font-sm flex items-center gap-3 text-xs tracking-wide md:text-base">
               {BENEFIT_LABELS[b]}
               {entry.predicted_score >= 0.7 && (
                 <svg

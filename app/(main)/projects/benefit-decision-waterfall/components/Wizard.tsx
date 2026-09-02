@@ -58,7 +58,7 @@ export default function Wizard({ current, steps, setStep, allowClickNav = true }
               </button>
 
               {/* Label below circle, centered within this step's grid track */}
-              <div className="mt-2 max-w-28 text-center sm:max-w-36">
+              <div className="mt-2 hidden max-w-28 text-center sm:max-w-36 md:block">
                 <p
                   className={`text-xs font-extrabold sm:text-sm ${
                     isActive ? 'text-blue-800' : isDone ? 'text-blue-800/80' : 'text-blue-800/40'
