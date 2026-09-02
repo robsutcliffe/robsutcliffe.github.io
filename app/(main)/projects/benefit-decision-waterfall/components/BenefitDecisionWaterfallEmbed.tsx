@@ -1,10 +1,8 @@
 'use client'
 
-import Button from '@/components/Button'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { SnapDecisionInput, DEFAULT_SNAP_INPUT, BenefitDecisionInput } from '../lib'
 import Results from './Results'
-import PresetDropdown from './PresetDropdown'
 import Wizard from './Wizard'
 import MonthDropdown from './MonthDropdown'
 
@@ -132,7 +130,11 @@ const applyMultipleJobsPartTimeRule = (person: PersonEntry): PersonEntry => {
   }
 }
 
-export default function BenefitDecisionWaterfallEmbed() {
+export default function BenefitDecisionWaterfallEmbed({
+  preset,
+}: {
+  preset?: BenefitDecisionInput
+}) {
   const [formData, setFormData] = useState<SnapDecisionInput>(DEFAULT_SNAP_INPUT)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
@@ -155,10 +157,6 @@ export default function BenefitDecisionWaterfallEmbed() {
     }))
   }
 
-  const handlePresetSelect = (presetData: SnapDecisionInput) => {
-    setFormData(presetData)
-  }
-
   const handleHouseholdSizeChange = (rawValue: string) => {
     const size = Math.max(1, Math.min(15, Number(rawValue) || 1))
     setHouseholdSize(size)
@@ -173,6 +171,40 @@ export default function BenefitDecisionWaterfallEmbed() {
       return prev.slice(0, size)
     })
   }
+
+  useEffect(() => {
+    if (preset) {
+      const size = preset.hh_size
+      setHouseholdSize(size)
+      setHouseholdSizeInput(String(size))
+
+      setFormData((prev) => ({
+        ...prev,
+        prog_6: preset.prog_6,
+        prog_7: preset.prog_7,
+      }))
+
+      setPeople(
+        preset.people.map((p) => ({
+          id: nextId(),
+          label: `Person ${p.person_index}`,
+          jobs: p.jobs.map((j) => ({
+            id: nextId(),
+            workerType: (j.worker_type as WorkerType) || '',
+            payType: (j.pay_type as PayType) || '',
+            weeksWorked: j.weeks_worked,
+            hoursPerWeek: j.hours_per_week,
+            hourlyRate: j.hourly_rate ?? 30,
+            monthlyAmount: j.monthly_amount ?? 5500,
+            partTimeReason: j.part_time_reason ?? '',
+          })),
+        }))
+      )
+
+      runPrediction(preset)
+      setStep(3)
+    }
+  }, [preset])
 
   const handleJobNumberBlur = (
     personId: string,
@@ -253,11 +285,11 @@ export default function BenefitDecisionWaterfallEmbed() {
     })),
   })
 
-  const runPrediction = async () => {
+  const runPrediction = async (payloadOverride?: BenefitDecisionInput) => {
     setIsLoading(true)
     setError(null)
 
-    const payload = buildApiPayload()
+    const payload = payloadOverride ?? buildApiPayload()
     setShowResults(true)
 
     try {
@@ -281,392 +313,365 @@ export default function BenefitDecisionWaterfallEmbed() {
     }
   }
 
-  const backToForm = () => {
-    setShowResults(false)
-    setResult(null)
-    setError(null)
-  }
-
   const minWageMarkerPct = (FEDERAL_MIN_WAGE / MAX_SLIDER_HOURLY) * 100
 
   return (
-    <div className="flex flex-col border border-blue-800 text-blue-800">
-      {/* Top Banner & Presets Bar */}
-      <div className="bg-blue-800 text-white">
-        <div className="flex max-w-6xl flex-wrap items-center justify-between gap-4 pt-38 pb-4 pl-24">
-          <div>
-            <h1 className="mb-4 max-w-2xl px-0 text-3xl leading-10 font-extrabold tracking-tight text-white sm:text-4xl sm:leading-[3rem] md:text-5xl md:leading-[4rem]">
-              Benefit Decision Explainer
-            </h1>
-            <p className="mb-4 max-w-3xl text-sm leading-5 text-blue-100 sm:text-base sm:leading-6 md:leading-8 lg:text-lg">
-              <b>For example purposes only, not to be used to make benefit predictions.</b> This
-              simple AI model is trained on
-            </p>
-            {!showResults && <PresetDropdown handlePresetSelect={handlePresetSelect} />}
-          </div>
-        </div>
-      </div>
+    <div className="my-8 ml-24 max-w-4xl border border-blue-800">
+      <div className="bg-yellow-50/50">
+        <Wizard current={step} steps={STEPS} setStep={setStep} />
 
-      <div className="my-8 ml-24 max-w-4xl border border-blue-800">
-        <div className="bg-yellow-50/50">
-          <Wizard current={step} steps={STEPS} setStep={setStep} />
-
-          <>
-            {/* Section 1: Household Size */}
-            {step === 0 && (
-              <div className="bg-white">
-                <h4 className="px-8 py-4 text-xl font-black text-blue-800">1. Household Size</h4>
-                <div className="border-t border-yellow-100 bg-white p-6">
-                  <fieldset className="group flex flex-col gap-0">
-                    <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-white px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
-                      Number of People in Household
-                    </label>
-                    <input
-                      className="h-16 w-full border border-blue-700 bg-transparent p-4 px-6 text-xl text-blue-700 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
-                      type="number"
-                      min="1"
-                      max="15"
-                      value={householdSizeInput}
-                      onChange={(e) => setHouseholdSizeInput(e.target.value)}
-                      onBlur={(e) => handleHouseholdSizeChange(e.target.value)}
-                    />
-                  </fieldset>
-                </div>
+        <>
+          {/* Section 1: Household Size */}
+          {step === 0 && (
+            <div className="bg-white">
+              <h4 className="px-8 py-4 text-xl font-black text-blue-800">1. Household Size</h4>
+              <div className="border-t border-yellow-100 bg-white p-6">
+                <fieldset className="group flex flex-col gap-0">
+                  <label className="z-10 -mb-4 ml-4 flex h-8 w-fit flex-row items-center gap-2 bg-white px-2 text-sm tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                    Number of People in Household
+                  </label>
+                  <input
+                    className="h-16 w-full border border-blue-700 bg-transparent p-4 px-6 text-xl text-blue-700 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                    type="number"
+                    min="1"
+                    max="15"
+                    value={householdSizeInput}
+                    onChange={(e) => setHouseholdSizeInput(e.target.value)}
+                    onBlur={(e) => handleHouseholdSizeChange(e.target.value)}
+                  />
+                </fieldset>
               </div>
-            )}
+            </div>
+          )}
 
-            {step === 1 && (
-              <>
-                {/* Section 2: Jobs per person */}
-                <div className="bg-white">
-                  <div className="flex items-center justify-between px-8 py-4">
-                    <h4 className="text-xl font-black text-blue-800">2. Jobs Per Person</h4>
-                  </div>
+          {step === 1 && (
+            <>
+              {/* Section 2: Jobs per person */}
+              <div className="bg-white">
+                <div className="flex items-center justify-between px-8 py-4">
+                  <h4 className="text-xl font-black text-blue-800">2. Jobs Per Person</h4>
+                </div>
 
-                  <div className="border-t border-yellow-400">
-                    {people.map((person, pIdx) => {
-                      const partTimeJobs = person.jobs.filter(isPartTimeJob)
-                      const combinedPartTimeHours = partTimeJobs.reduce(
-                        (sum, j) => sum + j.hoursPerWeek,
-                        0
-                      )
-                      const partTimeJobCount = partTimeJobs.length
-                      const meetsMultiJobThreshold =
-                        partTimeJobCount > 1 &&
-                        combinedPartTimeHours >= MIN_COMBINED_HOURS_FOR_MULTI_JOB_RULE
+                <div className="border-t border-yellow-400">
+                  {people.map((person, pIdx) => {
+                    const partTimeJobs = person.jobs.filter(isPartTimeJob)
+                    const combinedPartTimeHours = partTimeJobs.reduce(
+                      (sum, j) => sum + j.hoursPerWeek,
+                      0
+                    )
+                    const partTimeJobCount = partTimeJobs.length
+                    const meetsMultiJobThreshold =
+                      partTimeJobCount > 1 &&
+                      combinedPartTimeHours >= MIN_COMBINED_HOURS_FOR_MULTI_JOB_RULE
 
-                      return (
-                        <div key={person.id} className="m-6 border border-yellow-400 bg-yellow-50">
-                          <span className="block p-6 font-serif text-xl font-light text-blue-900">
-                            {person.label}
-                          </span>
+                    return (
+                      <div key={person.id} className="m-6 border border-yellow-400 bg-yellow-50">
+                        <span className="block p-6 font-serif text-xl font-light text-blue-900">
+                          {person.label}
+                        </span>
 
-                          {person.jobs.length === 0 && (
-                            <p className="pb-2 pl-6 text-sm text-blue-800/70 italic">
-                              No jobs added for this person.
-                            </p>
-                          )}
+                        {person.jobs.length === 0 && (
+                          <p className="pb-2 pl-6 text-sm text-blue-800/70 italic">
+                            No jobs added for this person.
+                          </p>
+                        )}
 
-                          <div className="mb-6 ml-4 space-y-2">
-                            {person.jobs.map((job, jIdx) => {
-                              const isPartTime = isPartTimeJob(job)
-                              const autoAssigned = isPartTime && meetsMultiJobThreshold
+                        <div className="mb-6 ml-4 space-y-2">
+                          {person.jobs.map((job, jIdx) => {
+                            const isPartTime = isPartTimeJob(job)
+                            const autoAssigned = isPartTime && meetsMultiJobThreshold
 
-                              return (
-                                <div key={job.id} className="p-4">
-                                  <div className="mb-3 flex items-center justify-between">
-                                    <span className="text-lg font-semibold text-blue-800">
-                                      Job {jIdx + 1}
-                                    </span>
-                                    <button
-                                      type="button"
-                                      onClick={() => removeJob(person.id, job.id)}
-                                      className="cursor-pointer rounded border border-yellow-400 px-4 py-2 text-sm transition-all hover:border-red-500 hover:bg-red-500/5 hover:text-red-500"
-                                    >
-                                      Remove Job {jIdx + 1}
-                                      <b className="ml-2 font-black">X</b>
-                                    </button>
-                                  </div>
+                            return (
+                              <div key={job.id} className="p-4">
+                                <div className="mb-3 flex items-center justify-between">
+                                  <span className="text-lg font-semibold text-blue-800">
+                                    Job {jIdx + 1}
+                                  </span>
+                                  <button
+                                    type="button"
+                                    onClick={() => removeJob(person.id, job.id)}
+                                    className="cursor-pointer rounded border border-yellow-400 px-4 py-2 text-sm transition-all hover:border-red-500 hover:bg-red-500/5 hover:text-red-500"
+                                  >
+                                    Remove Job {jIdx + 1}
+                                    <b className="ml-2 font-black">X</b>
+                                  </button>
+                                </div>
 
-                                  {/* Step A: classify the job before asking numbers */}
-                                  <div className="border-l border-blue-700/30 pb-4 pl-4">
-                                    <div className="mb-4 grid grid-cols-2 gap-6">
-                                      <div>
-                                        <MonthDropdown
-                                          label="Employment Type"
-                                          value={job.workerType}
-                                          onChange={(e) =>
-                                            updateJob(
-                                              person.id,
-                                              job.id,
-                                              'workerType',
-                                              e.target.value
-                                            )
-                                          }
-                                          placeholder="Select..."
-                                          options={[
-                                            { value: 'employee', label: 'Employee' },
-                                            { value: 'self_employed', label: 'Self-Employed' },
-                                          ]}
-                                        />
-                                      </div>
-
-                                      <div>
-                                        <MonthDropdown
-                                          label="Pay Structure"
-                                          value={job.payType}
-                                          onChange={(e) =>
-                                            updateJob(person.id, job.id, 'payType', e.target.value)
-                                          }
-                                          placeholder="Select..."
-                                          options={[
-                                            { value: 'hourly', label: 'Paid Hourly' },
-                                            { value: 'monthly', label: 'Paid Monthly' },
-                                          ]}
-                                        />
-                                      </div>
+                                {/* Step A: classify the job before asking numbers */}
+                                <div className="border-l border-blue-700/30 pb-4 pl-4">
+                                  <div className="mb-4 grid grid-cols-2 gap-6">
+                                    <div>
+                                      <MonthDropdown
+                                        label="Employment Type"
+                                        value={job.workerType}
+                                        onChange={(e) =>
+                                          updateJob(person.id, job.id, 'workerType', e.target.value)
+                                        }
+                                        placeholder="Select..."
+                                        options={[
+                                          { value: 'employee', label: 'Employee' },
+                                          { value: 'self_employed', label: 'Self-Employed' },
+                                        ]}
+                                      />
                                     </div>
 
-                                    {/* Step B: only appears once both classifiers are set. */}
-                                    {job.workerType && job.payType ? (
-                                      <>
-                                        <div className="flex flex-wrap items-end gap-6">
-                                          <div className="flex flex-1 flex-row gap-4">
-                                            <fieldset className="group flex flex-1 flex-col gap-0">
-                                              <label className="z-10 mx-2 -mb-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-xs tracking-wide text-blue-700 group-focus-within:text-blue-500">
-                                                Weeks per Year
-                                              </label>
-                                              <input
-                                                className="h-12 w-full rounded-none border border-blue-700 bg-transparent p-2 px-4 text-sm font-bold text-blue-700 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
-                                                type="number"
-                                                min="1"
-                                                max={MAX_WEEKS_WORKED}
-                                                value={
-                                                  jobInputDrafts[`${job.id}-weeksWorked`] ??
-                                                  job.weeksWorked
-                                                }
-                                                onChange={(e) =>
-                                                  setJobInputDrafts((prev) => ({
-                                                    ...prev,
-                                                    [`${job.id}-weeksWorked`]: e.target.value,
-                                                  }))
-                                                }
-                                                onBlur={(e) =>
-                                                  handleJobNumberBlur(
-                                                    person.id,
-                                                    job.id,
-                                                    'weeksWorked',
-                                                    e.target.value
-                                                  )
-                                                }
-                                              />
-                                            </fieldset>
+                                    <div>
+                                      <MonthDropdown
+                                        label="Pay Structure"
+                                        value={job.payType}
+                                        onChange={(e) =>
+                                          updateJob(person.id, job.id, 'payType', e.target.value)
+                                        }
+                                        placeholder="Select..."
+                                        options={[
+                                          { value: 'hourly', label: 'Paid Hourly' },
+                                          { value: 'monthly', label: 'Paid Monthly' },
+                                        ]}
+                                      />
+                                    </div>
+                                  </div>
 
-                                            <fieldset className="group flex flex-1 flex-col gap-0">
-                                              <label className="z-10 mx-2 -mb-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-xs tracking-wide text-blue-700 group-focus-within:text-blue-500">
-                                                Hours per Week
-                                              </label>
-                                              <input
-                                                className="h-12 w-full rounded-none border border-blue-700 bg-transparent p-2 px-4 text-sm font-bold text-blue-700 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
-                                                type="number"
-                                                min="1"
-                                                max={MAX_HOURS_PER_WEEK}
-                                                value={
-                                                  jobInputDrafts[`${job.id}-hoursPerWeek`] ??
-                                                  job.hoursPerWeek
-                                                }
-                                                onChange={(e) =>
-                                                  setJobInputDrafts((prev) => ({
-                                                    ...prev,
-                                                    [`${job.id}-hoursPerWeek`]: e.target.value,
-                                                  }))
-                                                }
-                                                onBlur={(e) =>
-                                                  handleJobNumberBlur(
-                                                    person.id,
-                                                    job.id,
-                                                    'hoursPerWeek',
-                                                    e.target.value
-                                                  )
-                                                }
-                                              />
-                                            </fieldset>
-                                          </div>
+                                  {/* Step B: only appears once both classifiers are set. */}
+                                  {job.workerType && job.payType ? (
+                                    <>
+                                      <div className="flex flex-wrap items-end gap-6">
+                                        <div className="flex flex-1 flex-row gap-4">
+                                          <fieldset className="group flex flex-1 flex-col gap-0">
+                                            <label className="z-10 mx-2 -mb-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-xs tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                                              Weeks per Year
+                                            </label>
+                                            <input
+                                              className="h-12 w-full rounded-none border border-blue-700 bg-transparent p-2 px-4 text-sm font-bold text-blue-700 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                                              type="number"
+                                              min="1"
+                                              max={MAX_WEEKS_WORKED}
+                                              value={
+                                                jobInputDrafts[`${job.id}-weeksWorked`] ??
+                                                job.weeksWorked
+                                              }
+                                              onChange={(e) =>
+                                                setJobInputDrafts((prev) => ({
+                                                  ...prev,
+                                                  [`${job.id}-weeksWorked`]: e.target.value,
+                                                }))
+                                              }
+                                              onBlur={(e) =>
+                                                handleJobNumberBlur(
+                                                  person.id,
+                                                  job.id,
+                                                  'weeksWorked',
+                                                  e.target.value
+                                                )
+                                              }
+                                            />
+                                          </fieldset>
 
-                                          {job.payType === 'hourly' ? (
-                                            <div className="min-w-48 flex-1">
-                                              <div className="flex justify-between text-xs">
-                                                <label className="text-blue-700">Hourly Wage</label>
-                                                <span className="font-mono font-bold text-blue-700">
-                                                  {job.hourlyRate >= MAX_SLIDER_HOURLY
-                                                    ? `$${MAX_SLIDER_HOURLY}+/hr`
-                                                    : `$${job.hourlyRate.toFixed(2)}/hr`}
-                                                </span>
-                                              </div>
-                                              <div className="relative pt-1">
-                                                <input
-                                                  type="range"
-                                                  min="0"
-                                                  max={MAX_SLIDER_HOURLY}
-                                                  step="0.25"
-                                                  value={job.hourlyRate}
-                                                  onChange={(e) =>
-                                                    updateJob(
-                                                      person.id,
-                                                      job.id,
-                                                      'hourlyRate',
-                                                      Number(e.target.value)
-                                                    )
-                                                  }
-                                                  className="h-2 w-full cursor-pointer appearance-none border border-blue-700 accent-blue-700"
-                                                />
-                                              </div>
+                                          <fieldset className="group flex flex-1 flex-col gap-0">
+                                            <label className="z-10 mx-2 -mb-4 flex h-8 w-fit flex-row items-center gap-2 bg-yellow-50 px-2 text-xs tracking-wide text-blue-700 group-focus-within:text-blue-500">
+                                              Hours per Week
+                                            </label>
+                                            <input
+                                              className="h-12 w-full rounded-none border border-blue-700 bg-transparent p-2 px-4 text-sm font-bold text-blue-700 transition-opacity focus:border-blue-500 focus:ring-0 disabled:opacity-50"
+                                              type="number"
+                                              min="1"
+                                              max={MAX_HOURS_PER_WEEK}
+                                              value={
+                                                jobInputDrafts[`${job.id}-hoursPerWeek`] ??
+                                                job.hoursPerWeek
+                                              }
+                                              onChange={(e) =>
+                                                setJobInputDrafts((prev) => ({
+                                                  ...prev,
+                                                  [`${job.id}-hoursPerWeek`]: e.target.value,
+                                                }))
+                                              }
+                                              onBlur={(e) =>
+                                                handleJobNumberBlur(
+                                                  person.id,
+                                                  job.id,
+                                                  'hoursPerWeek',
+                                                  e.target.value
+                                                )
+                                              }
+                                            />
+                                          </fieldset>
+                                        </div>
+
+                                        {job.payType === 'hourly' ? (
+                                          <div className="min-w-48 flex-1">
+                                            <div className="flex justify-between text-xs">
+                                              <label className="text-blue-700">Hourly Wage</label>
+                                              <span className="font-mono font-bold text-blue-700">
+                                                {job.hourlyRate >= MAX_SLIDER_HOURLY
+                                                  ? `$${MAX_SLIDER_HOURLY}+/hr`
+                                                  : `$${job.hourlyRate.toFixed(2)}/hr`}
+                                              </span>
                                             </div>
-                                          ) : (
-                                            <div className="min-w-48 flex-1">
-                                              <div className="flex justify-between text-xs">
-                                                <label className="text-blue-700">
-                                                  Monthly Income
-                                                </label>
-                                                <span className="font-mono font-bold text-blue-700">
-                                                  {job.monthlyAmount >= MAX_SLIDER_MONTHLY
-                                                    ? `$${MAX_SLIDER_MONTHLY.toLocaleString()}+/mo`
-                                                    : `$${job.monthlyAmount.toLocaleString()}/mo`}
-                                                </span>
-                                              </div>
+                                            <div className="relative pt-1">
                                               <input
                                                 type="range"
                                                 min="0"
-                                                max={MAX_SLIDER_MONTHLY}
-                                                step="50"
-                                                value={job.monthlyAmount}
+                                                max={MAX_SLIDER_HOURLY}
+                                                step="0.25"
+                                                value={job.hourlyRate}
                                                 onChange={(e) =>
                                                   updateJob(
                                                     person.id,
                                                     job.id,
-                                                    'monthlyAmount',
+                                                    'hourlyRate',
                                                     Number(e.target.value)
                                                   )
                                                 }
-                                                className="mt-1 h-2 w-full cursor-pointer appearance-none border border-blue-700 accent-blue-700"
+                                                className="h-2 w-full cursor-pointer appearance-none border border-blue-700 accent-blue-700"
                                               />
                                             </div>
-                                          )}
-                                        </div>
-
-                                        {isPartTime && !autoAssigned && (
-                                          <div className="mt-3">
-                                            <MonthDropdown
-                                              label="Reason for Part-Time Work"
-                                              value={job.partTimeReason}
+                                          </div>
+                                        ) : (
+                                          <div className="min-w-48 flex-1">
+                                            <div className="flex justify-between text-xs">
+                                              <label className="text-blue-700">
+                                                Monthly Income
+                                              </label>
+                                              <span className="font-mono font-bold text-blue-700">
+                                                {job.monthlyAmount >= MAX_SLIDER_MONTHLY
+                                                  ? `$${MAX_SLIDER_MONTHLY.toLocaleString()}+/mo`
+                                                  : `$${job.monthlyAmount.toLocaleString()}/mo`}
+                                              </span>
+                                            </div>
+                                            <input
+                                              type="range"
+                                              min="0"
+                                              max={MAX_SLIDER_MONTHLY}
+                                              step="50"
+                                              value={job.monthlyAmount}
                                               onChange={(e) =>
                                                 updateJob(
                                                   person.id,
                                                   job.id,
-                                                  'partTimeReason',
-                                                  e.target.value
+                                                  'monthlyAmount',
+                                                  Number(e.target.value)
                                                 )
                                               }
-                                              placeholder="Select a reason..."
-                                              options={PART_TIME_REASONS.map((r) => ({
-                                                value: r.code,
-                                                label: r.label,
-                                              }))}
+                                              className="mt-1 h-2 w-full cursor-pointer appearance-none border border-blue-700 accent-blue-700"
                                             />
                                           </div>
                                         )}
-                                      </>
-                                    ) : (
-                                      <p className="pl-2 text-sm text-blue-800/70 italic">
-                                        Select employment type and pay structure to continue.
-                                      </p>
-                                    )}
-                                  </div>
+                                      </div>
+
+                                      {isPartTime && !autoAssigned && (
+                                        <div className="mt-3">
+                                          <MonthDropdown
+                                            label="Reason for Part-Time Work"
+                                            value={job.partTimeReason}
+                                            onChange={(e) =>
+                                              updateJob(
+                                                person.id,
+                                                job.id,
+                                                'partTimeReason',
+                                                e.target.value
+                                              )
+                                            }
+                                            placeholder="Select a reason..."
+                                            options={PART_TIME_REASONS.map((r) => ({
+                                              value: r.code,
+                                              label: r.label,
+                                            }))}
+                                          />
+                                        </div>
+                                      )}
+                                    </>
+                                  ) : (
+                                    <p className="pl-2 text-sm text-blue-800/70 italic">
+                                      Select employment type and pay structure to continue.
+                                    </p>
+                                  )}
                                 </div>
-                              )
-                            })}
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => addJob(person.id)}
-                            className="w-full cursor-pointer border-t border-yellow-400 bg-yellow-100 p-4 text-sm font-bold text-blue-800"
-                          >
-                            + Add Job for {person.label}
-                          </button>
+                              </div>
+                            )
+                          })}
                         </div>
-                      )
-                    })}
-                  </div>
 
-                  <div className="flex items-center justify-end gap-8 p-6">
-                    <div className="text-right">
-                      <div className="text-xs tracking-wide text-blue-700">
-                        {allJobs.length === 1 ? 'job' : 'jobs'} total
+                        <button
+                          type="button"
+                          onClick={() => addJob(person.id)}
+                          className="w-full cursor-pointer border-t border-yellow-400 bg-yellow-100 p-4 text-sm font-bold text-blue-800"
+                        >
+                          + Add Job for {person.label}
+                        </button>
                       </div>
-                      <div className="font-mono text-lg font-bold text-blue-900">
-                        {allJobs.length}
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xs tracking-wide text-blue-700">
-                        Estimated Total Household Income
-                      </div>
-                      <div className="font-mono text-lg font-bold text-blue-900">
-                        ${Math.round(totalIncome).toLocaleString()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
-            {step === 2 && (
-              <div className="bg-white">
-                <h4 className="px-8 py-4 text-xl font-black text-blue-800">
-                  3. Household Characteristics
-                </h4>
-
-                <div className="border-t border-yellow-400 py-4 pl-2">
-                  {CHARACTERISTIC_LABELS.map((prog, idx) => {
-                    const isChecked = Boolean(formData[prog.key])
-                    return (
-                      <label
-                        key={String(prog.key)}
-                        className="flex cursor-pointer items-start gap-4 p-6 transition-all"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={isChecked}
-                          onChange={(e) => handleInputChange(prog.key, e.target.checked)}
-                          className="mt-1.5 h-6 w-6 border-blue-700/40 text-blue-800 focus:ring-blue-800"
-                        />
-                        <div className="flex-1 text-lg">
-                          <div className="flex items-center gap-1.5 font-semibold text-blue-900">
-                            {prog.label}
-                          </div>
-                          <p className="text-base leading-tight text-blue-800/70">{prog.desc}</p>
-                        </div>
-                      </label>
                     )
                   })}
                 </div>
-              </div>
-            )}
-            {step === 3 && (
-              <div className="bg-white">
-                <h4 className="px-8 py-4 text-xl font-black text-blue-800">4. Results</h4>
-                <div className="border-t border-yellow-400">
-                  <Results
-                    error={error}
-                    result={result}
-                    isLoading={isLoading}
-                    runPrediction={runPrediction}
-                  />
+
+                <div className="flex items-center justify-end gap-8 p-6">
+                  <div className="text-right">
+                    <div className="text-xs tracking-wide text-blue-700">
+                      {allJobs.length === 1 ? 'job' : 'jobs'} total
+                    </div>
+                    <div className="font-mono text-lg font-bold text-blue-900">
+                      {allJobs.length}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-xs tracking-wide text-blue-700">
+                      Estimated Total Household Income
+                    </div>
+                    <div className="font-mono text-lg font-bold text-blue-900">
+                      ${Math.round(totalIncome).toLocaleString()}
+                    </div>
+                  </div>
                 </div>
               </div>
-            )}
-          </>
-        </div>
+            </>
+          )}
+          {step === 2 && (
+            <div className="bg-white">
+              <h4 className="px-8 py-4 text-xl font-black text-blue-800">
+                3. Household Characteristics
+              </h4>
+
+              <div className="border-t border-yellow-400 py-4 pl-2">
+                {CHARACTERISTIC_LABELS.map((prog, idx) => {
+                  const isChecked = Boolean(formData[prog.key])
+                  return (
+                    <label
+                      key={String(prog.key)}
+                      className="flex cursor-pointer items-start gap-4 p-6 transition-all"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={(e) => handleInputChange(prog.key, e.target.checked)}
+                        className="mt-1.5 h-6 w-6 border-blue-700/40 text-blue-800 focus:ring-blue-800"
+                      />
+                      <div className="flex-1 text-lg">
+                        <div className="flex items-center gap-1.5 font-semibold text-blue-900">
+                          {prog.label}
+                        </div>
+                        <p className="text-base leading-tight text-blue-800/70">{prog.desc}</p>
+                      </div>
+                    </label>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+          {step === 3 && (
+            <div className="bg-white">
+              <h4 className="px-8 py-4 text-xl font-black text-blue-800">4. Results</h4>
+              <div className="border-t border-yellow-400">
+                <Results
+                  error={error}
+                  result={result}
+                  isLoading={isLoading}
+                  runPrediction={runPrediction}
+                />
+              </div>
+            </div>
+          )}
+        </>
+      </div>
+      {step !== 3 && (
         <div className="flex justify-end gap-4 bg-blue-800 p-6">
           {!!STEPS[step - 1] && (
             <button
@@ -697,7 +702,7 @@ export default function BenefitDecisionWaterfallEmbed() {
             </button>
           )}
         </div>
-      </div>
+      )}
     </div>
   )
 }

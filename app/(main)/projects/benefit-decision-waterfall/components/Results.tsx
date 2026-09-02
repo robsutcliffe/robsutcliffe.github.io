@@ -9,7 +9,7 @@ const WaterfallPlot = dynamic(() => import('./WaterfallPlot'), {
     <div className="flex h-120 w-full items-center justify-center border border-blue-800/20 bg-yellow-100/10 text-xs text-blue-800">
       <div className="flex items-center gap-2">
         <div className="h-4 w-4 animate-spin rounded-full border-2 border-blue-800/30 border-t-blue-800" />
-        <span>Loading interactive waterfall module...</span>
+        <span>Loading...</span>
       </div>
     </div>
   ),
@@ -199,6 +199,10 @@ export default function Results({
     [selectedEntry]
   )
 
+  const eligibleList = BENEFIT_ORDER.filter((b) => (result?.[b]?.predicted_score || 0) >= 0.7).map(
+    (b) => BENEFIT_LABELS[b]
+  )
+
   return (
     <div className="flex flex-col bg-white lg:col-span-7">
       {/* Error Notice */}
@@ -240,11 +244,10 @@ export default function Results({
           <div className="flex flex-1 flex-col items-center justify-center p-12 text-center text-blue-800">
             <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-blue-200 border-t-blue-800" />
             <h4 className="font-serif text-base font-bold text-blue-900">
-              Calling Hugging Face Gradio Space...
+              Reviewing your data and generating your report...
             </h4>
             <p className="mt-1 max-w-sm text-xs text-blue-800/70">
-              Computing predictions and SHAP attributions for SNAP, WIC, SSI, UI, Housing, and
-              Medicaid.
+              Idnetifying your eligibility for: SNAP, WIC, SSI, UI, Housing, and Medicaid.
             </p>
           </div>
         )}
@@ -252,6 +255,23 @@ export default function Results({
         {/* Results */}
         {result && !isLoading && (
           <div className="w-full space-y-5">
+            {eligibleList[0] && (
+              <p className="mb-1 px-1">
+                <b>You are eligible for the following benefits: {eligibleList.join(', ')}</b>
+              </p>
+            )}
+            {!eligibleList[0] && (
+              <p className="mb-1 px-1">
+                <b>You are not eligible for any benefits</b>
+              </p>
+            )}
+            <p className="px-1 pb-2 italic">
+              Click on the tabs below to see how much each of your attributes contributed towards
+              the decision, a green bar increases your chance of recieving a benefit and a red bar
+              reduces your chance. All deductions (red bars) should fit within the green area to be
+              eligible for benefits.
+            </p>
+
             <BenefitTabs
               results={result}
               selected={selectedBenefit}
