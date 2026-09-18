@@ -36,9 +36,9 @@ export default function Hero() {
           {/*  and turn complex data into clear visual insights and recommendations.*/}
           {/*</p>*/}
 
-          <h2 className="my-0! block text-4xl leading-10 font-normal tracking-tighter text-yellow-200 md:text-5xl md:leading-14 lg:text-6xl lg:leading-16">
+          <h2 className="my-0! block text-4xl leading-10 font-semibold tracking-tighter text-yellow-200 md:text-5xl md:leading-14 lg:text-6xl lg:leading-16">
             Interpretability{' '}
-            <span className="-pt-[0.3em] mx-[-0.05em] text-[1.3em] font-light">&</span>{' '}
+            <span className="-pt-[0.3em] mx-[-0.05em] text-[1.35em] font-normal">&</span>{' '}
             Observability <br className="responsive" />
             Interfaces <i>for</i> AI Products.
           </h2>
