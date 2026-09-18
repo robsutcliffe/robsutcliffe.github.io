@@ -44,6 +44,7 @@
     "remark-gfm": "4",
     "remark-math": "^6.0.0",
     "tailwindcss": "^4.1.18",
+    "topolines": "^0.3.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
