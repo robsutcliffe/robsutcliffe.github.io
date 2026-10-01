@@ -6,7 +6,7 @@ const siteMetadata = {
   description: 'Thoughts about UI Engineering and Data Visualisation',
   language: 'en-uk',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://robsutcliffe.github.io',
+  siteUrl: 'https://www.firefields.com',
   siteRepo: 'https://github.com/robsutcliffe/robsutcliffe.github.io',
   siteLogo: '/static/images/logo.png',
   socialBanner: '',
