@@ -76,7 +76,7 @@ export async function generateMetadata(props: {
       card: 'summary_large_image',
       title: post.title,
       description: post.summary,
-      images: imageList,
+      images: ogImages,
     },
     alternates: {
       canonical: `https://www.firefields.com/insights/${params.tag}/${params.post}`,
