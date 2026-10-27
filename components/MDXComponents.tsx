@@ -25,6 +25,7 @@ import { ConfusionMatrixGroup } from './blog/ConfusionMatrix'
 import { LossLandscapePlot } from './blog/LossLandscapePlot'
 import { LossLandscape3D } from './blog/LossLandscape3D'
 import Project from './Project'
+import FurtherReadingPosts from './FurtherReadingPosts'
 
 export const components: any = {
   Image,
@@ -60,4 +61,5 @@ export const components: any = {
   LossLandscapePlot,
   LossLandscape3D,
   Project,
+  FurtherReadingPosts,
 }

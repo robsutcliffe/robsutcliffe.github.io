@@ -47,6 +47,24 @@ const projectsData = [
     imgSrc: '',
     href: '/projects/benefit-decision-waterfall',
   },
+  {
+    title: 'Paragraph Embedding Explorer',
+    description: `An interactive PCA map showing how individual paragraphs of a multi-topic article embed differently. Select a paragraph to highlight its nearest neighbours across editorial sections — revealing whether a single article can recommend via more than one topic.`,
+    imgSrc: '',
+    href: '/projects/paragraph-embedding-explorer',
+  },
+  {
+    title: 'Embedding Space Explorer',
+    description: `An interactive PCA map of a local-news article corpus coloured by editorial section. Hover any article to draw lines to its three nearest neighbours in the original embedding space — and spot cross-section connections where the embeddings disagree with editorial labels.`,
+    imgSrc: '',
+    href: '/projects/embedding-space-explorer',
+  },
+  {
+    title: 'Ranking Signal Mixer',
+    description: `Combine meaning, location and timing scores with adjustable weights to re-rank article recommendations. The semantic map never moves — only the ranked list changes — showing how non-semantic signals shift the final order without altering the embedding space.`,
+    imgSrc: '',
+    href: '/projects/ranking-signal-mixer',
+  },
 ]
 
 export default projectsData

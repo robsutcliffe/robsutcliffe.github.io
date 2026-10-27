@@ -25,6 +25,27 @@ const embedRegistry: Record<string, React.ComponentType> = {
       ),
     { ssr: false }
   ),
+  'paragraph-embedding-explorer': dynamic(
+    () =>
+      import(
+        '../app/(main)/projects/paragraph-embedding-explorer/components/ParagraphEmbeddingExplorerEmbed'
+      ),
+    { ssr: false }
+  ),
+  'embedding-space-explorer': dynamic(
+    () =>
+      import(
+        '../app/(main)/projects/embedding-space-explorer/components/EmbeddingSpaceExplorerEmbed'
+      ),
+    { ssr: false }
+  ),
+  'ranking-signal-mixer': dynamic(
+    () =>
+      import(
+        '../app/(main)/projects/ranking-signal-mixer/components/RankingSignalMixerEmbed'
+      ),
+    { ssr: false }
+  ),
 }
 
 interface ProjectProps {
